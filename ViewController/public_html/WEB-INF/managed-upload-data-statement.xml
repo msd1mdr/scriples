@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="managed-upload-data-statement">
+    <default-activity id="__1">uploadCsvStatementForm</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__4">UploadDataStatementManagedBean</managed-bean-name>
+      <managed-bean-class id="__3">app.bmri.scripless.backing.uploadstmt.UploadDataStatementManagedBean</managed-bean-class>
+      <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="uploadCsvStatementForm">
+      <page>/pages/broker/UploadDataStatement/uploadCsvStatementForm.jsff</page>
+    </view>
+    <view id="uploadedStatementConfirm">
+      <page>/pages/broker/UploadDataStatement/uploadedStatementConfirm.jsff</page>
+    </view>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">uploadCsvStatementForm</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__10">successupload</from-outcome>
+        <to-activity-id id="__8">uploadedStatementConfirm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">uploadedStatementConfirm</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">reupload</from-outcome>
+        <to-activity-id id="__14">uploadCsvStatementForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

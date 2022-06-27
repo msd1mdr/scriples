@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="assignRoleToUserPageDef"
+                Package="pages.admin.AdminUserAccess">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="UserAccessRolesAdminView1Iterator"
+              Binds="UserAccessRolesAdminView1"
+              DataControl="AdminModuleDataControl" RangeSize="25"/>
+    <iterator id="RolesShuttleView1Iterator" Binds="RolesShuttleView1"
+              DataControl="AdminModuleDataControl" RangeSize="25"/>
+    <iterator id="UserAccessAdminView1Iterator" Binds="UserAccessAdminView1"
+              DataControl="AdminModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <action id="Commit" DataControl="AdminModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="UserAccessAdminView1Iterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

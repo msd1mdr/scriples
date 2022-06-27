@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="default">
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="toolbar">
+        <af:toolbar id="t3">
+          <af:commandToolbarButton text="#{viewcontrollerBundle.CONFIRM}"
+                                   id="ctb1"
+                                   action="#{backingBeanScope.UploadDataStatementManagedBean.confirmUpload}"/>
+          <af:commandToolbarButton text="#{viewcontrollerBundle.REUPLOAD}"
+                                   id="ctb2" action="reupload"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar">
+        <af:toolbar id="t2">
+          <af:outputText value="Total data uploaded: #{bindings.StatementTmpView1.estimatedRowCount} rows"
+                         id="ot4"/>
+        </af:toolbar>
+      </f:facet>
+      <af:table value="#{bindings.StatementTmpView1.collectionModel}" var="row"
+                rows="#{bindings.StatementTmpView1.rangeSize}"
+                emptyText="#{bindings.StatementTmpView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.StatementTmpView1.rangeSize}"
+                rowBandingInterval="0" scrollPolicy="page" autoHeightRows="0"
+                styleClass="AFStretchWidth"
+                filterModel="#{bindings.StatementTmpView1Query.queryDescriptor}"
+                queryListener="#{bindings.StatementTmpView1Query.processQuery}"
+                filterVisible="true" varStatus="vs"
+                selectedRowKeys="#{bindings.StatementTmpView1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.StatementTmpView1.collectionModel.makeCurrent}"
+                rowSelection="single" id="t1" columnStretching="column:c3">
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Extref.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Extref.label}"
+                   id="c7" width="160" minimumWidth="80" align="center">
+          <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <af:outputText value="#{row.Extref}" id="ot10"/>
+            <af:spacer width="10" height="22" id="s1"/>
+          </af:panelGroupLayout>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Seqnum.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Seqnum.label}"
+                   id="c1" width="50" minimumWidth="25" align="center">
+          <af:outputText value="#{row.Seqnum}" id="ot8">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.StatementTmpView1.hints.Seqnum.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Ac.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Ac.label}"
+                   id="c9" align="center" width="90" minimumWidth="45">
+          <af:outputText value="#{row.Ac}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Curcod.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Curcod.label}"
+                   id="c2" align="center" width="50" minimumWidth="25">
+          <af:outputText value="#{row.Curcod}" id="ot13"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Valdate.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Valdate.label}"
+                   id="c13" align="center" width="70" minimumWidth="35">
+          <af:outputText value="#{row.Valdate}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Openbal.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Openbal.label}"
+                   id="c4" align="right" minimumWidth="50" width="90">
+          <af:outputText value="#{row.Openbal}" id="ot1">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.StatementTmpView1.hints.Openbal.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Accref.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Accref.label}"
+                   id="c10" width="160" minimumWidth="80" align="center">
+          <af:outputText value="#{row.Accref}" id="ot11"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Trxtype.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Trxtype.label}"
+                   id="c6" align="center" width="50" minimumWidth="25">
+          <af:outputText value="#{row.Trxtype}" id="ot12"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Dc.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Dc.label}"
+                   id="c11" align="center" width="40" minimumWidth="20">
+          <af:outputText value="#{row.Dc}" id="ot14"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Cashval.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Cashval.label}"
+                   id="c5" align="right" minimumWidth="50" width="90">
+          <af:outputText value="#{row.Cashval}" id="ot6">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.StatementTmpView1.hints.Cashval.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Description.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Description.label}"
+                   id="c8" width="160" minimumWidth="80">
+          <af:outputText value="#{row.Description}" id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Closebal.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Closebal.label}"
+                   id="c12" align="right" minimumWidth="50" width="90">
+          <af:outputText value="#{row.Closebal}" id="ot3">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.StatementTmpView1.hints.Closebal.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.StatementTmpView1.hints.Notes.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StatementTmpView1.hints.Notes.label}"
+                   id="c3" width="160" minimumWidth="80">
+          <af:outputText value="#{row.Notes}" id="ot7"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</jsp:root>

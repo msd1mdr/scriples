@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="resendStatementPageDef"
+                Package="pages.broker.ResendStatement">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ResendStatementView1" RangeSize="14"
+              DataControl="InvestorModuleDataControl"
+              id="ResendStatementView1Iterator"/>
+    <searchRegion Criteria="ResendStatementViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ResendStatementView1Iterator"
+                  id="ResendStatementViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ResendStatementView1Iterator" id="ResendStatementView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.resendstmt.ResendStatementView"
+                      Name="ResendStatementView10">
+        <AttrNames>
+          <Item Value="Statementid"/>
+          <Item Value="Extref"/>
+          <Item Value="Ac"/>
+          <Item Value="Curcod"/>
+          <Item Value="Valdate"/>
+          <Item Value="Accref"/>
+          <Item Value="Trxtype"/>
+          <Item Value="Dc"/>
+          <Item Value="Cashval"/>
+          <Item Value="Description"/>
+          <Item Value="SelectStatus" Binds="SelectStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ResendStatementView1Iterator" id="SelectStatus"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectStatus"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

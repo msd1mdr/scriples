@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+    <f:facet name="toolbar">
+      <af:toolbar id="t2">
+        <af:commandToolbarButton text="Confirm" id="ctb1"
+                                 actionListener="#{backingBeanScope.ValidasiInvestorUploadExcelManagedBean.confirmData}"
+                                 action="#{backingBeanScope.ValidasiInvestorUploadExcelManagedBean.confirmData}"/>
+        <af:commandToolbarButton text="Reupload" id="ctb2" action="reupload"/>
+      </af:toolbar>
+    </f:facet>
+    <f:facet name="statusbar">
+      <af:toolbar id="t3">
+        <af:outputText value="Total data uploaded: #{bindings.ValidationTmpView1.estimatedRowCount} rows"
+                       id="ot4"/>
+      </af:toolbar>
+    </f:facet>
+    <af:table value="#{bindings.ValidationTmpView1.collectionModel}" var="row"
+              rows="#{bindings.ValidationTmpView1.rangeSize}"
+              emptyText="#{bindings.ValidationTmpView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              fetchSize="#{bindings.ValidationTmpView1.rangeSize}"
+              rowBandingInterval="0" width="AFStretchWidth"
+              filterModel="#{bindings.ValidationTmpView1Query.queryDescriptor}"
+              queryListener="#{bindings.ValidationTmpView1Query.processQuery}"
+              filterVisible="true" varStatus="vs"
+              selectedRowKeys="#{bindings.ValidationTmpView1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.ValidationTmpView1.collectionModel.makeCurrent}"
+              rowSelection="single" id="t1" scrollPolicy="auto">
+      <af:column id="c4" align="center" width="60" sortable="false">
+        <af:outputText value="#{vs.index+1}" id="ot5"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.ValidationTmpView1.hints.Participantid.name}"
+                 filterable="true" sortable="true"
+                 headerText="#{bindings.ValidationTmpView1.hints.Participantid.label}"
+                 id="c3" minimumWidth="100" width="120" align="center">
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:outputText value="#{row.Participantid}" id="ot3"/>
+          <af:spacer width="10" height="23" id="s1"/>
+        </af:panelGroupLayout>
+      </af:column>
+      <af:column sortProperty="#{bindings.ValidationTmpView1.hints.Sidnumber.name}"
+                 filterable="true" sortable="true"
+                 headerText="#{bindings.ValidationTmpView1.hints.Sidnumber.label}"
+                 id="c1" width="140" minimumWidth="100" align="center">
+        <af:outputText value="#{row.Sidnumber}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.ValidationTmpView1.hints.Accountnumber.name}"
+                 filterable="true" sortable="true"
+                 headerText="#{bindings.ValidationTmpView1.hints.Accountnumber.label}"
+                 id="c2" width="140" minimumWidth="100" align="center">
+        <af:outputText value="#{row.Accountnumber}" id="ot1"/>
+      </af:column>
+    </af:table>
+  </af:panelCollection>
+</jsp:root>

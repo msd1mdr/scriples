@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="brokerTerminalMonitoringPageDef"
+                Package="pages.investor.BrokerTerminalMonitoring">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ConnectTView1" RangeSize="15"
+              DataControl="InvestorModuleDataControl"
+              id="ConnectTView1Iterator"/>
+    <searchRegion Criteria="ConnectTViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ConnectTView1Iterator" id="ConnectTViewCriteriaQuery"/>
+    <iterator Binds="ConnectTChartView1" RangeSize="-1"
+              DataControl="InvestorModuleDataControl"
+              id="ConnectTChartView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ConnectTView1Iterator" id="ConnectTView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.terminalmonitor.ConnectTView"
+                      Name="ConnectTView10">
+        <AttrNames>
+          <Item Value="Brokerid"/>
+          <Item Value="NamaAb"/>
+          <Item Value="Status"/>
+          <Item Value="StaticCount"/>
+          <Item Value="StatementCount"/>
+          <Item Value="BalanceCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ConnectTView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <graph IterBinding="ConnectTChartView1Iterator" id="ConnectTChartView1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="RING">
+      <graphDataMap leafOnly="true">
+        <series>
+          <item value="BrokerStatus"/>
+        </series>
+        <groups>
+          <data>
+            <item value="BeatCount"/>
+          </data>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

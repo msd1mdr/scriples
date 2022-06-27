@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="uploadedStaticConfirmPageDef"
+                Package="pages.broker.UploadDataStatic">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="StaticTmpView1" RangeSize="15"
+              DataControl="InvestorModuleDataControl"
+              id="StaticTmpView1Iterator"/>
+    <searchRegion Binds="StaticTmpView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StaticTmpView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="StaticTmpView1Iterator" id="StaticTmpView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.uploadstatic.StaticTmpView"
+                      Name="StaticTmpView10">
+        <AttrNames>
+          <Item Value="Extref"/>
+          <Item Value="Participantid"/>
+          <Item Value="Participantname"/>
+          <Item Value="Investorname"/>
+          <Item Value="Sidnumber"/>
+          <Item Value="Accountnumber"/>
+          <Item Value="Bankaccnumber"/>
+          <Item Value="Bankcode"/>
+          <Item Value="Activitydate"/>
+          <Item Value="Activity"/>
+          <Item Value="CreateTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="default">
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:commandToolbarButton text="#{viewcontrollerBundle.CONFIRM}" id="ctb1"
+                                   action="#{backingBeanScope.UploadDataStaticManagedBean.confirmUpload}"/>
+          <af:commandToolbarButton text="#{viewcontrollerBundle.REUPLOAD}" id="ctb2"
+                                   action="reupload"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar">
+        <af:toolbar id="t3">
+          <af:outputText value="Total data uploaded: #{bindings.StaticTmpView1.estimatedRowCount} rows"
+                         id="ot4"/>
+        </af:toolbar>
+      </f:facet>
+      <af:table value="#{bindings.StaticTmpView1.collectionModel}" var="row"
+                rows="#{bindings.StaticTmpView1.rangeSize}"
+                emptyText="#{bindings.StaticTmpView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.StaticTmpView1.rangeSize}"
+                rowBandingInterval="0" scrollPolicy="page" autoHeightRows="0"
+                styleClass="AFStretchWidth"
+                filterModel="#{bindings.StaticTmpView1Query.queryDescriptor}"
+                queryListener="#{bindings.StaticTmpView1Query.processQuery}"
+                filterVisible="true" varStatus="vs"
+                selectedRowKeys="#{bindings.StaticTmpView1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.StaticTmpView1.collectionModel.makeCurrent}"
+                rowSelection="single" id="t1" columnStretching="column:c9">
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Extref.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Extref.label}"
+                   id="c2" width="160" minimumWidth="80" align="center">
+          <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <af:outputText value="#{row.Extref}" id="ot3"/>
+            <af:spacer width="10" height="22" id="s1"/>
+          </af:panelGroupLayout>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Participantid.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Participantid.label}"
+                   id="c1" align="center">
+          <af:outputText value="#{row.Participantid}" id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Participantname.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Participantname.label}"
+                   id="c7" width="120">
+          <af:outputText value="#{row.Participantname}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Investorname.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Investorname.label}"
+                   id="c6" width="120">
+          <af:outputText value="#{row.Investorname}" id="ot10"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Sidnumber.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Sidnumber.label}"
+                   id="c11" align="center" minimumWidth="50">
+          <af:outputText value="#{row.Sidnumber}" id="ot8"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Accountnumber.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Accountnumber.label}"
+                   id="c10" align="center" minimumWidth="50">
+          <af:outputText value="#{row.Accountnumber}" id="ot11"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Bankaccnumber.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Bankaccnumber.label}"
+                   id="c3" align="center" minimumWidth="50">
+          <af:outputText value="#{row.Bankaccnumber}" id="ot6"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Bankcode.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Bankcode.label}"
+                   id="c4" align="center" minimumWidth="50">
+          <af:outputText value="#{row.Bankcode}" id="ot1"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Activitydate.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Activitydate.label}"
+                   id="c8" align="center" minimumWidth="50">
+          <af:outputText value="#{row.Activitydate}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.Activity.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.Activity.label}"
+                   id="c9" minimumWidth="50">
+          <af:outputText value="#{row.Activity}" id="ot7"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.StaticTmpView1.hints.CreateTime.name}"
+                   filterable="true" sortable="true"
+                   headerText="#{bindings.StaticTmpView1.hints.CreateTime.label}"
+                   id="c5" align="center" width="120" minimumWidth="60">
+          <f:facet name="filter">
+            <af:inputDate value="#{vs.filterCriteria.CreateTime}" id="id1"/>
+          </f:facet>
+          <af:outputText value="#{row.CreateTime}" id="ot12">
+            <af:convertDateTime pattern="#{bindings.StaticTmpView1.hints.CreateTime.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</jsp:root>

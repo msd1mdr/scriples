@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">uploadCsvStatementForm</property>
+      <property
+         name="page">/pages/broker/UploadDataStatement/uploadCsvStatementForm.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>uploadCsvStatementForm&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">218.5459</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">276.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">uploadedStatementConfirm</property>
+      <property
+         name="page">/pages/broker/UploadDataStatement/uploadedStatementConfirm.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>uploadedStatementConfirm&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">217.14355</property>
+      <property
+         name="x">526.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">successupload</property>
+      <property
+         name="sdm:polyPoints">R46,317.0,214.69531,484.9708,213.29297,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">reupload</property>
+      <property
+         name="sdm:polyPoints">L54,485.0,220.29297,317.0292,221.69531,R54</property>
+   </ControlFlowCase>
+</SDM>

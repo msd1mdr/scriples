@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="validasiinvestorPageDef"
+                Package="pages.broker.ValidasiInvestor">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ValidationMsgView1" RangeSize="14"
+              DataControl="InvestorModuleDataControl"
+              id="ValidationMsgView1Iterator"/>
+    <searchRegion Binds="ValidationMsgView1Iterator"
+                  Criteria="__ImplicitViewCriteria__"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ValidationMsgView1Query"/>
+    <taskFlow id="managedvalinvuploadexcel1"
+              taskFlowId="/WEB-INF/managed-valinv-upload-excel.xml#managed-valinv-upload-excel"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ValidationMsgView1Iterator" id="ValidationMsgView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.valinvestor.ValidationMsgView"
+                      Name="ValidationMsgView10">
+        <AttrNames>
+          <Item Value="Participantid"/>
+          <Item Value="Sidnumber"/>
+          <Item Value="Accountnumber"/>
+          <Item Value="CreateTime"/>
+          <Item Value="AckTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Participantid">
+      <AttrNames>
+        <Item Value="Participantid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator" id="Sidnumber">
+      <AttrNames>
+        <Item Value="Sidnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Accountnumber">
+      <AttrNames>
+        <Item Value="Accountnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackinvestorpassport">
+      <AttrNames>
+        <Item Value="Ackinvestorpassport"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackinvestorid">
+      <AttrNames>
+        <Item Value="Ackinvestorid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackinvestornpwp">
+      <AttrNames>
+        <Item Value="Ackinvestornpwp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackinvestorname">
+      <AttrNames>
+        <Item Value="Ackinvestorname"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ValidationMsgView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="InvestorModuleDataControl"
+            InstanceName="InvestorModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="InvestorModuleDataControl"
+            InstanceName="InvestorModuleDataControl"/>
+    <action IterBinding="ValidationMsgView1Iterator" id="Execute1"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackparticipantid">
+      <AttrNames>
+        <Item Value="Ackparticipantid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator" id="Acksidnumber">
+      <AttrNames>
+        <Item Value="Acksidnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ValidationMsgView1Iterator"
+                     id="Ackaccountnumber">
+      <AttrNames>
+        <Item Value="Ackaccountnumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

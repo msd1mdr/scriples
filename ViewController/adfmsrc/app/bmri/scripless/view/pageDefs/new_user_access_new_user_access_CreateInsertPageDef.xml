@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="new_user_access_new_user_access_CreateInsertPageDef"
+                Package="app.bmri.scripless.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="UserAccessAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="UserAccessAdminView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="UserAccessAdminView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <!--f:view beforePhase="#{MonitoringInvestorManagedBean.splitterPositionSetter}"-->
+  <f:view>
+    <af:document id="d1" title="Scripless | Monitoring Investor Message">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Monitoring Investor Message" id="pb1"
+                         inlineStyle="background-color:White; margin:5px;"
+                         showDisclosure="false">
+              <af:panelGroupLayout id="pgl7" layout="horizontal"
+                                   styleClass="AFStretchWidth" valign="middle">
+                <af:poll id="p1" timeout="600000" interval="10000"
+                         pollListener="#{MonitoringInvestorManagedBean.activatePollListener}"/>
+                <af:panelBox text="Outgoing Messages" id="pb2"
+                             showDisclosure="false"
+                             inlineStyle="padding:5px;margin-top: 25px;margin-left: 25px;margin-right: 12.5px;margin-bottom: 25px;"
+                             showMaximize="never">
+                  <af:panelGroupLayout id="pgl2" layout="vertical"
+                                       styleClass="AFStretchWidth"
+                                       halign="center"
+                                       inlineStyle='background-image:url("../images/incoming-mail.png"); background-repeat:no-repeat; height:400px;background-position: center;'>
+                    <af:spacer width="10" height="130" id="s2"/>
+                    <af:panelGridLayout id="pgl17"
+                                        inlineStyle="text-align:center;">
+                      <af:gridRow marginTop="5px" height="auto" id="gr3"
+                                  marginBottom="10px">
+                        <af:gridCell marginStart="5px" width="55%" id="gc1"
+                                     halign="end">
+                          <af:outputText value="Static Submit" id="ot1"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc6">
+                          <af:panelGroupLayout id="pgl18" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s1"/>
+                            <af:inputText value="#{bindings.StaticSubmit.inputValue == null ? 0 : bindings.StaticSubmit.inputValue}"
+                                          required="#{bindings.StaticSubmit.hints.mandatory}"
+                                          columns="#{bindings.StaticSubmit.hints.displayWidth}"
+                                          maximumLength="#{bindings.StaticSubmit.hints.precision}"
+                                          shortDesc="#{bindings.StaticSubmit.hints.tooltip}"
+                                          id="it3"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtStaticSubmit}"
+                                          dimensionsFrom="parent">
+                              <f:validator binding="#{bindings.StaticSubmit.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.StaticSubmit.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                      <af:gridRow marginTop="5px" height="auto" id="gr2"
+                                  marginBottom="10px">
+                        <af:gridCell marginStart="5px" width="55%" id="gc4"
+                                     halign="end">
+                          <af:outputText value="Statement Submit"
+                                         id="outputText1"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc5">
+                          <af:panelGroupLayout id="pgl19" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s6"/>
+                            <af:inputText value="#{bindings.StatementSubmit.inputValue == null ? 0 : bindings.StatementSubmit.inputValue}"
+                                          required="#{bindings.StatementSubmit.hints.mandatory}"
+                                          columns="#{bindings.StatementSubmit.hints.displayWidth}"
+                                          maximumLength="#{bindings.StatementSubmit.hints.precision}"
+                                          shortDesc="#{bindings.StatementSubmit.hints.tooltip}"
+                                          id="it1"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtStmtSubmit}"
+                                          dimensionsFrom="parent">
+                              <f:validator binding="#{bindings.StatementSubmit.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.StatementSubmit.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                      <af:gridRow marginTop="5px" marginBottom="5px"
+                                  height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="55%" id="gc3"
+                                     halign="end">
+                          <af:outputText value="Validation Submit"
+                                         id="outputText2"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc2">
+                          <af:panelGroupLayout id="pgl20" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s7"/>
+                            <af:inputText value="#{bindings.ValidationSubmit.inputValue == null ? 0 : bindings.ValidationSubmit.inputValue}"
+                                          required="#{bindings.ValidationSubmit.hints.mandatory}"
+                                          columns="#{bindings.ValidationSubmit.hints.displayWidth}"
+                                          maximumLength="#{bindings.ValidationSubmit.hints.precision}"
+                                          shortDesc="#{bindings.ValidationSubmit.hints.tooltip}"
+                                          id="it2"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtValSubmit}"
+                                          dimensionsFrom="parent">
+                              <f:validator binding="#{bindings.ValidationSubmit.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.ValidationSubmit.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                    </af:panelGridLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+                <af:panelBox text="Incoming Messages" id="pb3"
+                             showDisclosure="false"
+                             inlineStyle="padding:5px;margin-top: 25px;margin-right: 25px;margin-left: 12.5px;margin-bottom: 25px;"
+                             showMaximize="never">
+                  <af:panelGroupLayout id="pgl3" halign="center"
+                                       layout="vertical"
+                                       inlineStyle='background-image:url("../images/outgoing-mail.png"); background-repeat:no-repeat; height:400px;background-position: center; '>
+                    <af:spacer width="10" height="130" id="spacer3"/>
+                    <af:panelGridLayout id="pgl1"
+                                        inlineStyle="text-align:center;">
+                      <af:gridRow marginTop="5px" height="auto" id="gr5"
+                                  marginBottom="10px">
+                        <af:gridCell marginStart="5px" width="55%" id="gc12"
+                                     halign="end">
+                          <af:outputText value="Static Ack" id="ot2"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc9">
+                          <af:panelGroupLayout id="pgl4" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s3"/>
+                            <af:inputText value="#{bindings.StaticAck.inputValue == null ? 0 : bindings.StaticAck.inputValue}"
+                                          required="#{bindings.StaticAck.hints.mandatory}"
+                                          columns="#{bindings.StaticAck.hints.displayWidth}"
+                                          maximumLength="#{bindings.StaticAck.hints.precision}"
+                                          shortDesc="#{bindings.StaticAck.hints.tooltip}"
+                                          id="it6"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtStaticAck}">
+                              <f:validator binding="#{bindings.StaticAck.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.StaticAck.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                      <af:gridRow marginTop="5px" height="auto" id="gr4"
+                                  marginBottom="10px">
+                        <af:gridCell marginStart="5px" width="55%" id="gc11"
+                                     halign="end">
+                          <af:outputText value="Statement Ack" id="ot3"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc7">
+                          <af:panelGroupLayout id="pgl5" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s4"/>
+                            <af:inputText value="#{bindings.StatementAck.inputValue == null ? 0 : bindings.StatementAck.inputValue}"
+                                          required="#{bindings.StatementAck.hints.mandatory}"
+                                          columns="#{bindings.StatementAck.hints.displayWidth}"
+                                          maximumLength="#{bindings.StatementAck.hints.precision}"
+                                          shortDesc="#{bindings.StatementAck.hints.tooltip}"
+                                          id="it5"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtStmtAck}">
+                              <f:validator binding="#{bindings.StatementAck.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.StatementAck.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                      <af:gridRow marginTop="5px" marginBottom="5px"
+                                  height="auto" id="gr6">
+                        <af:gridCell marginStart="5px" width="55%" id="gc8"
+                                     halign="end">
+                          <af:outputText value="Validation Ack" id="ot4"
+                                         inlineStyle="font-size:20px;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="50%" id="gc10">
+                          <af:panelGroupLayout id="pgl6" layout="horizontal">
+                            <af:spacer width="30" height="10" id="s5"/>
+                            <af:inputText value="#{bindings.ValidationAck.inputValue == null ? 0 : bindings.ValidationAck.inputValue}"
+                                          required="#{bindings.ValidationAck.hints.mandatory}"
+                                          columns="#{bindings.ValidationAck.hints.displayWidth}"
+                                          maximumLength="#{bindings.ValidationAck.hints.precision}"
+                                          shortDesc="#{bindings.ValidationAck.hints.tooltip}"
+                                          id="it4"
+                                          contentStyle="font-size:20px; color:blue; font-weight:bold;"
+                                          inlineStyle="border-style:none; text-align:left;"
+                                          binding="#{MonitoringInvestorManagedBean.txtValAck}">
+                              <f:validator binding="#{bindings.ValidationAck.validator}"/>
+                              <af:convertNumber groupingUsed="true"
+                                                pattern="#{bindings.ValidationAck.format}"
+                                                type="number" locale="de"/>
+                            </af:inputText>
+                          </af:panelGroupLayout>
+                        </af:gridCell>
+                      </af:gridRow>
+                    </af:panelGridLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </af:panelGroupLayout>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

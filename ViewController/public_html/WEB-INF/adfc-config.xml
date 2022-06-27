@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="login">
+    <page>/login.jspx</page>
+  </view>
+  <view id="scriplessDash">
+    <page>/scriplessDash.jspx</page>
+  </view>
+  <view id="error">
+    <page>/error.jspx</page>
+  </view>
+  <view id="adminMenu">
+    <page>/pages/admin/AdminMenu/adminMenu.jspx</page>
+  </view>
+  <view id="adminUserRole">
+    <page>/pages/admin/AdminUserRole/adminUserRole.jspx</page>
+  </view>
+  <view id="monitoringInvestorMessage">
+    <page>/pages/broker/MonitoringInvestorMessage/monitoringInvestorMessage.jspx</page>
+  </view>
+  <view id="resendStatement">
+    <page>/pages/broker/ResendStatement/resendStatement.jspx</page>
+  </view>
+  <view id="uploadDataStatement">
+    <page>/pages/broker/UploadDataStatement/uploadDataStatement.jspx</page>
+  </view>
+  <view id="uploadDataStatic">
+    <page>/pages/broker/UploadDataStatic/uploadDataStatic.jspx</page>
+  </view>
+  <view id="validasiInvestor">
+    <page>/pages/broker/ValidasiInvestor/validasiInvestor.jspx</page>
+  </view>
+  <view id="anggotaBursa">
+    <page>/pages/investor/AnggotaBursa/anggotaBursa.jspx</page>
+  </view>
+  <view id="brokerTerminalMonitoring">
+    <page>/pages/investor/BrokerTerminalMonitoring/brokerTerminalMonitoring.jspx</page>
+  </view>
+  <view id="investor">
+    <page>/pages/investor/Investor/investor.jspx</page>
+  </view>
+  <view id="statusPengiriman">
+    <page>/pages/investor/StatusPengiriman/statusPengiriman.jspx</page>
+  </view>
+  <view id="generateStatementEom">
+    <page>/pages/investor/GenerateStatementEom/generateStatementEom.jspx</page>
+  </view>
+  <view id="logFileViewer">
+    <page>/pages/investor/LogFileViewer/logFileViewer.jspx</page>
+  </view>
+  <view id="lapDataStatic">
+    <page>/pages/investor/LapDataStatic/lapDataStatic.jspx</page>
+  </view>
+  <view id="lapDataStatement">
+    <page>/pages/investor/LapDataStatement/lapDataStatement.jspx</page>
+  </view>
+  <view id="lapDataValidation">
+    <page>/pages/investor/LapDataValidation/lapDataValidation.jspx</page>
+  </view>
+  <view id="statementBroker">
+    <page>/pages/broker/StatementReport/statementBroker.jspx</page>
+  </view>
+  <view id="adminUserAccess">
+    <page>/pages/admin/AdminUserAccess/adminUserAccess.jspx</page>
+  </view>
+  <task-flow-call id="assign-menu-to-role">
+    <display-name id="__142">cumi</display-name>
+    <task-flow-reference>
+      <document>/WEB-INF/assign-menu-to-role.xml</document>
+      <id>assign-menu-to-role</id>
+    </task-flow-reference>
+    <input-parameter id="__138">
+      <name>editKey</name>
+      <value>#{pageFlowScope.editKey}</value>
+    </input-parameter>
+    <input-parameter id="__141">
+      <name>roleName</name>
+      <value>#{pageFlowScope.roleName}</value>
+    </input-parameter>
+    <run-as-dialog>
+      <display-type id="__139">
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <task-flow-call id="assign-role-to-user">
+    <task-flow-reference>
+      <document>/WEB-INF/assign-role-to-user.xml</document>
+      <id>assign-role-to-user</id>
+    </task-flow-reference>
+    <input-parameter id="__149">
+      <name>userName</name>
+      <value>#{pageFlowScope.userName}</value>
+    </input-parameter>
+    <input-parameter id="__150">
+      <name>fullName</name>
+      <value>#{pageFlowScope.fullName}</value>
+    </input-parameter>
+    <run-as-dialog>
+      <display-type id="__151">
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <task-flow-call id="change-password">
+    <task-flow-reference>
+      <document>/WEB-INF/change-password.xml</document>
+      <id>change-password</id>
+    </task-flow-reference>
+    <run-as-dialog>
+      <display-type id="__159">
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <task-flow-call id="new-user-access">
+    <task-flow-reference>
+      <document>/WEB-INF/new-user-access.xml</document>
+      <id>new-user-access</id>
+    </task-flow-reference>
+    <run-as-dialog>
+      <display-type id="__179">
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <task-flow-call id="edit-user-access">
+    <task-flow-reference>
+      <document>/WEB-INF/edit-user-access.xml</document>
+      <id>edit-user-access</id>
+    </task-flow-reference>
+    <input-parameter id="__184">
+      <name>editKey</name>
+      <value>#{pageFlowScope.editKey}</value>
+    </input-parameter>
+    <input-parameter id="__185">
+      <name>fullName</name>
+      <value>#{pageFlowScope.fullName}</value>
+    </input-parameter>
+    <run-as-dialog>
+      <display-type id="__183">
+        <inline-popup/>
+      </display-type>
+    </run-as-dialog>
+  </task-flow-call>
+  <view id="jsfConfigs">
+    <page>/pages/admin/JsfConfigs/jsfConfigs.jspx</page>
+  </view>
+  <view id="ftpFileList">
+    <page>/pages/ksei/FTPFileList/ftpFileList.jspx</page>
+  </view>
+  <view id="pengirimanFileSftp">
+    <page>/pages/ksei/PengirimanFileSFTP/pengirimanFileSftp.jspx</page>
+  </view>
+  <view id="listDataStatement">
+    <page>/pages/ksei/ListDataStatement/listDataStatement.jspx</page>
+  </view>
+  <view id="listDataStatic">
+    <page>/pages/ksei/ListDataStatic/listDataStatic.jspx</page>
+  </view>
+  <view id="listDataBalance">
+    <page>/pages/ksei/ListDataBalance/listDataBalance.jspx</page>
+  </view>
+  <view id="filenotfound">
+    <page>/filenotfound.jspx</page>
+  </view>
+  <view id="wrongparam">
+    <page>/wrongparam.jspx</page>
+  </view>
+  <control-flow-rule id="__6">
+    <from-activity-id id="__5">*</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome id="__9">login</from-outcome>
+      <to-activity-id id="__7">login</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome id="__12">adminmenu</from-outcome>
+      <to-activity-id id="__10">adminMenu</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome id="__15">adminuserrole</from-outcome>
+      <to-activity-id id="__14">adminUserRole</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__16">
+      <from-outcome id="__18">monitoringinvestormessage</from-outcome>
+      <to-activity-id id="__17">monitoringInvestorMessage</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome id="__21">resendstatement</from-outcome>
+      <to-activity-id id="__19">resendStatement</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__22">
+      <from-outcome id="__24">uploaddatastatement</from-outcome>
+      <to-activity-id id="__23">uploadDataStatement</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__26">
+      <from-outcome id="__27">uploaddatastatic</from-outcome>
+      <to-activity-id id="__25">uploadDataStatic</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__28">
+      <from-outcome id="__30">validasiinvestor</from-outcome>
+      <to-activity-id id="__29">validasiInvestor</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__31">
+      <from-outcome id="__33">anggotabursa</from-outcome>
+      <to-activity-id id="__32">anggotaBursa</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__34">
+      <from-outcome id="__36">brokerterminalmonitoring</from-outcome>
+      <to-activity-id id="__35">brokerTerminalMonitoring</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__38">
+      <from-outcome id="__39">investor</from-outcome>
+      <to-activity-id id="__37">investor</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__41">
+      <from-outcome id="__42">statuspengiriman</from-outcome>
+      <to-activity-id id="__40">statusPengiriman</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__52">
+      <from-outcome id="__53">home</from-outcome>
+      <to-activity-id id="__51">scriplessDash</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__67">
+      <from-outcome id="__68">generatestatement</from-outcome>
+      <to-activity-id id="__66">generateStatementEom</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__78">
+      <from-outcome id="__79">logfileviewer</from-outcome>
+      <to-activity-id id="__77">logFileViewer</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__97">
+      <from-outcome id="__98">statementbroker</from-outcome>
+      <to-activity-id id="__96">statementBroker</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__99">
+      <from-outcome id="__101">lapdatastatic</from-outcome>
+      <to-activity-id id="__100">lapDataStatic</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__103">
+      <from-outcome id="__104">lapdatastatement</from-outcome>
+      <to-activity-id id="__102">lapDataStatement</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__105">
+      <from-outcome id="__107">lapdatavalidation</from-outcome>
+      <to-activity-id id="__106">lapDataValidation</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__125">
+      <from-outcome id="__126">adminuseraccess</from-outcome>
+      <to-activity-id id="__124">adminUserAccess</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__157">
+      <from-outcome id="__158">changepassword</from-outcome>
+      <to-activity-id id="__156">change-password</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__186">
+      <from-outcome id="__188">jsfconfigs</from-outcome>
+      <to-activity-id id="__187">jsfConfigs</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__193">
+      <from-outcome id="__195">ftpfilelist</from-outcome>
+      <to-activity-id id="__194">ftpFileList</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__196">
+      <from-outcome id="__198">pengirimanfilesftp</from-outcome>
+      <to-activity-id id="__197">pengirimanFileSftp</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__200">
+      <from-outcome id="__201">listdatastatement</from-outcome>
+      <to-activity-id id="__199">listDataStatement</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__202">
+      <from-outcome id="__204">listdatastatic</from-outcome>
+      <to-activity-id id="__203">listDataStatic</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__205">
+      <from-outcome id="__207">listdatabalance</from-outcome>
+      <to-activity-id id="__206">listDataBalance</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__209">
+      <from-outcome id="__210">filenotfound</from-outcome>
+      <to-activity-id id="__208">filenotfound</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__211">
+      <from-outcome id="__213">wrongparam</from-outcome>
+      <to-activity-id id="__212">wrongparam</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__214">
+      <from-outcome id="__216">error</from-outcome>
+      <to-activity-id id="__215">error</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__131">
+    <from-activity-id id="__132">adminUserRole</from-activity-id>
+    <control-flow-case id="__133">
+      <from-outcome id="__135">assignmenu</from-outcome>
+      <to-activity-id id="__134">assign-menu-to-role</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__136">
+    <from-activity-id id="__137">adminUserAccess</from-activity-id>
+    <control-flow-case id="__143">
+      <from-outcome id="__144">assignrole</from-outcome>
+      <to-activity-id id="__140">assign-role-to-user</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__176">
+      <from-outcome id="__178">newuser</from-outcome>
+      <to-activity-id id="__177">new-user-access</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__180">
+      <from-outcome id="__182">edituser</from-outcome>
+      <to-activity-id id="__181">edit-user-access</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__4">
+    <managed-bean-name id="__3">Login</managed-bean-name>
+    <managed-bean-class id="__1">app.bmri.scripless.backing.useraccessmenu.LoginBean</managed-bean-class>
+    <managed-bean-scope id="__2">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__45">
+    <managed-bean-name id="__44">PageTemplateBackingBean</managed-bean-name>
+    <managed-bean-class id="__43">app.bmri.scripless.backing.pagetemp.PageTemplateBackingBean</managed-bean-class>
+    <managed-bean-scope id="__46">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__48">
+    <managed-bean-name id="__50">ResendStatementManagedBean</managed-bean-name>
+    <managed-bean-class id="__47">app.bmri.scripless.backing.resendstmt.ResendStatementManagedBean</managed-bean-class>
+    <managed-bean-scope id="__49">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__54">
+    <managed-bean-name id="__55">AnggotaBursaManagedBean</managed-bean-name>
+    <managed-bean-class id="__57">app.bmri.scripless.backing.anggotabursa.AnggotaBursaManagedBean</managed-bean-class>
+    <managed-bean-scope id="__56">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__59">
+    <managed-bean-name id="__58">InvestorManagedBean</managed-bean-name>
+    <managed-bean-class id="__60">app.bmri.scripless.backing.investor.InvestorManagedBean</managed-bean-class>
+    <managed-bean-scope id="__61">view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__62">
+    <managed-bean-name id="__64">BrokerTerminalMonitoringManagedBean</managed-bean-name>
+    <managed-bean-class id="__63">app.bmri.scripless.backing.brokermonitor.BrokerTerminalMonitoringManagedBean</managed-bean-class>
+    <managed-bean-scope id="__65">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__70">
+    <managed-bean-name id="__69">GenerateStatementManagedBean</managed-bean-name>
+    <managed-bean-class id="__72">app.bmri.scripless.backing.genstmteom.GenerateStatementManagedBean</managed-bean-class>
+    <managed-bean-scope id="__71">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__76">
+    <managed-bean-name id="__73">StatusPengirimanManagedBean</managed-bean-name>
+    <managed-bean-class id="__75">app.bmri.scripless.backing.statuskirim.StatusPengirimanManagedBean</managed-bean-class>
+    <managed-bean-scope id="__74">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__81">
+    <managed-bean-name id="__83">ValidasiInvestorManagedBean</managed-bean-name>
+    <managed-bean-class id="__82">app.bmri.scripless.backing.valinv.ValidasiInvestorManagedBean</managed-bean-class>
+    <managed-bean-scope id="__80">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__84">
+    <managed-bean-name id="__85">LogFileViewerManagedBean</managed-bean-name>
+    <managed-bean-class id="__86">app.bmri.scripless.backing.logfileviewer.LogFileViewerManagedBean</managed-bean-class>
+    <managed-bean-scope id="__87">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__89">
+    <managed-bean-name id="__91">UserData</managed-bean-name>
+    <managed-bean-class id="__88">app.bmri.scripless.backing.useraccessmenu.UserData</managed-bean-class>
+    <managed-bean-scope id="__90">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__95">
+    <managed-bean-name id="__93">Menu</managed-bean-name>
+    <managed-bean-class id="__94">app.bmri.scripless.backing.useraccessmenu.MenuBean</managed-bean-class>
+    <managed-bean-scope id="__92">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__110">
+    <managed-bean-name id="__108">LapDataStaticManagedBean</managed-bean-name>
+    <managed-bean-class id="__109">app.bmri.scripless.backing.lapdatastatic.LapDataStaticManagedBean</managed-bean-class>
+    <managed-bean-scope id="__111">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__113">
+    <managed-bean-name id="__114">LapDataStatementManagedBean</managed-bean-name>
+    <managed-bean-class id="__112">app.bmri.scripless.backing.lapdatastmt.LapDataStatementManagedBean</managed-bean-class>
+    <managed-bean-scope id="__115">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__118">
+    <managed-bean-name id="__116">LapDataValidationManagedBean</managed-bean-name>
+    <managed-bean-class id="__117">app.bmri.scripless.backing.lapdatavalidation.LapDataValidationManagedBean</managed-bean-class>
+    <managed-bean-scope id="__119">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__123">
+    <managed-bean-name id="__120">StatementReportManagedBean</managed-bean-name>
+    <managed-bean-class id="__121">app.bmri.scripless.backing.stmtreport.StatementReportManagedBean</managed-bean-class>
+    <managed-bean-scope id="__122">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__127">
+    <managed-bean-name id="__130">AdminMenuManagedBean</managed-bean-name>
+    <managed-bean-class id="__129">app.bmri.scripless.backing.useraccessmenu.AdminMenuManagedBean</managed-bean-class>
+    <managed-bean-scope id="__128">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__146">
+    <managed-bean-name id="__148">AssignMenuRoleBackingBean</managed-bean-name>
+    <managed-bean-class id="__147">app.bmri.scripless.backing.useraccessmenu.AssignMenuRoleBackingBean</managed-bean-class>
+    <managed-bean-scope id="__145">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__153">
+    <managed-bean-name id="__155">AssignRoleUserBackingBean</managed-bean-name>
+    <managed-bean-class id="__152">app.bmri.scripless.backing.useraccessmenu.AssignRoleUserBackingBean</managed-bean-class>
+    <managed-bean-scope id="__154">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__163">
+    <managed-bean-name id="__162">ChangePasswordBackingBean</managed-bean-name>
+    <managed-bean-class id="__160">app.bmri.scripless.backing.useraccessmenu.ChangePasswordBackingBean</managed-bean-class>
+    <managed-bean-scope id="__161">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__166">
+    <managed-bean-name id="__167">AdminUserAccessManagedBean</managed-bean-name>
+    <managed-bean-class id="__165">app.bmri.scripless.backing.useraccessmenu.AdminUserAccessManagedBean</managed-bean-class>
+    <managed-bean-scope id="__164">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__171">
+    <managed-bean-name id="__170">AdminUserRoleBackingBean</managed-bean-name>
+    <managed-bean-class id="__168">app.bmri.scripless.backing.useraccessmenu.AdminUserRoleBackingBean</managed-bean-class>
+    <managed-bean-scope id="__169">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__175">
+    <managed-bean-name id="__173">MonitoringInvestorManagedBean</managed-bean-name>
+    <managed-bean-class id="__172">app.bmri.scripless.backing.monivestormsg.MonitoringInvestorManagedBean</managed-bean-class>
+    <managed-bean-scope id="__174">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__192">
+    <managed-bean-name id="__191">JsfConfigsManagedBean</managed-bean-name>
+    <managed-bean-class id="__190">app.bmri.scripless.backing.configparam.JsfConfigsManagedBean</managed-bean-class>
+    <managed-bean-scope id="__189">request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

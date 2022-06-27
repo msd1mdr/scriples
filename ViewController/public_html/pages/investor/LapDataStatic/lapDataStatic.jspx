@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Laporan Data Static">
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Laporan Data Static" id="pb1"
+                         inlineStyle="background-color:White; margin:5px;"
+                         showDisclosure="false">
+              <af:panelBorderLayout id="pbl1">
+                <f:facet name="top">
+                  <af:spacer width="10" height="100" id="s6"/>
+                </f:facet>
+                <af:panelGroupLayout id="pgl2" layout="vertical"
+                                     inlineStyle='background-image:url("../images/icons/reporting.png"); background-repeat:no-repeat; height:267px; background-position:50% 50%;'
+                                     halign="center">
+                  <af:spacer width="10" height="70" id="s4"/>
+                  <af:panelFormLayout id="pfl1" labelAlignment="top"
+                                      labelWidth="200">
+                    <af:panelGroupLayout id="pgl3" layout="vertical"
+                                         halign="center">
+                      <af:spacer width="10" height="10" id="s2"/>
+                      <af:panelGroupLayout id="pgl5" layout="horizontal">
+                        <af:panelLabelAndMessage label="Start Date" id="plam1">
+                          <af:inputDate id="inpDateStart"
+                                        binding="#{LapDataStaticManagedBean.inpDateStart}"
+                                        valueChangeListener="#{LapDataStaticManagedBean.dateStartValueChangeListener}"
+                                        autoSubmit="true"
+                                        contentStyle="width:160px;"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="s8"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s7"/>
+                      <af:panelGroupLayout id="pgl1"
+                                           layout="horizontal">
+                        <af:panelLabelAndMessage label="End Date" id="plam2">
+                          <af:inputDate id="inpDateEnd"
+                                        binding="#{LapDataStaticManagedBean.inpDateEnd}"
+                                        valueChangeListener="#{LapDataStaticManagedBean.dateEndValueChangeListener}"
+                                        autoSubmit="true"
+                                        contentStyle="width:160px;"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="spc1"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="250" height="10" id="s1"/>
+                      <af:spacer width="10" height="10" id="s5"/>
+                      <af:panelGroupLayout id="pgl4" layout="horizontal"
+                                           halign="center"
+                                           inlineStyle="width:300px;">
+                        <af:panelLabelAndMessage label="Report Type" id="plam3"
+                                                 inlineStyle="padding-left:70px;">
+                          <af:selectOneRadio id="sor1" layout="horizontal"
+                                             binding="#{LapDataStaticManagedBean.inpReportType}"
+                                             autoSubmit="true"
+                                             valueChangeListener="#{LapDataStaticManagedBean.repTypeValueChangeListener}"
+                                             contentStyle="width:100px;">
+                            <af:selectItem label="PDF" value="pdf" id="si1"/>
+                            <af:selectItem label="CSV" value="csv" id="si2"/>
+                          </af:selectOneRadio>
+                        </af:panelLabelAndMessage>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl6" styleClass="AFStretchWidth"
+                                         layout="vertical" halign="center">
+                      <af:spacer width="10" height="20" id="s3"/>
+                      <af:goButton text="Export" id="gb1"
+                                   binding="#{LapDataStaticManagedBean.btnGoExp}"
+                                   targetFrame="_blank"
+                                   partialTriggers="sor1 inpDateStart inpDateEnd"/>
+                    </af:panelGroupLayout>
+                  </af:panelFormLayout>
+                  <af:spacer width="10" height="20" id="spacer2"/>
+                </af:panelGroupLayout>
+              </af:panelBorderLayout>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

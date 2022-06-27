@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Menu">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Admin Menu" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1" splitterPosition="250" disabled="true"
+                                inlineStyle="margin-right:5px;margin-left:5px;margin-top:3px;">
+                <f:facet name="first">
+                  <af:panelCollection id="pc1" featuresOff="detach">
+                    <af:table value="#{bindings.MenuAdminView1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.MenuAdminView1.rangeSize}"
+                              emptyText="#{bindings.MenuAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.MenuAdminView1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.MenuAdminView1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.MenuAdminView1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                              columnStretching="column:c1" varStatus="vs"
+                              partialTriggers=":::ctb1 :::ctb2">
+                      <af:column id="c8" headerText="No" align="center"
+                                 width="20">
+                        <af:outputText value="#{vs.index+1}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.MenuAdminView1.hints.Name.name}"
+                                 sortable="true"
+                                 headerText="#{bindings.MenuAdminView1.hints.Name.label}"
+                                 id="c1">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                          <af:spacer width="10" height="23" id="s1"/>
+                          <af:outputText value="#{row.Label}" id="ot1"/>
+                        </af:panelGroupLayout>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="#{bindings.Name.inputValue} Menu Details"
+                               id="pb2" showDisclosure="false"
+                               partialTriggers="pc1:t1">
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t3">
+                        <af:commandToolbarButton text="Save" id="ctb1"
+                                                 actionListener="#{bindings.Commit.execute}"
+                                                 disabled="false"/>
+                        <af:commandToolbarButton text="Reset" id="ctb2"
+                                                 actionListener="#{bindings.Rollback.execute}"
+                                                 disabled="false"
+                                                 immediate="true">
+                          <af:resetActionListener/>
+                          <af:resetActionListener/>
+                        </af:commandToolbarButton>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:panelSplitter id="ps2" orientation="vertical"
+                                      splitterPosition="145" disabled="true">
+                      <f:facet name="first">
+                        <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1"
+                                            labelWidth="120">
+                          <af:spacer width="10" height="5" id="s2"/>
+                          <af:panelLabelAndMessage label="#{bindings.DisplaySequence.hints.label}"
+                                                   id="plam1">
+                            <af:inputText value="#{bindings.DisplaySequence.inputValue}"
+                                          required="#{bindings.DisplaySequence.hints.mandatory}"
+                                          columns="#{bindings.DisplaySequence.hints.displayWidth}"
+                                          maximumLength="#{bindings.DisplaySequence.hints.precision}"
+                                          shortDesc="#{bindings.DisplaySequence.hints.tooltip}"
+                                          id="it2" inlineStyle="padding:1px;"
+                                          contentStyle="padding:3px;">
+                              <f:validator binding="#{bindings.DisplaySequence.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.DisplaySequence.format}"/>
+                            </af:inputText>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Label.hints.label}"
+                                                   id="plam2">
+                            <af:inputText value="#{bindings.Label.inputValue}"
+                                          required="#{bindings.Label.hints.mandatory}"
+                                          columns="#{bindings.Label.hints.displayWidth}"
+                                          maximumLength="#{bindings.Label.hints.precision}"
+                                          shortDesc="#{bindings.Label.hints.tooltip}"
+                                          id="it4" inlineStyle="padding:1px;"
+                                          contentStyle="padding:3px;">
+                              <f:validator binding="#{bindings.Label.validator}"/>
+                            </af:inputText>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Shortcut.hints.label}"
+                                                   id="plam3">
+                            <af:inputText value="#{bindings.Shortcut.inputValue}"
+                                          required="#{bindings.Shortcut.hints.mandatory}"
+                                          columns="#{bindings.Shortcut.hints.displayWidth}"
+                                          maximumLength="#{bindings.Shortcut.hints.precision}"
+                                          shortDesc="#{bindings.Shortcut.hints.tooltip}"
+                                          id="it1" inlineStyle="padding:1px;"
+                                          contentStyle="padding:3px;">
+                              <f:validator binding="#{bindings.Shortcut.validator}"/>
+                            </af:inputText>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Icon.hints.label}"
+                                                   id="plam4">
+                            <af:inputText value="#{bindings.Icon.inputValue}"
+                                          required="#{bindings.Icon.hints.mandatory}"
+                                          columns="#{bindings.Icon.hints.displayWidth}"
+                                          maximumLength="#{bindings.Icon.hints.precision}"
+                                          shortDesc="#{bindings.Icon.hints.tooltip}"
+                                          id="it3" inlineStyle="padding:1px;"
+                                          contentStyle="padding:3px;">
+                              <f:validator binding="#{bindings.Icon.validator}"/>
+                            </af:inputText>
+                          </af:panelLabelAndMessage>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelCollection id="pc2" featuresOff="detach"
+                                            inlineStyle="margin-left:8px;margin-right:8px;margin-top:5px;"
+                                            styleClass="AFStretchWidth">
+                          <af:table value="#{bindings.MenuItemsAdminView1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.MenuItemsAdminView1.rangeSize}"
+                                    emptyText="#{bindings.MenuItemsAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.MenuItemsAdminView1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.MenuItemsAdminView1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.MenuItemsAdminView1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t2"
+                                    partialTriggers="d2 :::pfl1"
+                                    varStatus="vs" columnStretching="column:c2"
+                                    styleClass="AFStretchWidth"
+                                    binding="#{AdminMenuManagedBean.tblMenu}">
+                            <af:column id="c9" headerText="No" width="20"
+                                       align="center">
+                              <af:outputText value="#{vs.index+1}" id="ot2"/>
+                            </af:column>
+                            <af:column id="c10" headerText="Action"
+                                       align="center" width="60">
+                              <af:commandButton text="Edit" id="cb1"
+                                                inlineStyle="padding-right:6px;padding-left:6px;padding-top:3px;padding-bottom:3px;">
+                                <af:showPopupBehavior popupId="p1"/>
+                              </af:commandButton>
+                              <af:popup id="p1"
+                                        popupCanceledListener="#{AdminMenuManagedBean.editPopupCancelListener}">
+                                <af:dialog id="d2"
+                                           title="Edit Menu Item: #{bindings.Label1.inputValue}"
+                                           partialTriggers="::t2"
+                                           dialogListener="#{AdminMenuManagedBean.editDialogListener}">
+                                  <af:panelFormLayout id="pfl2" labelWidth="80">
+                                    <af:inputText value="#{row.bindings.DisplaySequence.inputValue}"
+                                                  label="Sequence"
+                                                  required="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.mandatory}"
+                                                  columns="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.displayWidth}"
+                                                  maximumLength="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.precision}"
+                                                  shortDesc="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.tooltip}"
+                                                  id="it5"
+                                                  contentStyle="padding:3px;">
+                                      <f:validator binding="#{row.bindings.DisplaySequence.validator}"/>
+                                      <af:convertNumber groupingUsed="false"
+                                                        pattern="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.format}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="2" id="s4"/>
+                                    <af:inputText value="#{row.bindings.Label.inputValue}"
+                                                  label="#{bindings.MenuItemsAdminView1.hints.Label.label}"
+                                                  required="#{bindings.MenuItemsAdminView1.hints.Label.mandatory}"
+                                                  columns="#{bindings.MenuItemsAdminView1.hints.Label.displayWidth}"
+                                                  maximumLength="#{bindings.MenuItemsAdminView1.hints.Label.precision}"
+                                                  shortDesc="#{bindings.MenuItemsAdminView1.hints.Label.tooltip}"
+                                                  id="it10"
+                                                  contentStyle="padding:3px;">
+                                      <f:validator binding="#{row.bindings.Label.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="2" id="s6"/>
+                                    <af:inputText value="#{row.bindings.Shortcut.inputValue}"
+                                                  label="#{bindings.MenuItemsAdminView1.hints.Shortcut.label}"
+                                                  required="#{bindings.MenuItemsAdminView1.hints.Shortcut.mandatory}"
+                                                  columns="#{bindings.MenuItemsAdminView1.hints.Shortcut.displayWidth}"
+                                                  maximumLength="#{bindings.MenuItemsAdminView1.hints.Shortcut.precision}"
+                                                  shortDesc="#{bindings.MenuItemsAdminView1.hints.Shortcut.tooltip}"
+                                                  id="it6"
+                                                  contentStyle="padding:3px;">
+                                      <f:validator binding="#{row.bindings.Shortcut.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="2" id="s5"/>
+                                    <af:inputText value="#{row.bindings.Icon.inputValue}"
+                                                  label="#{bindings.MenuItemsAdminView1.hints.Icon.label}"
+                                                  required="#{bindings.MenuItemsAdminView1.hints.Icon.mandatory}"
+                                                  columns="#{bindings.MenuItemsAdminView1.hints.Icon.displayWidth}"
+                                                  maximumLength="#{bindings.MenuItemsAdminView1.hints.Icon.precision}"
+                                                  shortDesc="#{bindings.MenuItemsAdminView1.hints.Icon.tooltip}"
+                                                  id="it8"
+                                                  contentStyle="padding:3px;">
+                                      <f:validator binding="#{row.bindings.Icon.validator}"/>
+                                    </af:inputText>
+                                  </af:panelFormLayout>
+                                </af:dialog>
+                              </af:popup>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.Name.name}"
+                                       sortable="true"
+                                       headerText="#{bindings.MenuItemsAdminView1.hints.Name.label}"
+                                       id="c7" width="200">
+                              <af:panelGroupLayout id="pgl2"
+                                                   layout="horizontal">
+                                <af:spacer width="1" height="23" id="s3"/>
+                                <af:outputText value="#{row.Name}" id="ot5"
+                                               inlineStyle="font-style:italic; color:Gray;"/>
+                              </af:panelGroupLayout>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.name}"
+                                       sortable="true" headerText="Sequence"
+                                       id="c5" width="60" align="center">
+                              <af:outputText value="#{row.DisplaySequence}"
+                                             id="ot7">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.MenuItemsAdminView1.hints.DisplaySequence.format}"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.Label.name}"
+                                       sortable="true"
+                                       headerText="#{bindings.MenuItemsAdminView1.hints.Label.label}"
+                                       id="c4" width="200">
+                              <af:outputText value="#{row.Label}" id="ot8"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.Action.name}"
+                                       sortable="true"
+                                       headerText="#{bindings.MenuItemsAdminView1.hints.Action.label}"
+                                       id="c6" width="150">
+                              <af:outputText value="#{row.Action}" id="ot6"
+                                             inlineStyle="font-style:italic; color:Gray;"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.Shortcut.name}"
+                                       sortable="true"
+                                       headerText="#{bindings.MenuItemsAdminView1.hints.Shortcut.label}"
+                                       id="c3" align="center">
+                              <af:outputText value="#{row.Shortcut}" id="ot4"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.MenuItemsAdminView1.hints.Icon.name}"
+                                       sortable="true"
+                                       headerText="#{bindings.MenuItemsAdminView1.hints.Icon.label}"
+                                       id="c2">
+                              <af:outputText value="#{row.Icon}" id="ot3"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                      </f:facet>
+                    </af:panelSplitter>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | User Access">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Admin User Access" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1"
+                                inlineStyle="margin-right:5px;margin-left:5px;margin-top:3px;"
+                                splitterPosition="250" disabled="true">
+                <f:facet name="first">
+                  <af:panelCollection id="pc1" featuresOff="detach">
+                    <af:table value="#{bindings.UserAccessAdminView1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.UserAccessAdminView1.rangeSize}"
+                              emptyText="#{bindings.UserAccessAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.UserAccessAdminView1.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.UserAccessAdminView1Query.queryDescriptor}"
+                              queryListener="#{bindings.UserAccessAdminView1Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.UserAccessAdminView1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.UserAccessAdminView1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                              columnStretching="column:c1"
+                              binding="#{AdminUserAccessManagedBean.usrAccTable}"
+                              partialTriggers="::p1 ::d2 :::d3">
+                      <af:column id="c2" headerText="No" align="center"
+                                 width="20">
+                        <af:outputText value="#{vs.index+1}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.UserAccessAdminView1.hints.FullName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.UserAccessAdminView1.hints.FullName.label}"
+                                 id="c1">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                          <af:spacer width="10" height="23" id="s1"/>
+                          <af:outputText value="#{row.FullName}" id="ot1"/>
+                        </af:panelGroupLayout>
+                      </af:column>
+                    </af:table>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t5">
+                        <af:commandToolbarButton text="Add User" id="ctbInsert"
+                                                 action="newuser"
+                                                 useWindow="true"
+                                                 windowHeight="268"
+                                                 windowWidth="350"
+                                                 windowModalityType="applicationModal"
+                                                 returnListener="#{AdminUserAccessManagedBean.newUserReturnListener}">
+                          <!--af:showPopupBehavior popupId="p1"/-->
+                        </af:commandToolbarButton>
+                        <af:popup id="p1"
+                                  popupFetchListener="#{AdminUserAccessManagedBean.addPopupFetchListener}"
+                                  popupCanceledListener="#{AdminUserAccessManagedBean.addPopupCancelListener}">
+                          <af:dialog id="d2" title="Add New User Access"
+                                     dialogListener="#{AdminUserAccessManagedBean.addDialogListener}">
+                            <af:panelFormLayout id="pfl2">
+                              <af:inputText value="#{bindings.UserName.inputValue}"
+                                            label="#{bindings.UserName.hints.label}"
+                                            required="#{bindings.UserName.hints.mandatory}"
+                                            columns="#{bindings.UserName.hints.displayWidth}"
+                                            maximumLength="#{bindings.UserName.hints.precision}"
+                                            shortDesc="#{bindings.UserName.hints.tooltip}"
+                                            id="it8"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.UserName.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.FullName.inputValue}"
+                                            label="#{bindings.FullName.hints.label}"
+                                            required="#{bindings.FullName.hints.mandatory}"
+                                            columns="#{bindings.FullName.hints.displayWidth}"
+                                            maximumLength="#{bindings.FullName.hints.precision}"
+                                            shortDesc="#{bindings.FullName.hints.tooltip}"
+                                            id="it7"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.FullName.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.Password.inputValue}"
+                                            label="#{bindings.Password.hints.label}"
+                                            required="#{bindings.Password.hints.mandatory}"
+                                            columns="#{bindings.Password.hints.displayWidth}"
+                                            maximumLength="#{bindings.Password.hints.precision}"
+                                            shortDesc="#{bindings.Password.hints.tooltip}"
+                                            id="it10"
+                                            binding="#{AdminUserAccessManagedBean.inpPassword}"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.Password.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.Title.inputValue}"
+                                            label="#{bindings.Title.hints.label}"
+                                            required="#{bindings.Title.hints.mandatory}"
+                                            columns="#{bindings.Title.hints.displayWidth}"
+                                            maximumLength="#{bindings.Title.hints.precision}"
+                                            shortDesc="#{bindings.Title.hints.tooltip}"
+                                            id="it9"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.Title.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.Descr.inputValue}"
+                                            label="#{bindings.Descr.hints.label}"
+                                            required="#{bindings.Descr.hints.mandatory}"
+                                            columns="#{bindings.Descr.hints.displayWidth}"
+                                            maximumLength="#{bindings.Descr.hints.precision}"
+                                            shortDesc="#{bindings.Descr.hints.tooltip}"
+                                            id="it6" rows="2"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.Descr.validator}"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:dialog>
+                        </af:popup>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="Account #{bindings.FullName.inputValue}"
+                               id="pb2" showDisclosure="false"
+                               partialTriggers="pc1:t1">
+                    <af:panelSplitter id="ps2" orientation="vertical"
+                                      splitterPosition="170" disabled="true">
+                      <f:facet name="first">
+                        <af:panelFormLayout id="pfl1" partialTriggers="pc1:t1"
+                                            labelWidth="100"
+                                            binding="#{AdminUserAccessManagedBean.panelFormUser}">
+                          <af:spacer width="10" height="5" id="spc1"/>
+                          <af:panelLabelAndMessage label="#{bindings.UserName.hints.label}"
+                                                   id="plam2">
+                            <af:inputText id="it5"
+                                          value="#{bindings.UserName.inputValue}"
+                                          contentStyle="color:Gray; font-weight:bold; font-style:italic;"
+                                          readOnly="true"
+                                          inlineStyle="padding-bottom:4px;"/>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Password.hints.label}"
+                                                   id="plam3">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal"
+                                                 inlineStyle="padding-right:3px;padding-bottom:3px;padding-top:3px;">
+                              <af:inputText value="#{bindings.Password.inputValue}"
+                                            required="#{bindings.Password.hints.mandatory}"
+                                            columns="#{bindings.Password.hints.displayWidth}"
+                                            maximumLength="#{bindings.Password.hints.precision}"
+                                            shortDesc="#{bindings.Password.hints.tooltip}"
+                                            id="it2" readOnly="true"
+                                            secret="true"
+                                            contentStyle="padding:3px;"
+                                            inlineStyle="padding:1px;">
+                                <f:validator binding="#{bindings.Password.validator}"/>
+                              </af:inputText>
+                              <af:spacer width="10" height="10" id="s2"/>
+                              <af:commandButton text="Reset Password" id="cb1"
+                                                inlineStyle="padding-right:8px;padding-left:8px;padding-top:3px;padding-bottom:3px;"
+                                                partialTriggers="pc1:t1"
+                                                disabled="#{bindings.UserName.inputValue == 'admin'}">
+                                <af:showPopupBehavior popupId="p3"/>
+                              </af:commandButton>
+                              <af:popup id="p3">
+                                <af:dialog id="d4"
+                                           title="Reset Password for #{bindings.FullName.inputValue}"
+                                           dialogListener="#{AdminUserAccessManagedBean.resetUserPassword}">
+                                  <af:messages id="m2"/>
+                                  <af:panelFormLayout id="pfl3"
+                                                      fieldWidth="150"
+                                                      labelAlignment="start">
+                                    <af:inputText value="#{bindings.Password.inputValue}"
+                                                  label="New Password"
+                                                  required="#{bindings.Password.hints.mandatory}"
+                                                  columns="#{bindings.Password.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Password.hints.precision}"
+                                                  shortDesc="#{bindings.Password.hints.tooltip}"
+                                                  id="it11" secret="true"
+                                                  binding="#{AdminUserAccessManagedBean.inpPassword}"
+                                                  contentStyle="width:248px">
+                                      <f:validator binding="#{bindings.Password.validator}"/>
+                                    </af:inputText>
+                                    <af:spacer width="10" height="3" id="s5"/>
+                                    <af:inputText label="Confirmaton" id="it33"
+                                                  showRequired="true"
+                                                  contentStyle="width:248px"
+                                                  binding="#{AdminUserAccessManagedBean.confirmPassword}"
+                                                  secret="true"/>
+                                  </af:panelFormLayout>
+                                </af:dialog>
+                              </af:popup>
+                            </af:panelGroupLayout>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.FullName.hints.label}"
+                                                   id="plam4">
+                            <af:panelGroupLayout id="pgl3" layout="horizontal">
+                              <af:inputText value="#{bindings.FullName.inputValue}"
+                                            required="false"
+                                            columns="#{bindings.FullName.hints.displayWidth}"
+                                            maximumLength="#{bindings.FullName.hints.precision}"
+                                            shortDesc="#{bindings.FullName.hints.tooltip}"
+                                            id="it4"
+                                            inlineStyle="padding-bottom:4px;"
+                                            readOnly="true">
+                                <f:validator binding="#{bindings.FullName.validator}"/>
+                              </af:inputText>
+                            </af:panelGroupLayout>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Title.hints.label}"
+                                                   id="plam5">
+                            <af:panelGroupLayout id="pgl4" layout="horizontal">
+                              <af:inputText value="#{bindings.Title.inputValue}"
+                                            required="#{bindings.Title.hints.mandatory}"
+                                            columns="#{bindings.Title.hints.displayWidth}"
+                                            maximumLength="#{bindings.Title.hints.precision}"
+                                            shortDesc="#{bindings.Title.hints.tooltip}"
+                                            id="it3"
+                                            inlineStyle="padding-bottom:4px;"
+                                            readOnly="true">
+                                <f:validator binding="#{bindings.Title.validator}"/>
+                              </af:inputText>
+                            </af:panelGroupLayout>
+                          </af:panelLabelAndMessage>
+                          <af:panelLabelAndMessage label="#{bindings.Descr.hints.label}"
+                                                   id="plam6">
+                            <af:panelGroupLayout id="pgl5" layout="horizontal">
+                              <af:inputText value="#{bindings.Descr.inputValue}"
+                                            required="#{bindings.Descr.hints.mandatory}"
+                                            columns="#{bindings.Descr.hints.displayWidth}"
+                                            maximumLength="#{bindings.Descr.hints.precision}"
+                                            shortDesc="#{bindings.Descr.hints.tooltip}"
+                                            id="it1"
+                                            inlineStyle="padding-bottom:4px;"
+                                            rows="1" readOnly="true">
+                                <f:validator binding="#{bindings.Descr.validator}"/>
+                              </af:inputText>
+                            </af:panelGroupLayout>
+                          </af:panelLabelAndMessage>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelCollection id="pc2" featuresOff="detach"
+                                            inlineStyle="margin-left:8px;margin-right:8px;margin-top:5px;">
+                          <f:facet name="statusbar">
+                            <af:toolbar id="t3">
+                              <af:outputText value="#{bindings.UserAccessRolesAdminView1.estimatedRowCount} role(s) assigned"
+                                             id="ot4" partialTriggers="t2"
+                                             binding="#{AdminUserAccessManagedBean.txtStatusCount}"/>
+                            </af:toolbar>
+                          </f:facet>
+                          <af:table value="#{bindings.UserAccessRolesAdminView1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.UserAccessRolesAdminView1.rangeSize}"
+                                    emptyText="#{bindings.UserAccessRolesAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.UserAccessRolesAdminView1.rangeSize}"
+                                    rowBandingInterval="0" id="t2"
+                                    columnStretching="column:c3"
+                                    binding="#{AdminUserAccessManagedBean.tblAssignedRole}"
+                                    partialTriggers="::ctb2">
+                            <af:column sortProperty="#{bindings.UserAccessRolesAdminView1.hints.Role.name}"
+                                       sortable="false"
+                                       headerText="Assigned Role(s)" id="c3">
+                              <af:panelGroupLayout id="pgl6"
+                                                   layout="horizontal">
+                                <af:spacer width="10" height="23" id="s3"/>
+                                <af:outputText value="#{row.Role}" id="ot3"
+                                               inlineStyle="padding:3px;color:Gray; font-style:italic;"/>
+                              </af:panelGroupLayout>
+                            </af:column>
+                          </af:table>
+                          <f:facet name="toolbar">
+                            <af:toolbar id="t4">
+                              <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                                       text="Reload"
+                                                       disabled="#{!bindings.Execute.enabled}"
+                                                       id="ctb2"/>
+                              <af:commandToolbarButton text="Assign / Remove Role"
+                                                       id="ctb1"
+                                                       action="assignrole"
+                                                       useWindow="true"
+                                                       windowHeight="250"
+                                                       windowWidth="500"
+                                                       windowModalityType="applicationModal"
+                                                       returnListener="#{AdminUserAccessManagedBean.returnListener}">
+                                <af:setPropertyListener from="#{bindings.UserName.inputValue}"
+                                                        to="#{pageFlowScope.userName}"
+                                                        type="action"/>
+                                <af:setPropertyListener from="#{bindings.FullName.inputValue}"
+                                                        to="#{pageFlowScope.fullName}"
+                                                        type="action"/>
+                              </af:commandToolbarButton>
+                            </af:toolbar>
+                          </f:facet>
+                        </af:panelCollection>
+                      </f:facet>
+                    </af:panelSplitter>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t6">
+                        <af:popup id="p2">
+                          <af:dialog id="d3" title="Delete Confirmation"
+                                     dialogListener="#{AdminUserAccessManagedBean.deleteDialogListener}">
+                            <af:panelGroupLayout id="panelgl0"
+                                                 layout="horizontal"
+                                                 halign="center">
+                              <af:outputText value="Are you sure want to delete user"
+                                             id="ot5"/>
+                              <af:spacer width="5" height="10" id="s6"/>
+                              <af:outputText value="#{bindings.FullName.inputValue}"
+                                             id="ot6"
+                                             inlineStyle="font-weight:bold;"/>
+                              <af:spacer width="5" height="10" id="s7"/>
+                              <af:outputText value="?" id="ot7"/>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+                        <af:commandToolbarButton text="Update User"
+                                                 useWindow="true"
+                                                 windowHeight="182"
+                                                 windowWidth="350"
+                                                 windowModalityType="applicationModal"
+                                                 returnListener="#{AdminUserAccessManagedBean.editUserReturnListener}"
+                                                 id="cb2" action="edituser">
+                          <af:setPropertyListener from="#{bindings.Id.inputValue}"
+                                                  to="#{pageFlowScope.editKey}"
+                                                  type="action"/>
+                          <af:setPropertyListener from="#{bindings.FullName.inputValue}"
+                                                  to="#{pageFlowScope.fullName}"
+                                                  type="action"/>
+                        </af:commandToolbarButton>
+                        <af:commandToolbarButton text="Delete User" id="ctb3"
+                                                 disabled="#{bindings.UserAccessRolesAdminView1.estimatedRowCount > 0}"
+                                                 partialTriggers="pc2:t2"
+                                                 binding="#{AdminUserAccessManagedBean.btnDelUser}">
+                          <af:showPopupBehavior popupId="p2"/>
+                        </af:commandToolbarButton>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

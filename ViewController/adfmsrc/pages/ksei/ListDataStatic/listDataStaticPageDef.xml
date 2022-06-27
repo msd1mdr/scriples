@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="listDataStaticPageDef"
+                Package="pages.ksei.ListDataStatic">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="StaticKseiView1" RangeSize="25"
+              DataControl="KSEIModuleDataControl" id="StaticKseiView1Iterator"/>
+    <searchRegion id="StaticKseiViewCriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Criteria="StaticKseiViewCriteria"
+                  Binds="StaticKseiView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="StaticKseiView1Iterator" id="StaticKseiView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.liststaticksei.StaticKseiView"
+                      Name="StaticKseiView10">
+        <AttrNames>
+          <Item Value="Extref"/>
+          <Item Value="Participantid"/>
+          <Item Value="Participantname"/>
+          <Item Value="Investorname"/>
+          <Item Value="Sidnumber"/>
+          <Item Value="Accountnumber"/>
+          <Item Value="Bankaccnumber"/>
+          <Item Value="Bankcode"/>
+          <Item Value="Activitydate"/>
+          <Item Value="Activity"/>
+          <Item Value="CreateTime"/>
+          <Item Value="FileName"/>
+          <Item Value="AckStatus"/>
+          <Item Value="AckNotes"/>
+          <Item Value="AckTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

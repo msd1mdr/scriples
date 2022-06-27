@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>dashTemplate</display-name>
+        <facet>
+          <description>main app frame</description>
+          <facet-name>main</facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+    <!--af:panelStretchLayout id="pt_psl1"
+                           inlineStyle='background-image:url("../images/wp-aurora-blue.png");'
+                           topHeight="103px"-->
+    <af:panelStretchLayout id="pt_psl1"
+                           topHeight="103px">
+      <f:facet name="center">
+        <af:panelSplitter orientation="vertical" positionedFromEnd="true"
+                          splitterPosition="50" id="pt_ps1">
+          <f:facet name="first">
+            <af:facetRef facetName="main"/>
+            <!-- id="af_one_column_header_and_footer_stretched_with_split_bottom"   -->
+          </f:facet>
+        </af:panelSplitter>
+      </f:facet>
+      <f:facet name="top">
+        <af:panelStretchLayout id="pt_psl3" endWidth="314px" startWidth="490px"
+                               bottomHeight="30px"
+                               inlineStyle="background-color:White;">
+          <f:facet name="bottom">
+            <af:panelGroupLayout id="pt_pgl3" layout="vertical"
+                                 inlineStyle='background-image:url("../images/menu-bg.png");'>
+              <af:menuBar id="menu" binding="#{Menu.initMenu}" inlineStyle="padding-top:5px;"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="start">
+            <af:panelGroupLayout id="pt_pgl12" layout="vertical"
+                                 inlineStyle="padding-top:8px;">
+              <af:panelGroupLayout id="pt_pgl4" layout="horizontal"
+                                   valign="top" inlineStyle="padding-top:10px;">
+                <af:spacer width="12" height="10" id="pt_s1"/>
+                <af:panelGroupLayout id="pt_pgl8" layout="vertical">
+                  <af:image source="/images/logo-bmri-sm.png" id="pt_i1"
+                            shortDesc="Bank Mandiri"/>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="pt_s4"/>
+                <af:panelGroupLayout id="pt_pgl9" layout="vertical">
+                  <af:outputFormatted value="Scripless Interface" id="pt_of1"
+                                      inlineStyle="font-size:20px; font-weight:bold;"
+                                      styleUsage="inContextBranding"/>
+                  <af:panelGroupLayout id="pgl0" layout="horizontal">
+                    <af:outputFormatted value="Application update v1.1"
+                                        id="pt_of5"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="end">
+            <af:panelGroupLayout id="pt_pgl5" layout="vertical" halign="end" inlineStyle="padding-top:10px;">
+              <af:panelGroupLayout id="pt_pgl6" layout="horizontal" halign="end"
+                                   valign="top">
+                <af:navigationPane id="pt_np1" hint="bar">
+                  <af:commandNavigationItem text="Home" id="pt_cni1"
+                                            icon="/images/icons/home.png"
+                                            action="home"
+                                            inlineStyle="padding-top:4px;"/>
+                  <af:commandNavigationItem text="Welcome," id="pt_gil1"/>
+                </af:navigationPane>
+                <af:menuBar id="pt_mb1">
+                  <af:menu text="#{sessionScope.UserData.fullName}" id="pt_m1"
+                           icon="/images/icons/user.png">
+                    <af:commandMenuItem text="Change Password" id="pt_cmi1"
+                                        icon="/images/icons/change_password.png" useWindow="true"
+                                        windowEmbedStyle="inlineDocument"
+                                        windowModalityType="applicationModal"
+                                        windowWidth="350" windowHeight="126"
+                                        action="changepassword"/>
+                    <af:commandMenuItem text="Logout" id="pt_cmi2"
+                                        action="#{Login.doLogout}"
+                                        icon="/images/icons/logout.png"/>
+                  </af:menu>
+                </af:menuBar>
+                <af:panelGroupLayout id="pt_pgl1" layout="vertical"
+                                     inlineStyle="padding-top:2px;">
+                  <af:statusIndicator id="pt_si1"
+                                      inlineStyle="background-color:white;"/>
+                </af:panelGroupLayout>
+                <af:spacer width="12" height="10" id="pt_s10"/>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pt_pgl7" layout="vertical" halign="end"
+                                   inlineStyle="padding:2px;">
+                <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal">
+                  <af:outputFormatted value="You are signed in as"
+                                      id="outputFormatted1"/>
+                  <af:spacer width="10" height="10" id="spacer1"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pt_pgl11" layout="horizontal">
+                  <af:outputText value="#{sessionScope.UserData.title}"
+                                 id="pt_ot2" inlineStyle="font-weight:bold;"/>
+                  <af:spacer width="10" height="10" id="pt_s7"/>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>

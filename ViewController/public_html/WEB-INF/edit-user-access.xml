@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="edit-user-access">
+    <default-activity id="__1">SetCurrentRowWithKeyValue</default-activity>
+    <transaction id="__22">
+      <new-transaction/>
+    </transaction>
+    <input-parameter-definition id="__2">
+      <name id="__3">editKey</name>
+      <value>#{pageFlowScope.editKey}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__21">
+      <name id="__20">fullName</name>
+      <value>#{pageFlowScope.fullName}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <view id="editUserAccess">
+      <page>/pages/admin/AdminUserAccess/editUserAccess.jspx</page>
+    </view>
+    <method-call id="SetCurrentRowWithKeyValue">
+      <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>setCurrentRowWithKeyValue</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="returnSave">
+      <outcome id="__10">
+        <name>returnSave</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="returnCancel">
+      <outcome id="__11">
+        <name>returnCancel</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">SetCurrentRowWithKeyValue</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome id="__7">setCurrentRowWithKeyValue</from-outcome>
+        <to-activity-id id="__9">editUserAccess</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">editUserAccess</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__16">closesave</from-outcome>
+        <to-activity-id id="__14">returnSave</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome id="__19">closecancel</from-outcome>
+        <to-activity-id id="__17">returnCancel</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

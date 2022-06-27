@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view beforePhase="#{GenerateStatementManagedBean.checkJobStatus}">
+    <af:document id="d1" title="Scripless | Generate Statement EoM">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Generate Statement End of Month" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1" orientation="horizontal"
+                                splitterPosition="300" disabled="true">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="default"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl6" inlineStyle="margin-left:5px;"
+                                       styleClass="AFStretchWidth"
+                                       halign="center">
+                    <af:poll id="p4" interval="5000"
+                             pollListener="#{GenerateStatementManagedBean.checkStatusJobPoll}"/>
+                    <af:panelBox text="Pajak Bunga Job Status" id="panelBox1"
+                                 showDisclosure="false" titleHalign="center">
+                      <af:panelGroupLayout id="panelGroupLayout11"
+                                           halign="center" layout="vertical"
+                                           inlineStyle="margin-left:5px;">
+                        <!--af:panelGroupLayout id="pgl8">
+                          <af:panelGroupLayout id="pgl5" layout="horizontal">
+                          <af:commandButton text="SCHEDULED" id="cb3">
+                            <af:setPropertyListener from="#{'SCHEDULED'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="DISABLED" id="cb4">
+                            <af:setPropertyListener from="#{'DISABLED'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="RUNNING" id="cb5">
+                            <af:setPropertyListener from="#{'RUNNING'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout5"
+                                             layout="horizontal">
+                          <af:commandButton text="COMPLETED" id="cb6">
+                            <af:setPropertyListener from="#{'COMPLETED'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="BROKEN" id="cb7">
+                            <af:setPropertyListener from="#{'BROKEN'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="FAILED" id="cb8">
+                            <af:setPropertyListener from="#{'FAILED'}"
+                                                    to="#{pageFlowScope.jobTaxInStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                        </af:panelGroupLayout-->
+                        <af:panelGroupLayout id="pgl9" layout="vertical"
+                                             visible="#{pageFlowScope.jobTaxInStatus == 'SCHEDULED'}"
+                                             inlineStyle="background-color:rgb(243,255,198); border-color:rgb(172,182,131); margin:5px; border-style:solid; border-width:thin;"
+                                             partialTriggers="p4"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutTaxInRunning}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="spacer91"/>
+                          <af:image source="/images/icons/online.png"
+                                    id="image3" shortDesc="Online"/>
+                          <af:spacer width="10" height="10" id="spacer7"/>
+                          <af:panelGroupLayout id="panelGroupLayout6"
+                                               layout="horizontal">
+                            <af:outputText value="Pajak Bunga Job is ENABLED"
+                                           id="outputText3"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="20" id="spacer8"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout7"
+                                             layout="vertical"
+                                             inlineStyle="background-color:rgb(255,186,186); border-color:rgb(171,45,45); margin:5px; border-style:solid; border-width:thin;"
+                                             visible="#{pageFlowScope.jobTaxInStatus == 'DISABLED'}"
+                                             partialTriggers="p4"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutTaxInStopped}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="spacer9"/>
+                          <af:image source="/images/icons/offline.png"
+                                    shortDesc="Offline" id="image4"/>
+                          <af:spacer width="10" height="10" id="spacer10"/>
+                          <af:panelGroupLayout id="panelGroupLayout8"
+                                               layout="horizontal">
+                            <af:outputText value="Pajak Bunga Job is DISABLED"
+                                           id="outputText4"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="20" id="spacer11"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout9"
+                                             layout="vertical"
+                                             visible="#{(((((((pageFlowScope.jobTaxInStatus == 'UNCHECK' or pageFlowScope.jobTaxInStatus == 'RUNNING') or pageFlowScope.jobTaxInStatus == 'COMPLETED') or pageFlowScope.jobTaxInStatus == 'STOPPED') or pageFlowScope.jobTaxInStatus == 'BROKEN') or pageFlowScope.jobTaxInStatus == 'FAILED') or pageFlowScope.jobTaxInStatus == 'RETRY_SCHEDULED') or pageFlowScope.jobTaxInStatus == 'SUCCEEDED') or pageFlowScope.jobTaxInStatus == 'CHAIN_STALLED'}"
+                                             inlineStyle="background-color:rgb(214,214,214); border-color:rgb(165,165,165); margin:5px; border-style:solid; border-width:thin;"
+                                             partialTriggers="p4"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutTaxInWarning}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="spacer12"/>
+                          <af:image source="/images/icons/warning.png"
+                                    shortDesc="Warning" id="image5"/>
+                          <af:spacer width="10" height="10" id="spacer13"/>
+                          <af:panelGroupLayout id="panelGroupLayout10"
+                                               layout="horizontal">
+                            <af:outputText value="Pajak Bunga Job is #{pageFlowScope.jobTaxInStatus}"
+                                           id="outputText5"
+                                           inlineStyle="font-weight:bold;"/>
+                          </af:panelGroupLayout>
+                          <af:outputText value="Please wait or check database job for the current condition."
+                                         id="outputText7"/>
+                          <af:spacer width="10" height="20" id="spacer14"/>
+                        </af:panelGroupLayout>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="5" id="s7"/>
+                    </af:panelBox>
+                    <!--af:spacer width="10" height="5" id="s7"/-->
+                    <af:panelBox text="Out Going Statement Job Status" id="pb3"
+                                 showDisclosure="false" titleHalign="center">
+                      <af:panelGroupLayout id="pgl1" halign="center"
+                                           layout="vertical"
+                                           inlineStyle="margin-left:5px;">
+                        <!--af:panelGroupLayout id="pgl6">
+                        <af:panelGroupLayout id="pgl5" layout="horizontal">
+                          <af:commandButton text="SCHEDULED" id="cb3">
+                            <af:setPropertyListener from="#{'SCHEDULED'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="DISABLED" id="cb4">
+                            <af:setPropertyListener from="#{'DISABLED'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="RUNNING" id="cb5">
+                            <af:setPropertyListener from="#{'RUNNING'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout5"
+                                             layout="horizontal">
+                          <af:commandButton text="COMPLETED" id="cb6">
+                            <af:setPropertyListener from="#{'COMPLETED'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="BROKEN" id="cb7">
+                            <af:setPropertyListener from="#{'BROKEN'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                          <af:commandButton text="FAILED" id="cb8">
+                            <af:setPropertyListener from="#{'FAILED'}"
+                                                    to="#{pageFlowScope.jobStatus}"
+                                                    type="action"/>
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                      </af:panelGroupLayout-->
+                        <af:panelGroupLayout id="pgl3" layout="vertical"
+                                             visible="#{pageFlowScope.jobStatus == 'SCHEDULED'}"
+                                             inlineStyle="background-color:rgb(243,255,198); border-color:rgb(172,182,131); margin:5px; border-style:solid; border-width:thin;"
+                                             partialTriggers="p4 cb2 cb1"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutRunning}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="s3"/>
+                          <af:image source="/images/icons/online.png" id="i1"
+                                    shortDesc="Online"/>
+                          <af:spacer width="10" height="10" id="s4"/>
+                          <af:panelGroupLayout id="pgl4" layout="horizontal">
+                            <af:outputText value="Job Outgoing Statement is ENABLED"
+                                           id="ot1"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="20" id="s2"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl10" layout="vertical"
+                                             inlineStyle="background-color:rgb(255,186,186); border-color:rgb(171,45,45); margin:5px; border-style:solid; border-width:thin;"
+                                             visible="#{pageFlowScope.jobStatus == 'DISABLED'}"
+                                             partialTriggers="p4 cb2 cb1"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutStopped}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="spc5"/>
+                          <af:image source="/images/icons/offline.png"
+                                    shortDesc="Offline" id="image1"/>
+                          <af:spacer width="10" height="10" id="spacer2"/>
+                          <af:panelGroupLayout id="panelGroupLayout2"
+                                               layout="horizontal">
+                            <af:outputText value="Job Outgoing Statement is DISABLED"
+                                           id="outputText1"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="20" id="spacer3"/>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout id="panelGroupLayout3"
+                                             layout="vertical"
+                                             visible="#{(((((((pageFlowScope.jobStatus == 'UNCHECK' or pageFlowScope.jobStatus == 'RUNNING') or pageFlowScope.jobStatus == 'COMPLETED') or pageFlowScope.jobStatus == 'STOPPED') or pageFlowScope.jobStatus == 'BROKEN') or pageFlowScope.jobStatus == 'FAILED') or pageFlowScope.jobStatus == 'RETRY_SCHEDULED') or pageFlowScope.jobStatus == 'SUCCEEDED') or pageFlowScope.jobStatus == 'CHAIN_STALLED'}"
+                                             inlineStyle="background-color:rgb(214,214,214); border-color:rgb(165,165,165); margin:5px; border-style:solid; border-width:thin;"
+                                             partialTriggers="p4 cb2 cb1"
+                                             binding="#{GenerateStatementManagedBean.panelLayoutWarning}"
+                                             halign="center">
+                          <af:spacer width="10" height="20" id="spacer4"/>
+                          <af:image source="/images/icons/warning.png"
+                                    shortDesc="Warning" id="image2"/>
+                          <af:spacer width="10" height="10" id="spacer5"/>
+                          <af:panelGroupLayout id="panelGroupLayout4"
+                                               layout="horizontal">
+                            <af:outputText value="Job Outgoing Statement is #{pageFlowScope.jobStatus}"
+                                           id="outputText2"
+                                           inlineStyle="font-weight:bold;"/>
+                          </af:panelGroupLayout>
+                          <af:outputText value="This job is currently not in normal state."
+                                         id="ot9"/>
+                          <af:outputText value="Please wait or check database job for the current condition."
+                                         id="ot10"/>
+                          <af:spacer width="10" height="20" id="spacer6"/>
+                        </af:panelGroupLayout>
+                        <af:spacer width="10" height="10" id="s5"/>
+                        <af:panelGroupLayout id="pgl2" layout="horizontal"
+                                             styleClass="AFStretchWidth"
+                                             halign="center"
+                                             inlineStyle="width:100px;">
+                          <af:commandButton text="Enable" id="cb2"
+                                            disabled="#{((((((((pageFlowScope.jobStatus == 'UNCHECK' or pageFlowScope.jobStatus == 'RUNNING') or pageFlowScope.jobStatus == 'COMPLETED') or pageFlowScope.jobStatus == 'STOPPED') or pageFlowScope.jobStatus == 'BROKEN') or pageFlowScope.jobStatus == 'FAILED') or pageFlowScope.jobStatus == 'RETRY_SCHEDULED') or pageFlowScope.jobStatus == 'SUCCEEDED') or pageFlowScope.jobStatus == 'CHAIN_STALLED') or pageFlowScope.jobStatus == 'SCHEDULED'}"
+                                            binding="#{GenerateStatementManagedBean.btnEnable}">
+                            <af:showPopupBehavior popupId="p1"/>
+                          </af:commandButton>
+                          <af:popup id="p1">
+                            <af:dialog id="d2" type="yesNo"
+                                       title="Enabling Job Confirmation"
+                                       dialogListener="#{GenerateStatementManagedBean.jobEnable}">
+                              <af:outputText value="Are you sure you want to enable the database job?"
+                                             id="ot2"/>
+                            </af:dialog>
+                          </af:popup>
+                          <af:spacer width="10" height="10" id="s1"/>
+                          <af:commandButton text="Disable" id="cb1"
+                                            disabled="#{((((((((pageFlowScope.jobStatus == 'UNCHECK' or pageFlowScope.jobStatus == 'RUNNING') or pageFlowScope.jobStatus == 'COMPLETED') or pageFlowScope.jobStatus == 'STOPPED') or pageFlowScope.jobStatus == 'BROKEN') or pageFlowScope.jobStatus == 'FAILED') or pageFlowScope.jobStatus == 'RETRY_SCHEDULED') or pageFlowScope.jobStatus == 'SUCCEEDED') or pageFlowScope.jobStatus == 'CHAIN_STALLED') or pageFlowScope.jobStatus == 'DISABLED'}"
+                                            binding="#{GenerateStatementManagedBean.btnDisable}">
+                            <af:showPopupBehavior popupId="p2"/>
+                          </af:commandButton>
+                          <af:popup id="p2">
+                            <af:dialog id="d3" type="yesNo"
+                                       title="Disabling Job Confirmation"
+                                       dialogListener="#{GenerateStatementManagedBean.jobDisable}">
+                              <af:outputText value="Are you sure you want to disable database job?"
+                                             id="ot3"/>
+                            </af:dialog>
+                          </af:popup>
+                        </af:panelGroupLayout>
+                        <af:spacer width="10" height="10" id="s6"/>
+                      </af:panelGroupLayout>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="Generate File" id="pb2"
+                               showDisclosure="false">
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t1">
+                        <!--af:commandToolbarButton text="Generate Statement"
+                                                 id="ctb1"
+                                                 partialTriggers="cb2 cb1 p4"
+                                                 binding="#{GenerateStatementManagedBean.btnGenerate}">
+                          <af:showPopupBehavior popupId="p3"/>
+                        </af:commandToolbarButton-->
+                        <af:commandToolbarButton text="Generate Statement"
+                                                 id="ctb1"
+                                                 disabled="#{((((((((pageFlowScope.jobStatus == 'UNCHECK' or pageFlowScope.jobStatus == 'RUNNING') or pageFlowScope.jobStatus == 'COMPLETED') or pageFlowScope.jobStatus == 'STOPPED') or pageFlowScope.jobStatus == 'BROKEN') or pageFlowScope.jobStatus == 'FAILED') or pageFlowScope.jobStatus == 'RETRY_SCHEDULED') or pageFlowScope.jobStatus == 'SUCCEEDED') or pageFlowScope.jobStatus == 'CHAIN_STALLED') or pageFlowScope.jobStatus == 'SCHEDULED'}"
+                                                 partialTriggers="cb2 cb1 p4"
+                                                 binding="#{GenerateStatementManagedBean.btnGenerate}">
+                          <af:showPopupBehavior popupId="p3"/>
+                        </af:commandToolbarButton>
+                        <af:popup id="p3">
+                          <af:dialog id="d4" title="Confirmation"
+                                     dialogListener="#{GenerateStatementManagedBean.genStatement}"
+                                     type="yesNo">
+                            <af:outputText value="This will generate file statement. Are you sure to continue this process?"
+                                           id="ot4"/>
+                          </af:dialog>
+                        </af:popup>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:panelCollection id="pc1" inlineStyle="margin:5px;"
+                                        featuresOff="detach">
+                      <f:facet name="toolbar">
+                        <af:toolbar id="t3">
+                          <af:commandToolbarButton text="Refresh" id="ctb2"
+                                                   actionListener="#{bindings.Execute.execute}"
+                                                   disabled="#{!bindings.Execute.enabled}"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table value="#{bindings.FileSendingQEomView1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.FileSendingQEomView1.rangeSize}"
+                                emptyText="#{bindings.FileSendingQEomView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.FileSendingQEomView1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.FileSendingQEomView1Query.queryDescriptor}"
+                                queryListener="#{bindings.FileSendingQEomView1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.FileSendingQEomView1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.FileSendingQEomView1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                partialTriggers="::ctb2"
+                                binding="#{GenerateStatementManagedBean.tblFileSending}">
+                        <af:column sortProperty="#{bindings.FileSendingQEomView1.hints.SubmitId.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FileSendingQEomView1.hints.SubmitId.label}"
+                                   id="c3" align="center" width="80">
+                          <af:outputText value="#{row.SubmitId}" id="ot5">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.FileSendingQEomView1.hints.SubmitId.format}"/>
+                          </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FileSendingQEomView1.hints.Filename.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FileSendingQEomView1.hints.Filename.label}"
+                                   id="c2" width="180">
+                          <af:outputText value="#{row.Filename}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FileSendingQEomView1.hints.SendMethod.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FileSendingQEomView1.hints.SendMethod.label}"
+                                   id="c1" width="80" align="center">
+                          <af:outputText value="#{row.SendMethod}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.FileSendingQEomView1.hints.Recipient.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.FileSendingQEomView1.hints.Recipient.label}"
+                                   id="c4" width="80" align="center">
+                          <af:outputText value="#{row.Recipient}" id="ot7"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

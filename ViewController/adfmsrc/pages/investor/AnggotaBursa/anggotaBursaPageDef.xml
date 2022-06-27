@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="anggotaBursaPageDef"
+                Package="pages.investor.AnggotaBursa">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AnggotaBursaView1" RangeSize="10"
+              DataControl="BrokerModuleDataControl"
+              id="AnggotaBursaView1Iterator"/>
+    <searchRegion Criteria="AnggotaBursaViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="AnggotaBursaView1Iterator"
+                  id="AnggotaBursaViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="AnggotaBursaView1Iterator" id="AnggotaBursaView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.anggotabursa.AnggotaBursaView"
+                      Name="AnggotaBursaView10">
+        <AttrNames>
+          <Item Value="KodeAb"/>
+          <Item Value="NamaAb"/>
+          <Item Value="SendMethod"/>
+          <Item Value="FileFormat"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="IpAddress"/>
+          <Item Value="FtpUser"/>
+          <Item Value="FtpPasswd"/>
+          <Item Value="Excp1"/>
+          <Item Value="WsUser"/>
+          <Item Value="WsPasswd"/>
+          <Item Value="SerialNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AnggotaBursaView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="AnggotaBursaView1Iterator" id="CreateInsert"
+            InstanceName="BrokerModuleDataControl.AnggotaBursaView1"
+            DataControl="BrokerModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="BrokerModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"
+            InstanceName="BrokerModuleDataControl"/>
+    <action id="Rollback" DataControl="BrokerModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"
+            InstanceName="BrokerModuleDataControl"/>
+    <action IterBinding="AnggotaBursaView1Iterator" id="Delete"
+            InstanceName="BrokerModuleDataControl.AnggotaBursaView1"
+            DataControl="BrokerModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="KodeAb">
+      <AttrNames>
+        <Item Value="KodeAb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="NamaAb">
+      <AttrNames>
+        <Item Value="NamaAb"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="AnggotaBursaView1Iterator" StaticList="false"
+          Uses="LOV_SendMethod" id="SendMethod" DTSupportsMRU="false"/>
+    <list IterBinding="AnggotaBursaView1Iterator" StaticList="false"
+          Uses="LOV_FileFormat" id="FileFormat" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="IpAddress">
+      <AttrNames>
+        <Item Value="IpAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="FtpUser">
+      <AttrNames>
+        <Item Value="FtpUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="FtpPasswd">
+      <AttrNames>
+        <Item Value="FtpPasswd"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="AnggotaBursaView1Iterator" StaticList="false"
+          Uses="LOV_Excp1" id="Excp1" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="WsUser">
+      <AttrNames>
+        <Item Value="WsUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="WsPasswd">
+      <AttrNames>
+        <Item Value="WsPasswd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AnggotaBursaView1Iterator" id="SerialNo">
+      <AttrNames>
+        <Item Value="SerialNo"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

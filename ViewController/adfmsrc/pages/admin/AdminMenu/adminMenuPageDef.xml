@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="adminMenuPageDef"
+                Package="pages.admin.AdminMenu">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MenuAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl" id="MenuAdminView1Iterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="MenuItemsAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="MenuItemsAdminView1Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="MenuAdminView1Iterator" id="MenuAdminView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.useraccessadminister.MenuAdminView"
+                      Name="MenuAdminView10">
+        <AttrNames>
+          <Item Value="Name"/>
+          <Item Value="Label"/>
+          <Item Value="Id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="MenuAdminView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MenuAdminView1Iterator" id="DisplaySequence">
+      <AttrNames>
+        <Item Value="DisplaySequence"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MenuAdminView1Iterator" id="Label">
+      <AttrNames>
+        <Item Value="Label"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MenuAdminView1Iterator" id="Shortcut">
+      <AttrNames>
+        <Item Value="Shortcut"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MenuAdminView1Iterator" id="Icon">
+      <AttrNames>
+        <Item Value="Icon"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="MenuItemsAdminView1Iterator" id="MenuItemsAdminView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.useraccessadminister.MenuItemsAdminView"
+                      Name="MenuItemsAdminView10">
+        <AttrNames>
+          <Item Value="Name"/>
+          <Item Value="DisplaySequence"/>
+          <Item Value="Label"/>
+          <Item Value="Action"/>
+          <Item Value="Shortcut"/>
+          <Item Value="Icon"/>
+          <Item Value="Id"/>
+          <Item Value="MenId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AdminModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AdminModuleDataControl"/>
+    <attributeValues IterBinding="MenuItemsAdminView1Iterator" id="Label1">
+      <AttrNames>
+        <Item Value="Label"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

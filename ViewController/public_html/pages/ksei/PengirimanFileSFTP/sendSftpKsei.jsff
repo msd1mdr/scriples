@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBorderLayout id="pbl1">
+    <f:facet name="top">
+      <af:spacer width="10" height="100" id="s6"/>
+    </f:facet>
+    <af:panelGroupLayout id="pgl2" layout="vertical"
+                         inlineStyle='background-image:url("../images/icons/sftp-send.png"); background-repeat:no-repeat; height:267px; background-position:50% 50%;'
+                         halign="center">
+      <af:spacer width="10" height="70" id="s4"/>
+      <af:panelFormLayout id="pfl0">
+                      <af:panelGroupLayout id="pgl1"
+                                           layout="horizontal">
+                        <af:panelLabelAndMessage label="Tanggal" id="plam2">
+                          <af:inputDate id="inpDate"
+                                        binding="#{backingBeanScope.SendFileSftpKsei.inpTanggal}"
+                                        autoSubmit="true" immediate="true"
+                                        contentStyle="width:160px;"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="s10"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s9"/>
+                      <af:panelGroupLayout id="panelGroupLayout2"
+                                           layout="horizontal">
+                        <af:panelLabelAndMessage label="Jenis Message"
+                                                 id="plam3"
+                                                 inlineStyle="padding-right:18px;">
+                          <af:selectOneRadio id="sor1" value="STATEMENT" 
+                                             binding="#{backingBeanScope.SendFileSftpKsei.inpJenisMsg}"
+                                             autoSubmit="true" immediate="true"
+                                             layout="horizontal"
+                                             label="Jenis Message"
+                                             simple="true">
+                            <af:selectItem label="Statement" value="STATEMENT" 
+                                           id="si1"/>
+                            <af:selectItem label="Static" value="STATIC"
+                                           id="si2"/>
+                            <af:selectItem label="Balance" value="BALANCE"
+                                           id="si3"/>
+                          </af:selectOneRadio>
+                        </af:panelLabelAndMessage>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl5" layout="horizontal">
+          <af:inputFile id="if1" label=" "
+                        value="#{backingBeanScope.SendFileSftpKsei.UFile}"
+                        binding="#{backingBeanScope.SendFileSftpKsei.riFile}"/>
+          <af:spacer width="10" height="10" id="s3"/>
+          <af:commandButton id="cb3" partialSubmit="true"
+                            action="#{backingBeanScope.SendFileSftpKsei.sftpSend}"
+                            text="Send">
+            <af:clientListener method="enforcePreventUserInput" type="action"/>
+          </af:commandButton>
+          <af:spacer width="15" height="10" id="s5"/>
+        </af:panelGroupLayout>
+        <af:message messageType="error" id="msg"/>
+      </af:panelFormLayout>
+      <af:spacer width="10" height="30" id="s2"/>
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:outputText value="On sending file sizes larger than 5 MB, please contact your Admnistrator."
+                       id="ot1"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelBorderLayout>
+</jsp:root>

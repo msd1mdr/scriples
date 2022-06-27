@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ValidationMsg"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="VALIDATION_MSG"
+  AliasName="ValidationMsg"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="app.bmri.scripless.model.eo.valinvestor.ValidationMsgImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Batchref"
+    IsNotNull="true"
+    Precision="40"
+    ColumnName="BATCHREF"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Detailref"
+    IsNotNull="true"
+    Precision="40"
+    ColumnName="DETAILREF"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Participantid"
+    Precision="5"
+    ColumnName="PARTICIPANTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="PARTICIPANT_ID"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Sidnumber"
+    Precision="15"
+    ColumnName="SIDNUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="SID_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Accountnumber"
+    Precision="14"
+    ColumnName="ACCOUNTNUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="14"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ACCOUNT_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="CreateTime"
+    ColumnName="CREATE_TIME"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="VALIDATION_MSG"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.CreateTime_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.CreateTime_FMT_FORMAT"/>
+        <LABEL
+          ResId="CREATED_TIME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackparticipantid"
+    Precision="15"
+    ColumnName="ACKPARTICIPANTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="PARTICIPANT_ID"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="AckTime"
+    ColumnName="ACK_TIME"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.AckTime_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.AckTime_FMT_FORMAT"/>
+        <LABEL
+          ResId="ACK_TIME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Acksidnumber"
+    Precision="15"
+    ColumnName="ACKSIDNUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="SID_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackaccountnumber"
+    Precision="14"
+    ColumnName="ACKACCOUNTNUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="14"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ACCOUNT_NUMBER"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackinvestorpassport"
+    Precision="50"
+    ColumnName="ACKINVESTORPASSPORT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="INVESTOR_PASSPORT"/>
+        <DISPLAYWIDTH
+          Value="60"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackinvestorid"
+    Precision="50"
+    ColumnName="ACKINVESTORID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="INVESTOR_ID"/>
+        <DISPLAYWIDTH
+          Value="60"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackinvestornpwp"
+    Precision="50"
+    ColumnName="ACKINVESTORNPWP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="INVESTOR_NPWP"/>
+        <DISPLAYWIDTH
+          Value="60"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Ackinvestorname"
+    Precision="200"
+    ColumnName="ACKINVESTORNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VALIDATION_MSG">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="INVESTOR_NAME"/>
+        <DISPLAYWIDTH
+          Value="60"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Key
+    Name="SysC007847">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007847"/>
+      <Attr Name="_checkCondition" Value='"BATCHREF" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.Batchref"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC007848">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007848"/>
+      <Attr Name="_checkCondition" Value='"DETAILREF" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.Detailref"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ValidationPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="VALIDATION_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.Batchref"/>
+      <Item
+        Value="app.bmri.scripless.model.eo.valinvestor.ValidationMsg.Detailref"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="app.bmri.scripless.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

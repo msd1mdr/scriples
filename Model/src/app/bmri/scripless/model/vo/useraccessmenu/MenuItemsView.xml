@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="MenuItemsView"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  SelectList="MenuItems.ID, 
+       MenuItems.NAME, 
+       MenuItems.SHORTCUT, 
+       MenuItems.DISPLAY_SEQUENCE, 
+       MenuItems.ACTION, 
+       MenuItems.MEN_ID, 
+       MenuItems.ICON, 
+       MenuItems.LABEL, 
+       Menu.DISPLAY_SEQUENCE AS DISPLAY_SEQUENCE1, 
+       Menu.ID AS ID1, 
+       Menu.ICON AS ICON1, 
+       Menu.NAME AS NAME1, 
+       Menu.SHORTCUT AS SHORTCUT1, 
+       Menu.LABEL AS LABEL1, 
+       Roles.NAME AS NAME2, 
+       Roles.ID AS ID2, 
+       RoleMenuItems.MIT_ID, 
+       RoleMenuItems.ROL_ID"
+  FromList="ADF_MENU_ITEMS MenuItems, ADF_MENU Menu, ADF_ROLES Roles, ADF_ROLE_MENU_ITEMS RoleMenuItems, ADF_USER_ACCESS_ROLES UserAccessRoles"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsViewRowImpl"
+  ComponentClass="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsViewImpl"
+  Where="(MenuItems.MEN_ID = Menu.ID) AND (MenuItems.ID = RoleMenuItems.MIT_ID) AND RoleMenuItems.ROL_ID = Roles.ID AND UserAccessRoles.ROLE = Roles.NAME AND UPPER(UserAccessRoles.USER_NAME) = UPPER(:usrNameLogin)
+ORDER BY Menu.DISPLAY_SEQUENCE,MenuItems.DISPLAY_SEQUENCE">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="usrNameLogin"
+    Kind="where"
+    Type="java.lang.String"/>
+  <EntityUsage
+    Name="MenuItems"
+    Entity="app.bmri.scripless.model.eo.useraccessmenu.MenuItems"/>
+  <EntityUsage
+    Name="Menu"
+    Entity="app.bmri.scripless.model.eo.useraccessmenu.Menu"
+    Association="app.bmri.scripless.model.eo.useraccessmenu.MitMenFkAssoc"
+    AssociationEnd="app.bmri.scripless.model.eo.useraccessmenu.MitMenFkAssoc.Menu"
+    SourceUsage="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsView.MenuItems"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="app.bmri.scripless.model.eo.useraccessmenu.MenuItems.MenId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="app.bmri.scripless.model.eo.useraccessmenu.Menu.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Roles"
+    Entity="app.bmri.scripless.model.eo.useraccessmenu.Roles"
+    SourceUsage="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsView.Menu"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="RoleMenuItems"
+    Entity="app.bmri.scripless.model.eo.useraccessmenu.RoleMenuItems"
+    Association="app.bmri.scripless.model.eo.useraccessmenu.RmiMitFkAssoc"
+    AssociationEnd="app.bmri.scripless.model.eo.useraccessmenu.RmiMitFkAssoc.RoleMenuItems"
+    SourceUsage="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsView.MenuItems"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="app.bmri.scripless.model.eo.useraccessmenu.MenuItems.Id"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="app.bmri.scripless.model.eo.useraccessmenu.RoleMenuItems.MitId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="UserAccessRoles"
+    Entity="app.bmri.scripless.model.eo.useraccessmenu.UserAccessRoles"
+    SourceUsage="app.bmri.scripless.model.vo.useraccessmenu.MenuItemsView.RoleMenuItems"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="MenuItems"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="Name"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="MenuItems"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="Shortcut"
+    PrecisionRule="true"
+    EntityAttrName="Shortcut"
+    EntityUsage="MenuItems"
+    AliasName="SHORTCUT"/>
+  <ViewAttribute
+    Name="DisplaySequence"
+    PrecisionRule="true"
+    EntityAttrName="DisplaySequence"
+    EntityUsage="MenuItems"
+    AliasName="DISPLAY_SEQUENCE"/>
+  <ViewAttribute
+    Name="Action"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Action"
+    EntityUsage="MenuItems"
+    AliasName="ACTION"/>
+  <ViewAttribute
+    Name="MenId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MenId"
+    EntityUsage="MenuItems"
+    AliasName="MEN_ID"/>
+  <ViewAttribute
+    Name="Icon"
+    PrecisionRule="true"
+    EntityAttrName="Icon"
+    EntityUsage="MenuItems"
+    AliasName="ICON"/>
+  <ViewAttribute
+    Name="Label"
+    PrecisionRule="true"
+    EntityAttrName="Label"
+    EntityUsage="MenuItems"
+    AliasName="LABEL"/>
+  <ViewAttribute
+    Name="MenuDisplaySequence"
+    PrecisionRule="true"
+    EntityAttrName="DisplaySequence"
+    EntityUsage="Menu"
+    AliasName="DISPLAY_SEQUENCE1"/>
+  <ViewAttribute
+    Name="MenuId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Menu"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="MenuIcon"
+    PrecisionRule="true"
+    EntityAttrName="Icon"
+    EntityUsage="Menu"
+    AliasName="ICON1"/>
+  <ViewAttribute
+    Name="MenuName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="Menu"
+    AliasName="NAME1"/>
+  <ViewAttribute
+    Name="MenuShortcut"
+    PrecisionRule="true"
+    EntityAttrName="Shortcut"
+    EntityUsage="Menu"
+    AliasName="SHORTCUT1"/>
+  <ViewAttribute
+    Name="MenuLabel"
+    PrecisionRule="true"
+    EntityAttrName="Label"
+    EntityUsage="Menu"
+    AliasName="LABEL1"/>
+  <ViewAttribute
+    Name="RolesName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="Roles"
+    AliasName="NAME2"/>
+  <ViewAttribute
+    Name="RolesId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Roles"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="RoleMenuItemsMenuItemId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MitId"
+    EntityUsage="RoleMenuItems"
+    AliasName="MIT_ID"/>
+  <ViewAttribute
+    Name="RoleMenuItemsRoleId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RolId"
+    EntityUsage="RoleMenuItems"
+    AliasName="ROL_ID"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+    <Item Value="RolesId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="RoleMenuItemsView"
+    ViewLink="app.bmri.scripless.model.vo.useraccessmenu.RmiMitFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

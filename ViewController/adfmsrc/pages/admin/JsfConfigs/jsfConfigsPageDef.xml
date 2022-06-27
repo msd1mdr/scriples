@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="jsfConfigsPageDef"
+                Package="pages.admin.JsfConfigs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JsfConfigsView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="JsfConfigsView1Iterator"/>
+    <searchRegion Criteria="JsfConfigsViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="JsfConfigsView1Iterator"
+                  id="JsfConfigsViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JsfConfigsView1Iterator" id="JsfConfigsView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.configparam.JsfConfigsView"
+                      Name="JsfConfigsView10">
+        <AttrNames>
+          <Item Value="ConfigKey"/>
+          <Item Value="ConfigDesc"/>
+          <Item Value="ConfigType"/>
+          <Item Value="ConfigValue"/>
+          <Item Value="ConfigVersion"/>
+          <Item Value="RowStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="ConfigKey">
+      <AttrNames>
+        <Item Value="ConfigKey"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="ConfigValue">
+      <AttrNames>
+        <Item Value="ConfigValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="ConfigType">
+      <AttrNames>
+        <Item Value="ConfigType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="ConfigDesc">
+      <AttrNames>
+        <Item Value="ConfigDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="ConfigVersion">
+      <AttrNames>
+        <Item Value="ConfigVersion"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="JsfConfigsView1Iterator" id="CreateInsert"
+            InstanceName="AdminModuleDataControl.JsfConfigsView1"
+            DataControl="AdminModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="AdminModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AdminModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="JsfConfigsView1Iterator" id="Delete"
+            InstanceName="AdminModuleDataControl.JsfConfigsView1"
+            DataControl="AdminModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="JsfConfigsView1Iterator" id="RowStatus">
+      <AttrNames>
+        <Item Value="RowStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

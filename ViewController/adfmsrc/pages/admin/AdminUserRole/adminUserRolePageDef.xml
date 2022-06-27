@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="adminUserRolePageDef"
+                Package="pages.admin.AdminUserRole">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RolesAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="RolesAdminView1Iterator"/>
+    <iterator Binds="RoleMenuItemsAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="RoleMenuItemsAdminView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RolesAdminView1Iterator" id="RolesAdminView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.useraccessadminister.RolesAdminView"
+                      Name="RolesAdminView10">
+        <AttrNames>
+          <Item Value="Name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RoleMenuItemsAdminView1Iterator"
+          id="RoleMenuItemsAdminView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.useraccessadminister.RoleMenuItemsAdminView"
+                      Name="RoleMenuItemsAdminView10">
+        <AttrNames>
+          <Item Value="Label"/>
+          <Item Value="Shortcut"/>
+          <Item Value="Icon"/>
+          <Item Value="Label1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="RolesAdminView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RolesAdminView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="RoleMenuItemsAdminView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="RolesAdminView1Iterator" id="CreateInsert"
+            InstanceName="AdminModuleDataControl.RolesAdminView1"
+            DataControl="AdminModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="RolesAdminView1Iterator" id="Delete"
+            InstanceName="AdminModuleDataControl.RolesAdminView1"
+            DataControl="AdminModuleDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="AdminModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AdminModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

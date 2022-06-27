@@ -1,0 +1,64 @@
+body
+{
+  background-color: White;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h2
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+h3
+{
+  color: navy;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: lighter;
+  text-transform: capitalize;
+}
+/** Background image full screen */
+af|document
+{
+  background: url("/images/wp-aurora-blue.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+af|statusIndicator::connected-icon, af|statusIndicator::disconnected-icon, af|statusIndicator::idle-icon {
+  content: url(/images/idle.png);
+}
+ 
+af|statusIndicator::connecting-icon, af|statusIndicator::processing-icon, af|statusIndicator::reconnecting-icon {
+  content: url(/images/busy.gif);
+}
+af|query.CustomQueryPanel::disclosure-icon-container { background-image: url("../img/minus.png"); display:none; height:0px; width:0px; }
+af|query.CustomQueryPanel::disclosed-icon { display:none; }
+af|query.CustomQueryPanel::undisclosed-icon { display:none; }
+.af_table_navbar-row-range-text{
+  display: inline !important;
+}
+.af_table_navbar-current-page{
+  display: inline !important;
+}
+.af_table_navbar-page-link{
+  display: inline !important;
+}
+.af_table_navbar-page-container{
+display: inline-block !important;
+}
+.af|column::filter-clear-all-icon { display:none; }
+

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Statement Report">
+      <af:resource type="javascript">
+        function handleEnterEvent(evt) {
+            var comp = evt.getSource();
+            AdfCustomEvent.queue(comp, "EnterEvent", 
+            {
+                fvalue : comp.getSubmittedValue()
+            },
+false);
+            evt.cancel();
+        }
+      </af:resource>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Statement Report" id="pb1"
+                         inlineStyle="background-color:White; margin:5px;"
+                         showDisclosure="false">
+              <af:panelBorderLayout id="pbl1">
+                <f:facet name="top">
+                  <af:spacer width="10" height="100" id="s6"/>
+                </f:facet>
+                <af:panelGroupLayout id="pgl2" layout="vertical"
+                                     inlineStyle='background-image:url("../images/icons/reporting.png"); background-repeat:no-repeat; height:267px; background-position:50% 50%;'
+                                     halign="center">
+                  <af:spacer width="10" height="40" id="s4"/>
+                  <af:panelFormLayout id="pfl1" labelAlignment="top"
+                                      labelWidth="200">
+                    <af:panelGroupLayout id="pgl3" layout="vertical"
+                                         halign="center">
+                      <af:spacer width="10" height="10" id="s2"/>
+                      <af:panelGroupLayout id="pgl5" layout="horizontal">
+                        <af:panelLabelAndMessage label="Start Date" id="plam1">
+                          <af:inputDate id="inpDateStart"
+                                        binding="#{StatementReportManagedBean.inpDateStart}"
+                                        valueChangeListener="#{StatementReportManagedBean.dateStartValueChangeListener}"
+                                        autoSubmit="true"
+                                        contentStyle="width:160px;"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="s8"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s7"/>
+                      <af:panelGroupLayout id="pgl1"
+                                           layout="horizontal">
+                        <af:panelLabelAndMessage label="End Date" id="plam2">
+                          <af:inputDate id="inpDateEnd"
+                                        binding="#{StatementReportManagedBean.inpDateEnd}"
+                                        valueChangeListener="#{StatementReportManagedBean.dateEndValueChangeListener}"
+                                        autoSubmit="true" immediate="true"
+                                        contentStyle="width:160px;"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="s10"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s9"/>
+                      <af:panelGroupLayout id="panelGroupLayout2"
+                                           layout="horizontal">
+                        <af:panelLabelAndMessage label="Anggota Bursa"
+                                                 id="plam3"
+                                                 inlineStyle="padding-right:18px;">
+                          <af:selectOneRadio id="sor1" layout="horizontal"
+                                             binding="#{StatementReportManagedBean.inpAb}"
+                                             autoSubmit="true" immediate="true"
+                                             valueChangeListener="#{StatementReportManagedBean.abValueChangeListener}"
+                                             contentStyle="width:100px;">
+                            <af:selectItem label="Semua" value="semua"
+                                           id="si1"/>
+                            <af:selectItem label="Pilih AB" value="pilih"
+                                           id="si2"/>
+                          </af:selectOneRadio>
+                        </af:panelLabelAndMessage>
+                      </af:panelGroupLayout>
+                      <af:spacer width="10" height="10" id="s1"/>
+                      <af:inputText label="Kode AB" id="it1"
+                                    binding="#{StatementReportManagedBean.inpKodeAb}"
+                                    maximumLength="5" partialTriggers="sor1"
+                                    autoSubmit="true"
+                                    valueChangeListener="#{StatementReportManagedBean.kodeAbValueChangeListener}"
+                                    inlineStyle="padding-right:8px;">
+                        <af:clientListener method="handleEnterEvent"
+                                           type="keyUp"/>
+                        <af:serverListener type="EnterEvent"
+                                           method="#{StatementReportManagedBean.handleEnterEvent}"/>
+                      </af:inputText>
+                      <af:inputText label="Kode AB Value" id="it2"
+                                    binding="#{StatementReportManagedBean.inpKodeAbVal}"
+                                    visible="false"/>
+                      <af:spacer width="10" height="10" id="s5"/>
+                      <af:panelGroupLayout id="pgl4" layout="horizontal"
+                                           halign="center"
+                                           inlineStyle="width:300px;">
+                        <af:panelLabelAndMessage label="Report Type" id="plam4"
+                                                 inlineStyle="padding-left:70px;">
+                          <af:selectOneRadio id="sor2" layout="horizontal"
+                                             binding="#{StatementReportManagedBean.inpReportType}"
+                                             autoSubmit="true" immediate="true"
+                                             valueChangeListener="#{StatementReportManagedBean.repTypeValueChangeListener}"
+                                             contentStyle="width:100px;">
+                            <af:selectItem label="PDF" value="pdf" id="si3"/>
+                            <af:selectItem label="CSV" value="csv" id="si4"/>
+                          </af:selectOneRadio>
+                        </af:panelLabelAndMessage>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl7" styleClass="AFStretchWidth"
+                                         layout="vertical" halign="center">
+                      <af:spacer width="10" height="20" id="s3"/>
+                      <af:panelGroupLayout id="pgl6"
+                                           inlineStyle="padding-right:5px;">
+                        <af:goButton text="Export" id="gb1"
+                                     binding="#{StatementReportManagedBean.btnGoExp}"
+                                     targetFrame="_blank"
+                                     partialTriggers="inpDateStart inpDateEnd sor1 it1 it2 sor2"/>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:panelFormLayout>
+                  <af:spacer width="10" height="20" id="spacer2"/>
+                </af:panelGroupLayout>
+              </af:panelBorderLayout>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

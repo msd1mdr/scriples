@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InvestorMsgIncomingView"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  RowClass="app.bmri.scripless.model.vo.monitorinvmsg.InvestorMsgIncomingViewRowImpl"
+  ComponentClass="app.bmri.scripless.model.vo.monitorinvmsg.InvestorMsgIncomingViewImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="app.bmri.scripless.model.vo.monitorinvmsg.InvestorMsgIncomingView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT
+(SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKSTATIC' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')) AS STATIC_ACK,
+(SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKSTATEMENT' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')) AS STATEMENT_ACK,
+(SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKVALIDATION' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')) AS VALIDATION_ACK
+FROM DUAL]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="StaticAck"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="STATIC_ACK"
+    Expression="SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKSTATIC' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="STATIC_ACK"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StatementAck"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="STATEMENT_ACK"
+    Expression="SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKSTATEMENT' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="STATEMENT_ACK"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ValidationAck"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VALIDATION_ACK"
+    Expression="SELECT JUMLAH FROM SI_ADMIN.MESSAGE_STATISTIC MS WHERE MS.MSG_TYPE = 'INCOMING' AND MS.MSG_NAME='ACKVALIDATION' AND JOB_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD')"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="VALIDATION_ACK"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="app.bmri.scripless.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

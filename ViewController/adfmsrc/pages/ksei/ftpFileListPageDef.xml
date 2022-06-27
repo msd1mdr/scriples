@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="ftpFileListPageDef"
+                Package="pages.ksei">
+  <parameters/>
+  <executables>
+    <invokeAction id="autoExec" Binds="Execute" Refresh="ifNeeded"/>
+    <variableIterator id="variables"/>
+    <iterator Binds="FileTransmisionView1" RangeSize="25"
+              DataControl="KSEIModuleDataControl"
+              id="FileTransmisionView1Iterator"/>
+    <searchRegion Criteria="FTPFileListCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="FileTransmisionView1Iterator"
+                  id="FTPFileListCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="FileTransmisionView1Iterator" id="FileTransmisionView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.ftpfilelist.FileTransmisionView"
+                      Name="FileTransmisionView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Filename"/>
+          <Item Value="Submodul"/>
+          <Item Value="SendStatus"/>
+          <Item Value="Retry"/>
+          <Item Value="Errormsg"/>
+          <Item Value="SendTime"/>
+          <Item Value="ResponseFile"/>
+          <Item Value="ResponseSuccess"/>
+          <Item Value="ResponseError"/>
+          <Item Value="RecordNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FileTransmisionView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

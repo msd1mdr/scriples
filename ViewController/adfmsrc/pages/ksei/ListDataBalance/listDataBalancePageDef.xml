@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="listDataBalancePageDef"
+                Package="pages.ksei.ListDataBalance">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BalanceKseiView1" RangeSize="25"
+              DataControl="KSEIModuleDataControl"
+              id="BalanceKseiView1Iterator"/>
+    <searchRegion id="BalanceKseiViewCriteriaQuery"
+                  Binds="BalanceKseiView1Iterator"
+                  Criteria="BalanceKseiViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BalanceKseiView1Iterator" id="BalanceKseiView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.listbalanceksei.BalanceKseiView"
+                      Name="BalanceKseiView10">
+        <AttrNames>
+          <Item Value="Extref"/>
+          <Item Value="Bankcode"/>
+          <Item Value="Account"/>
+          <Item Value="Curcod"/>
+          <Item Value="Valdate"/>
+          <Item Value="Balance"/>
+          <Item Value="Notes"/>
+          <Item Value="FileName"/>
+          <Item Value="AckStatus"/>
+          <Item Value="AckTime"/>
+          <Item Value="AckNotes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

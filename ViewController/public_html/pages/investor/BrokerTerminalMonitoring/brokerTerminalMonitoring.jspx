@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Broker Terminal Monitoring">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Broker Terminal Monitoring" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1" styleClass="AFStretchWidth"
+                                splitterPosition="812"
+                                inlineStyle="margin:5px;" disabled="true">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="default" id="pgl1"
+                                       styleClass="AFStretchWidth">
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                      <f:facet name="toolbar">
+                        <af:toolbar id="t1">
+                            <af:poll id="p1" timeout="600000" interval="15000"
+                                     pollListener="#{BrokerTerminalMonitoringManagedBean.activatePollListener}"/>
+                            <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                                     text="#{viewcontrollerBundle.REFRESH}"
+                                                     disabled="#{!bindings.Execute.enabled}"
+                                                     id="ctb1"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table value="#{bindings.ConnectTView1.collectionModel}"
+                                var="row" scrollPolicy="page" autoHeightRows="0"
+                                rows="#{bindings.ConnectTView1.rangeSize}"
+                                emptyText="#{bindings.ConnectTView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ConnectTView1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ConnectTViewCriteriaQuery.queryDescriptor}"
+                                queryListener="#{bindings.ConnectTViewCriteriaQuery.processQuery}"
+                                varStatus="vs"
+                                selectedRowKeys="#{bindings.ConnectTView1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.ConnectTView1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="resId1"
+                                partialTriggers="::ctb1 :::qq1 ::p1"
+                                styleClass="AFStretchWidth"
+                                binding="#{BrokerTerminalMonitoringManagedBean.brokerMonTable}">
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.Brokerid.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.Brokerid.label}"
+                                   id="resId1c1" align="center" width="80">
+                          <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:outputText value="#{row.Brokerid}" id="ot3"/>
+                            <af:spacer width="10" height="23" id="s2"/>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.NamaAb.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.NamaAb.label}"
+                                   id="resId1c2" width="300">
+                          <af:outputText value="#{row.NamaAb}" id="ot2"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.Status.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.Status.label}"
+                                   id="resId1c3" align="center">
+                          <af:panelGroupLayout id="pgl4" layout="horizontal">
+                            <af:image source="/images/icons/running.png"
+                                      id="i1"
+                                      visible="#{row.Status == 'ACTIVE'}"/>
+                            <af:image source="/images/icons/stopped.png"
+                                      id="i2"
+                                      visible="#{row.Status == 'INACTIVE'}"/>
+                            <af:spacer width="10" height="10" id="s3"/>
+                            <af:outputText value="#{row.Status}" id="ot5"
+                                           inlineStyle="color:#{row.Status == 'ACTIVE' ? 'Green' : 'Red'}; font-style:italic;"/>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.StaticCount.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.StaticCount.label}"
+                                   id="resId1c4" align="center">
+                          <af:outputText value="#{row.StaticCount}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.StatementCount.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.StatementCount.label}"
+                                   id="resId1c5" align="center">
+                          <af:outputText value="#{row.StatementCount}"
+                                         id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ConnectTView1.hints.BalanceCount.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ConnectTView1.hints.BalanceCount.label}"
+                                   id="resId1c6" align="center">
+                          <af:outputText value="#{row.BalanceCount}" id="ot4"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="Summary Broker Status" id="pb2"
+                               showDisclosure="false">
+                    <af:panelGroupLayout id="pgl5" halign="center"
+                                         layout="horizontal"
+                                         styleClass="AFStretchWidth">
+                      <af:spacer width="40" height="10" id="s4"/>
+                      <dvt:pieGraph id="pieGraph1" shortDesc=" " imageFormat="AUTO"
+                                    value="#{bindings.ConnectTChartView1.graphModel}"
+                                    subType="RING" customLayout="CL_NONE"
+                                    binding="#{BrokerTerminalMonitoringManagedBean.ringChartBroker}"
+                                    seriesEffect="SE_GRADIENT"
+                                    inlineStyle="width:450px; height:450px;">
+                        <dvt:background>
+                          <dvt:specialEffects/>
+                        </dvt:background>
+                        <dvt:graphPieFrame/>
+                        <dvt:seriesSet>
+                          <dvt:series color="#7bc700" markerColor="#ff4200"/>
+                        </dvt:seriesSet>
+                        <dvt:legendArea automaticPlacement="AP_NEVER"
+                                        position="LAP_BOTTOM"/>
+                        <dvt:slice labelPosition="LP_INSIDE"/>
+                        <dvt:sliceLabel/>
+                        <dvt:pieLabel rendered="true"/>
+                        <dvt:graphTitle horizontalAlignment="CENTER" text=" "/>
+                      </dvt:pieGraph>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+              <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                  <af:quickQuery label="Search" searchDesc="Search" id="qq1"
+                                 value="#{bindings.ConnectTViewCriteriaQuery.queryDescriptor}"
+                                 model="#{bindings.ConnectTViewCriteriaQuery.queryModel}"
+                                 queryListener="#{bindings.ConnectTViewCriteriaQuery.processQuery}"
+                                 queryOperationListener="#{bindings.ConnectTViewCriteriaQuery.processQueryOperation}">
+                    <f:facet name="end">
+                      <af:commandLink text="Advanced" rendered="false"
+                                      id="cl4"/>
+                    </f:facet>
+                  </af:quickQuery>
+                </af:toolbar>
+              </f:facet>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

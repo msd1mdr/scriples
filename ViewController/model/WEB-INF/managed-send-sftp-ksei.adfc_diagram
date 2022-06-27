@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">sendSftpKsei</property>
+      <property
+         name="page">/pages/ksei/PengirimanFileSFTP/sendSftpKsei.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>sendSftpKsei&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">264.89648</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">247.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">sendSftpKseiConfirm</property>
+      <property
+         name="page">/pages/ksei/PengirimanFileSFTP/sendSftpKseiConfirm.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>sendSftpKseiConfirm&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">265.44238</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">518.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">sendkonfirm</property>
+      <property
+         name="sdm:polyPoints">R46,288.0101,261.0459,477.0,261.5918,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">sendother</property>
+      <property
+         name="sdm:polyPoints">L54,476.9899,268.5918,288.0,268.0459,R54</property>
+   </ControlFlowCase>
+</SDM>

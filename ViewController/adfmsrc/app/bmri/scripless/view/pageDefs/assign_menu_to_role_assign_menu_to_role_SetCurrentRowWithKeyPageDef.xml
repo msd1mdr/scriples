@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="assign_menu_to_role_assign_menu_to_role_SetCurrentRowWithKeyPageDef"
+                Package="app.bmri.scripless.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="RoleMenuItemsAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="RoleMenuItemsAdminView1Iterator"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

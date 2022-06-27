@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="statusPengirimanPageDef"
+                Package="pages.investor.StatusPengiriman">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Filestmt2sentView1" RangeSize="15"
+              DataControl="BrokerModuleDataControl"
+              id="Filestmt2sentView1Iterator"/>
+    <searchRegion Criteria="Filestmt2sentViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Filestmt2sentView1Iterator"
+                  id="Filestmt2sentViewCriteriaQuery"/>
+    <iterator Binds="FileSendingQView1" RangeSize="10"
+              DataControl="BrokerModuleDataControl"
+              id="FileSendingQView1Iterator"/>
+    <searchRegion Binds="FileSendingQView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FileSendingQView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Filestmt2sentView1Iterator" id="Filestmt2sentView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.statuskirim.Filestmt2sentView"
+                      Name="Filestmt2sentView10">
+        <AttrNames>
+          <Item Value="KodeAb"/>
+          <Item Value="FileNumber"/>
+          <Item Value="SendMethod"/>
+          <Item Value="SentTime"/>
+          <Item Value="ErrorDesc"/>
+          <Item Value="SelectStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="FileSendingQView1Iterator" id="FileSendingQView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.statuskirim.FileSendingQView"
+                      Name="FileSendingQView10">
+        <AttrNames>
+          <Item Value="Recipient"/>
+          <Item Value="Filename"/>
+          <Item Value="SendMethod"/>
+          <Item Value="ExecuteTime"/>
+          <Item Value="Status"/>
+          <Item Value="Errormsg"/>
+          <Item Value="DownloadUrl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

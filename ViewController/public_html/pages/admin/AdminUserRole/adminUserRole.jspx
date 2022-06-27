@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Roles">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Admin User Role" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1" splitterPosition="250"
+                                inlineStyle="margin-right:5px;margin-left:5px;margin-top:3px;"
+                                disabled="true">
+                <f:facet name="first">
+                  <af:panelCollection id="pc1" featuresOff="detach">
+                    <af:table value="#{bindings.RolesAdminView1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.RolesAdminView1.rangeSize}"
+                              emptyText="#{bindings.RolesAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.RolesAdminView1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.RolesAdminView1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.RolesAdminView1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                              columnStretching="column:c1" varStatus="vs"
+                              binding="#{AdminUserRoleBackingBean.tblRoleList}"
+                              partialTriggers="::p1 ::d2 :::d3">
+                      <af:column id="c2" headerText="No" align="center"
+                                 width="20">
+                        <af:outputText value="#{vs.index+1}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.RolesAdminView1.hints.Name.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.RolesAdminView1.hints.Name.label}"
+                                 id="c1">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                          <af:spacer width="5" height="23" id="s1"/>
+                          <af:outputText value="#{row.Name}" id="ot1"/>
+                        </af:panelGroupLayout>
+                      </af:column>
+                    </af:table>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t6">
+                        <af:commandToolbarButton text="Add Role" id="ctbInsert">
+                          <af:showPopupBehavior popupId="p1"/>
+                        </af:commandToolbarButton>
+                        <af:popup id="p1"
+                                  popupFetchListener="#{AdminUserRoleBackingBean.addPopupFetchListener}"
+                                  popupCanceledListener="#{AdminUserRoleBackingBean.addPopupCancelListener}"
+                                  contentDelivery="lazyUncached">
+                          <af:dialog id="d2" title="Add New Role"
+                                     dialogListener="#{AdminUserRoleBackingBean.addDialogListener}">
+                            <af:panelFormLayout id="pfl1">
+                              <af:inputText value="#{bindings.Name.inputValue}"
+                                            label="#{bindings.Name.hints.label}"
+                                            required="#{bindings.Name.hints.mandatory}"
+                                            columns="#{bindings.Name.hints.displayWidth}"
+                                            maximumLength="#{bindings.Name.hints.precision}"
+                                            shortDesc="#{bindings.Name.hints.tooltip}"
+                                            id="it1"
+                                            inlineStyle="padding:1px;height:28px;"
+                                            contentStyle="padding:3px;width:252px;">
+                                <f:validator binding="#{bindings.Name.validator}"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:dialog>
+                        </af:popup>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="List Menu for #{bindings.Name.inputValue}"
+                               id="pb2" showDisclosure="false"
+                               partialTriggers="pc1:t1">
+                    <af:panelSplitter id="ps2">
+                      <f:facet name="first">
+                        <af:panelCollection id="pc2" featuresOff="detach"
+                                            inlineStyle="margin-left:8px;margin-right:8px;margin-top:5px;">
+                          <af:table value="#{bindings.RoleMenuItemsAdminView1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.RoleMenuItemsAdminView1.rangeSize}"
+                                    emptyText="#{bindings.RoleMenuItemsAdminView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.RoleMenuItemsAdminView1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.RoleMenuItemsAdminView1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.RoleMenuItemsAdminView1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t2" varStatus="vs"
+                                    partialTriggers=":::pc1:t1 :::pc1:d2 ::ctb2 :::d3"
+                                    columnStretching="column:c6"
+                                    binding="#{AdminUserRoleBackingBean.tblMenuList}">
+                            <af:column id="c4" headerText="No" width="20"
+                                       align="center">
+                              <af:outputText value="#{vs.index+1}" id="ot4"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.RoleMenuItemsAdminView1.hints.Label1.label}"
+                                       id="c7" width="200">
+                              <af:outputText value="#{row.Label1}" id="ot7"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RoleMenuItemsAdminView1.hints.Label.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.RoleMenuItemsAdminView1.hints.Label.label}"
+                                       id="c3" width="200">
+                              <af:panelGroupLayout id="pgl2"
+                                                   layout="horizontal">
+                                <af:spacer width="1" height="23" id="s2"/>
+                                <af:outputText value="#{row.Label}" id="ot3"/>
+                              </af:panelGroupLayout>
+                            </af:column>
+                            <af:column headerText="#{bindings.RoleMenuItemsAdminView1.hints.Shortcut.label}"
+                                       id="c5" align="center">
+                              <af:outputText value="#{row.Shortcut}" id="ot5"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.RoleMenuItemsAdminView1.hints.Icon.label}"
+                                       id="c6">
+                              <af:outputText value="#{row.Icon}" id="ot6"/>
+                            </af:column>
+                          </af:table>
+                          <f:facet name="statusbar">
+                            <af:toolbar id="t3">
+                              <af:outputText value="#{bindings.RoleMenuItemsAdminView1.estimatedRowCount} menu(s) assigned"
+                                             id="ot8" partialTriggers="t2"
+                                             binding="#{AdminUserRoleBackingBean.txtStatusCount}"/>
+                            </af:toolbar>
+                          </f:facet>
+                          <f:facet name="toolbar">
+                            <af:toolbar id="t5">
+                              <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                                       text="Reload"
+                                                       disabled="#{!bindings.Execute.enabled}"
+                                                       id="ctb2"/>
+                            </af:toolbar>
+                          </f:facet>
+                        </af:panelCollection>
+                      </f:facet>
+                    </af:panelSplitter>
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t4">
+                        <af:popup id="p2">
+                          <af:dialog id="d3" title="Delete Confirmation"
+                                     dialogListener="#{AdminUserRoleBackingBean.deleteDialogListener}">
+                            <af:panelGroupLayout id="panelgl0"
+                                                 layout="horizontal"
+                                                 halign="center">
+                              <af:outputText value="Are you sure want to delete role"
+                                             id="ot9"/>
+                              <af:spacer width="5" height="10" id="s6"/>
+                              <af:outputText value="#{bindings.Name.inputValue}"
+                                             id="ot10"
+                                             inlineStyle="font-weight:bold;"/>
+                              <af:spacer width="5" height="10" id="s7"/>
+                              <af:outputText value="?" id="ot11"/>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+                        <af:commandToolbarButton text="Delete Role"
+                                                 id="ctb3"
+                                                 disabled="#{bindings.RoleMenuItemsAdminView1Iterator.estimatedRowCount > 0}"
+                                                 partialTriggers="pc2:t2 pc1:t1"
+                                                 binding="#{AdminUserRoleBackingBean.btnDeleteRole}">
+                          <af:showPopupBehavior popupId="p2"/>
+                        </af:commandToolbarButton>
+                        <af:commandToolbarButton text="Assign / Remove Menu"
+                                                 id="ctb1" action="assignmenu"
+                                                 useWindow="true"
+                                                 windowHeight="250"
+                                                 windowWidth="500"
+                                                 windowModalityType="modeless"
+                                                 returnListener="#{AdminUserRoleBackingBean.returnListener}">
+                          <af:setPropertyListener from="#{bindings.Id.inputValue}"
+                                                  to="#{pageFlowScope.editKey}"
+                                                  type="action"/>
+                          <af:setPropertyListener from="#{bindings.Name.inputValue}"
+                                                  to="#{pageFlowScope.roleName}"
+                                                  type="action"/>
+                        </af:commandToolbarButton>
+                      </af:toolbar>
+                    </f:facet>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

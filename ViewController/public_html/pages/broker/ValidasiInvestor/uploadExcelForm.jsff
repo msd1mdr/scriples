@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+    <af:panelGroupLayout id="pgl2" layout="vertical"
+                         inlineStyle='background-image:url("../images/icons/excel-upload.png"); background-repeat:no-repeat; height:267px; background-position:50% 50%;'>
+      <af:spacer width="10" height="100" id="s4"/>
+      <af:panelFormLayout id="pfl0">
+        <af:panelGroupLayout id="pgl5" layout="horizontal">
+          <af:inputFile id="if1" label=" "
+                        value="#{backingBeanScope.ValidasiInvestorUploadExcelManagedBean.ufExcel}"
+                        binding="#{backingBeanScope.ValidasiInvestorUploadExcelManagedBean.rifExcel}"/>
+          <af:spacer width="10" height="10" id="s1"/>
+          <af:commandButton id="cb3" partialSubmit="true"
+                            action="#{backingBeanScope.ValidasiInvestorUploadExcelManagedBean.uploadAction}"
+                            text="Upload">
+            <af:clientListener method="enforcePreventUserInput" type="action"/>
+          </af:commandButton>
+          <af:spacer width="15" height="10" id="s5"/>
+        </af:panelGroupLayout>
+        <af:message messageType="error" id="msg"/>
+      </af:panelFormLayout>
+      <af:spacer width="10" height="20" id="s2"/>
+      <af:panelGroupLayout id="pgl3" layout="horizontal">
+        <af:outputText value="Excel template file for data upload can be download from" id="ot1"/>
+        <af:spacer width="4" height="10" id="s3"/>
+        <af:goLink text="here" id="gb1" targetFrame="_blank"
+                   destination="/download/upload-excel-validasi-investor.zip"
+                   inlineStyle="color:Blue; font-weight:bold;"/>
+        <af:outputText value="." id="ot2"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

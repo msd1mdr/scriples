@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="new-user-access">
+    <default-activity id="__1">CreateInsert</default-activity>
+    <transaction id="__18">
+      <new-transaction/>
+    </transaction>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="newUserAccess">
+      <page>/pages/admin/AdminUserAccess/newUserAccess.jspx</page>
+    </view>
+    <task-flow-return id="saveReturn">
+      <outcome id="__8">
+        <name>saveReturn</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="cancelReturn">
+      <outcome id="__14">
+        <name>cancelReturn</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">CreateInsert</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__5">CreateInsert</from-outcome>
+        <to-activity-id id="__7">newUserAccess</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id id="__10">newUserAccess</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome id="__13">saveclose</from-outcome>
+        <to-activity-id id="__11">saveReturn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome id="__17">rollbackclose</from-outcome>
+        <to-activity-id id="__15">cancelReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="uploadedDataConfirmPageDef"
+                Package="pages.broker.ValidasiInvestor">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ValidationTmpView1" RangeSize="7"
+              DataControl="InvestorModuleDataControl"
+              id="ValidationTmpView1Iterator"/>
+    <searchRegion Binds="ValidationTmpView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ValidationTmpView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ValidationTmpView1Iterator" id="ValidationTmpView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.valinvestor.ValidationTmpView"
+                      Name="ValidationTmpView10">
+        <AttrNames>
+          <Item Value="Participantid"/>
+          <Item Value="Sidnumber"/>
+          <Item Value="Accountnumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

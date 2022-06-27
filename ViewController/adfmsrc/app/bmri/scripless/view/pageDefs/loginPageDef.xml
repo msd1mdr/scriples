@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="loginPageDef"
+                Package="app.bmri.scripless.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="authenticateUser"
+                  InstanceName="SecurityModuleDataControl.dataProvider"
+                  DataControl="SecurityModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="authenticateUser" IsViewObjectMethod="false"
+                  ReturnName="data.SecurityModuleDataControl.methodResults.authenticateUser_SecurityModuleDataControl_dataProvider_authenticateUser_result">
+      <NamedData NDName="userLogin" NDValue="#{Login.inputLogin.value}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userPassword" NDValue="#{Login.inputPassword.value}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setLoginToSession_AdminModule"
+                  InstanceName="AdminModuleDataControl.dataProvider"
+                  DataControl="AdminModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setLoginToSession_AdminModule"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="key" NDValue="UserId" NDType="java.lang.String"/>
+      <NamedData NDName="val" NDValue="#{UserData.userNameLogin}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setLoginToSession_InvestorModule"
+                  InstanceName="InvestorModuleDataControl.dataProvider"
+                  DataControl="InvestorModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setLoginToSession_InvestorModule"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="key" NDValue="UserId" NDType="java.lang.String"/>
+      <NamedData NDName="val" NDValue="#{UserData.userNameLogin}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setLoginToSession_BrokerModule"
+                  InstanceName="BrokerModuleDataControl.dataProvider"
+                  DataControl="BrokerModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setLoginToSession_BrokerModule"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="key" NDValue="UserId" NDType="java.lang.String"/>
+      <NamedData NDName="val" NDValue="#{UserData.userNameLogin}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="setLoginToSession_KSEIModule"
+                  InstanceName="KSEIModuleDataControl.dataProvider"
+                  DataControl="KSEIModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="setLoginToSession_KSEIModule"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="key" NDValue="UserId" NDType="java.lang.String"/>
+      <NamedData NDName="val" NDValue="#{UserData.userNameLogin}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

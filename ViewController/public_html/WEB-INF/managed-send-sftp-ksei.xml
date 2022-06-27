@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="managed-send-sftp-ksei">
+    <default-activity id="__1">sendSftpKsei</default-activity>
+    <managed-bean id="__13">
+      <managed-bean-name id="__14">SendFileSftpKsei</managed-bean-name>
+      <managed-bean-class id="__15">app.bmri.scripless.backing.sendfilesftp.SendFileSftpKsei</managed-bean-class>
+      <managed-bean-scope id="__12">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="sendSftpKsei">
+      <page>/pages/ksei/PengirimanFileSFTP/sendSftpKsei.jsff</page>
+    </view>
+    <view id="sendSftpKseiConfirm">
+      <page>/pages/ksei/PengirimanFileSFTP/sendSftpKseiConfirm.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">sendSftpKsei</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">sendkonfirm</from-outcome>
+        <to-activity-id id="__5">sendSftpKseiConfirm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">sendSftpKseiConfirm</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">sendother</from-outcome>
+        <to-activity-id id="__10">sendSftpKsei</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

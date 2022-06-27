@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Investor">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Investor" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelGroupLayout layout="default" id="pgl1"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:5px;">
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                  <f:facet name="toolbar">
+                        <af:toolbar id="t1">
+                          <af:panelGroupLayout id="pgl3" layout="horizontal">
+                        <af:commandToolbarButton text="Download"
+                                                 id="ctb2">
+                          <af:fileDownloadActionListener contentType="text/plain; charset=utf-8"
+                                                         filename="scripless-investor.csv"
+                                                         method="#{viewScope.InvestorManagedBean.fileDownloadListener}"/>
+                        </af:commandToolbarButton>
+                        <af:commandToolbarButton
+                                                     text="#{viewcontrollerBundle.REFRESH}"
+                                                     disabled="#{!bindings.Execute.enabled}"
+                                                     id="ctb1"
+                                                     actionListener="#{bindings.Execute.execute}"/>
+                          </af:panelGroupLayout>
+                        </af:toolbar>
+                      </f:facet>
+                  <af:table value="#{bindings.InvestorView1.collectionModel}"
+                            var="row" rows="#{bindings.InvestorView1.rangeSize}"
+                            emptyText="#{bindings.InvestorView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.InvestorView1.rangeSize}"
+                            rowBandingInterval="0" scrollPolicy="page" autoHeightRows="0"
+                            selectedRowKeys="#{bindings.InvestorView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.InvestorView1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="resId1"
+                            partialTriggers="::ctb1 :::qq1" styleClass="AFStretchWidth">
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.NoRekening.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.NoRekening.label}"
+                               id="resId1c1" align="center">
+                      <af:panelGroupLayout id="pgl2" layout="horizontal">
+                        <af:outputText value="#{row.NoRekening}" id="ot2">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.InvestorView1.hints.NoRekening.format}"/>
+                        </af:outputText>
+                        <af:spacer width="10" height="23" id="s2"/>
+                      </af:panelGroupLayout>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.KodeInvestor.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.KodeInvestor.label}"
+                               id="resId1c2" align="center">
+                      <af:outputText value="#{row.KodeInvestor}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.Sid.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.Sid.label}"
+                               id="resId1c3" align="center">
+                      <af:outputText value="#{row.Sid}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.NamaInvestor.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.NamaInvestor.label}"
+                               id="resId1c4" width="250">
+                      <af:outputText value="#{row.NamaInvestor}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.KodeAb.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.KodeAb.label}"
+                               id="resId1c5" align="center">
+                      <af:outputText value="#{row.KodeAb}" id="ot3"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Field1.label}"
+                               id="c1" visible="false">
+                      <af:outputText value="#{row.Field1}" id="ot9"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Excpt1.label}"
+                               id="c2" visible="false">
+                      <af:outputText value="#{row.Excpt1}" id="ot10"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Excpt2.label}"
+                               id="c3" visible="false">
+                      <af:outputText value="#{row.Excpt2}" id="ot11"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Acctno.label}"
+                               id="c4" visible="false">
+                      <af:outputText value="#{row.Acctno}" id="ot12" visible="false">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Acctno.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Actype.label}"
+                               id="c5" visible="false">
+                      <af:outputText value="#{row.Actype}" id="ot13"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Partid.label}"
+                               id="c6" visible="false">
+                      <af:outputText value="#{row.Partid}" id="ot14"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Partnm.label}"
+                               id="c7" visible="false">
+                      <af:outputText value="#{row.Partnm}" id="ot15"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Ivstnm.label}"
+                               id="c8" visible="false">
+                      <af:outputText value="#{row.Ivstnm}" id="ot16"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Ivstid.label}"
+                               id="c9" visible="false">
+                      <af:outputText value="#{row.Ivstid}" id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.Subacn.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.Subacn.label}"
+                               id="resId1c6" align="center">
+                      <af:outputText value="#{row.Subacn}" id="ot6"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjcrt8.label}"
+                               id="c10" visible="false">
+                      <af:outputText value="#{row.Bjcrt8}" id="ot18">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjcrt8.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjstat.label}"
+                               id="c11" visible="false">
+                      <af:outputText value="#{row.Bjstat}" id="ot19"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjvusr.label}"
+                               id="c12" visible="false">
+                      <af:outputText value="#{row.Bjvusr}" id="ot20"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjvdt8.label}"
+                               id="c13" visible="false">
+                      <af:outputText value="#{row.Bjvdt8}" id="ot21">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjvdt8.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjvtme.label}"
+                               id="c14" visible="false">
+                      <af:outputText value="#{row.Bjvtme}" id="ot22">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjvtme.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.Bjvald.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.Bjvald.label}"
+                               id="resId1c7" align="center">
+                      <af:outputText value="#{row.Bjvald}" id="ot1">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjvald.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bjseqn.label}"
+                               id="c15" visible="false">
+                      <af:outputText value="#{row.Bjseqn}" id="ot23">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjseqn.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.InvestorView1.hints.Bjcbal.name}"
+                               sortable="true"
+                               headerText="#{bindings.InvestorView1.hints.Bjcbal.label}"
+                               id="resId1c8" align="right">
+                      <af:outputText value="#{row.Bjcbal}" id="ot8">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.InvestorView1.hints.Bjcbal.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejsc1.label}"
+                               id="c16" visible="false">
+                      <af:outputText value="#{row.Bejsc1}" id="ot24"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejsc2.label}"
+                               id="c17" visible="false">
+                      <af:outputText value="#{row.Bejsc2}" id="ot25"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejsc3.label}"
+                               id="c18" visible="false">
+                      <af:outputText value="#{row.Bejsc3}" id="ot26"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejsc4.label}"
+                               id="c19" visible="false">
+                      <af:outputText value="#{row.Bejsc4}" id="ot27"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejfl1.label}"
+                               id="c20" visible="false">
+                      <af:outputText value="#{row.Bejfl1}" id="ot28"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.InvestorView1.hints.Bejfl2.label}"
+                               id="c21" visible="false">
+                      <af:outputText value="#{row.Bejfl2}" id="ot29"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelGroupLayout>
+              <f:facet name="toolbar">
+                  <af:toolbar id="t2">
+                    <af:quickQuery label="Search" searchDesc="Search" id="qq1"
+                                   value="#{bindings.InvestorViewCriteriaQuery.queryDescriptor}"
+                                   model="#{bindings.InvestorViewCriteriaQuery.queryModel}"
+                                   queryListener="#{bindings.InvestorViewCriteriaQuery.processQuery}"
+                                   queryOperationListener="#{bindings.InvestorViewCriteriaQuery.processQueryOperation}"
+                                   inlineStyle="width:200px;">
+                      <f:facet name="end">
+                        <af:commandLink text="Advanced" rendered="false"
+                                        id="cl4"/>
+                      </f:facet>
+                    </af:quickQuery>
+                  </af:toolbar>
+              </f:facet>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

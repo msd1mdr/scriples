@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | JSF Configs">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="JSF Configs" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelCollection id="pc1"
+                                  inlineStyle="margin-left:8px;margin-right:8px;margin-top:5px;"
+                                  styleClass="AFStretchWidth">
+                <f:facet name="toolbar">
+                  <af:toolbar id="t1">
+                    <af:commandToolbarButton text="Add New" id="ctbInsert">
+                      <af:showPopupBehavior popupId="p1"/>
+                    </af:commandToolbarButton>
+                    <af:popup id="p1" contentDelivery="lazyUncached"
+                              popupFetchListener="#{JsfConfigsManagedBean.editPopupFetchListener}"
+                              popupCanceledListener="#{JsfConfigsManagedBean.editPopupCancelListener}">
+                      <af:dialog id="d2" title="Param Config Add"
+                                 affirmativeTextAndAccessKey="Save"
+                                 cancelTextAndAccessKey="Cancel"
+                                 dialogListener="#{JsfConfigsManagedBean.editDialogListener}">
+                        <af:panelFormLayout id="pfl1">
+                          <af:inputText value="#{bindings.ConfigKey.inputValue}"
+                                        label="#{bindings.ConfigKey.hints.label}"
+                                        required="#{bindings.ConfigKey.hints.mandatory}"
+                                        columns="#{bindings.ConfigKey.hints.displayWidth}"
+                                        maximumLength="#{bindings.ConfigKey.hints.precision}"
+                                        shortDesc="#{bindings.ConfigKey.hints.tooltip}"
+                                        id="it3"
+                                        contentStyle="width:300px; font-weight:bold;"
+                                        readOnly="#{bindings.RowStatus.inputValue == 1}">
+                            <f:validator binding="#{bindings.ConfigKey.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.ConfigValue.inputValue}"
+                                        label="#{bindings.ConfigValue.hints.label}"
+                                        required="#{bindings.ConfigValue.hints.mandatory}"
+                                        columns="#{bindings.ConfigValue.hints.displayWidth}"
+                                        maximumLength="#{bindings.ConfigValue.hints.precision}"
+                                        shortDesc="#{bindings.ConfigValue.hints.tooltip}"
+                                        id="it5"
+                                        rows="2" contentStyle="width:500px;"
+                                        inlineStyle="width:500px;">
+                            <f:validator binding="#{bindings.ConfigValue.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.ConfigDesc.inputValue}"
+                                        label="#{bindings.ConfigDesc.hints.label}"
+                                        required="#{bindings.ConfigDesc.hints.mandatory}"
+                                        columns="#{bindings.ConfigDesc.hints.displayWidth}"
+                                        maximumLength="#{bindings.ConfigDesc.hints.precision}"
+                                        shortDesc="#{bindings.ConfigDesc.hints.tooltip}"
+                                        id="it4"
+                                        rows="2" contentStyle="width:500px;"
+                                        inlineStyle="width:500px;">
+                            <f:validator binding="#{bindings.ConfigDesc.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.ConfigType.inputValue}"
+                                        label="#{bindings.ConfigType.hints.label}"
+                                        required="#{bindings.ConfigType.hints.mandatory}"
+                                        columns="#{bindings.ConfigType.hints.displayWidth}"
+                                        maximumLength="#{bindings.ConfigType.hints.precision}"
+                                        shortDesc="#{bindings.ConfigType.hints.tooltip}"
+                                        id="it2" contentStyle="width:100px;">
+                            <f:validator binding="#{bindings.ConfigType.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.ConfigVersion.inputValue}"
+                                        label="#{bindings.ConfigVersion.hints.label}"
+                                        required="#{bindings.ConfigVersion.hints.mandatory}"
+                                        columns="#{bindings.ConfigVersion.hints.displayWidth}"
+                                        maximumLength="#{bindings.ConfigVersion.hints.precision}"
+                                        shortDesc="#{bindings.ConfigVersion.hints.tooltip}"
+                                        id="it1" contentStyle="width:100px;">
+                            <f:validator binding="#{bindings.ConfigVersion.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ConfigVersion.format}"/>
+                          </af:inputText>
+                        </af:panelFormLayout>
+                      </af:dialog>
+                    </af:popup>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:quickQuery label="Search" searchDesc="Search" id="qq1"
+                                   value="#{bindings.JsfConfigsViewCriteriaQuery.queryDescriptor}"
+                                   model="#{bindings.JsfConfigsViewCriteriaQuery.queryModel}"
+                                   queryListener="#{bindings.JsfConfigsViewCriteriaQuery.processQuery}"
+                                   queryOperationListener="#{bindings.JsfConfigsViewCriteriaQuery.processQueryOperation}">
+                      <f:facet name="end">
+                        <af:commandLink text="Advanced" rendered="false"
+                                        id="cl4"/>
+                      </f:facet>
+                    </af:quickQuery>
+                  </af:toolbar>
+                </f:facet>
+                <af:table value="#{bindings.JsfConfigsView1.collectionModel}"
+                          var="row" styleClass="AFStretchWidth"
+                          rows="#{bindings.JsfConfigsView1.rangeSize}"
+                          emptyText="#{bindings.JsfConfigsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.JsfConfigsView1.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.JsfConfigsView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.JsfConfigsView1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="resId1"
+                          partialTriggers="::qq1"
+                          columnStretching="column:resId1c4"
+                          binding="#{JsfConfigsManagedBean.jsfConfigTbl}">
+                  <af:column id="c1" align="center" headerText="Actions"
+                             width="110">
+                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                      <af:commandButton text="Edit" id="cb1">
+                        <af:showPopupBehavior popupId="::p1"/>
+                      </af:commandButton>
+                      <af:spacer width="5" height="10" id="s3"/>
+                      <af:commandButton text="Delete" id="cb2">
+                        <af:showPopupBehavior popupId="p2"/>
+                      </af:commandButton>
+                      <af:popup id="p2">
+                        <af:dialog id="d3" title="Delete Confirmation"
+                                   dialogListener="#{JsfConfigsManagedBean.deleteDialogListener}">
+                          <af:panelGroupLayout id="panelgl0"
+                                                 layout="horizontal"
+                                                 halign="center">
+                              <af:outputText value="Are you sure want to delete parameter"
+                                             id="ot5"/>
+                              <af:spacer width="5" height="10" id="s6"/>
+                              <af:outputText value="#{bindings.ConfigKey.inputValue}"
+                                             id="ot6"
+                                             inlineStyle="font-weight:bold;"/>
+                              <af:spacer width="5" height="10" id="s7"/>
+                              <af:outputText value="?" id="ot7"/>
+                            </af:panelGroupLayout>
+                        </af:dialog>
+                      </af:popup>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.JsfConfigsView1.hints.ConfigKey.name}"
+                             sortable="true"
+                             headerText="#{bindings.JsfConfigsView1.hints.ConfigKey.label}"
+                             id="resId1c1" width="200">
+                    <af:panelGroupLayout id="pgl1" layout="horizontal">
+                      <af:outputText value="#{row.ConfigKey}" id="ot2"/>
+                      <af:spacer width="10" height="23" id="s1"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.JsfConfigsView1.hints.ConfigDesc.name}"
+                             sortable="true"
+                             headerText="#{bindings.JsfConfigsView1.hints.ConfigDesc.label}"
+                             id="resId1c2" width="250">
+                    <af:outputText value="#{row.ConfigDesc}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.JsfConfigsView1.hints.ConfigType.name}"
+                             sortable="true"
+                             headerText="#{bindings.JsfConfigsView1.hints.ConfigType.label}"
+                             id="resId1c3" width="100">
+                    <af:outputText value="#{row.ConfigType}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.JsfConfigsView1.hints.ConfigValue.name}"
+                             sortable="true"
+                             headerText="#{bindings.JsfConfigsView1.hints.ConfigValue.label}"
+                             id="resId1c4" width="250">
+                    <af:outputText value="#{row.ConfigValue}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.JsfConfigsView1.hints.ConfigVersion.name}"
+                             sortable="true"
+                             headerText="#{bindings.JsfConfigsView1.hints.ConfigVersion.label}"
+                             id="resId1c5" width="60" align="center">
+                    <af:outputText value="#{row.ConfigVersion}" id="ot3">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.JsfConfigsView1.hints.ConfigVersion.format}"/>
+                    </af:outputText>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

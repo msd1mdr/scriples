@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="generateStatementEomPageDef"
+                Package="pages.investor.GenerateStatementEom">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="FileSendingQEomView1" RangeSize="25"
+              DataControl="InvestorModuleDataControl"
+              id="FileSendingQEomView1Iterator"/>
+    <searchRegion Binds="FileSendingQEomView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FileSendingQEomView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="FileSendingQEomView1Iterator" id="FileSendingQEomView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.genstmteom.FileSendingQEomView"
+                      Name="FileSendingQEomView10">
+        <AttrNames>
+          <Item Value="SubmitId"/>
+          <Item Value="Filename"/>
+          <Item Value="SendMethod"/>
+          <Item Value="Recipient"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="FileSendingQEomView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

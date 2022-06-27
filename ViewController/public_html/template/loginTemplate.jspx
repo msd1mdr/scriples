@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>loginTemplate</display-name>
+        <facet>
+          <description>main login frame</description>
+          <facet-name>login</facet-name>
+        </facet>
+        <facet>
+          <description>additional attribute</description>
+          <facet-name>additional</facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+    <!--af:panelStretchLayout endWidth="500px" id="pt_psl1"
+                           inlineStyle='background-image:url("../images/wp-aurora-blue.png");'-->
+    <af:panelStretchLayout endWidth="500px" id="pt_psl1">
+      <f:facet name="center">
+        <af:facetRef facetName="additional"/>
+        <!-- id="af_twocol_right_sidebar_stretched"   -->
+      </f:facet>
+      <f:facet name="end">
+        <af:panelStretchLayout id="pt_psl2"
+                               inlineStyle="background-color:White;"
+                               startWidth="39px">
+          <f:facet name="center">
+            <af:panelStretchLayout id="pt_psl3" topHeight="188px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout id="pt_pgl1" layout="vertical"
+                                     valign="middle">
+                  <af:spacer width="10" height="17" id="pt_s3"/>
+                  <af:panelGroupLayout id="pt_pgl4">
+                    <af:spacer width="10" height="10" id="pt_s6"/>
+                    <af:outputText value="© 2016 - 2020 PT Bank Mandiri (Persero) Tbk."
+                                   id="pt_ot1"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:facetRef facetName="login"/>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pt_pgl2" layout="vertical">
+                  <af:spacer height="60" id="pt_s2"
+                             styleClass="AFStretchWidth"/>
+                  <af:panelGroupLayout id="pt_pgl3" layout="horizontal">
+                    <af:spacer width="13" height="10" id="pt_s5"/>
+                    <af:panelGroupLayout id="pt_pgl5" layout="vertical">
+                      <af:image source="/images/logo-bmri.png"
+                                shortDesc="Bank Mandiri" id="pt_i1"/>
+                      <af:spacer width="10" height="10" id="pt_s7"/>
+                      <af:outputText value="Scripless Interface, update version 1.1" id="pt_ot2"
+                                     inlineStyle="font-size:small; font-weight:bold; color:rgb(202,220,230);"/>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="start">
+            <af:spacer width="50" height="100" id="pt_s1"/>
+          </f:facet>
+          <f:facet name="end">
+            <af:spacer width="10" height="10" id="pt_s4"/>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>

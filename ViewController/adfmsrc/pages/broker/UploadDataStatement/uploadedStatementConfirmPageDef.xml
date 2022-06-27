@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="uploadedStatementConfirmPageDef"
+                Package="pages.broker.UploadDataStatement">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="StatementTmpView1" RangeSize="15"
+              DataControl="InvestorModuleDataControl"
+              id="StatementTmpView1Iterator"/>
+    <searchRegion Binds="StatementTmpView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StatementTmpView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="StatementTmpView1Iterator" id="StatementTmpView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.uploadstmt.StatementTmpView"
+                      Name="StatementTmpView10">
+        <AttrNames>
+          <Item Value="Extref"/>
+          <Item Value="Seqnum"/>
+          <Item Value="Ac"/>
+          <Item Value="Curcod"/>
+          <Item Value="Valdate"/>
+          <Item Value="Openbal"/>
+          <Item Value="Accref"/>
+          <Item Value="Trxtype"/>
+          <Item Value="Dc"/>
+          <Item Value="Cashval"/>
+          <Item Value="Description"/>
+          <Item Value="Closebal"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

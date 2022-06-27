@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="managed-valinv-upload-excel">
+    <default-activity id="__5">uploadExcelForm</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__2">ValidasiInvestorUploadExcelManagedBean</managed-bean-name>
+      <managed-bean-class id="__1">app.bmri.scripless.backing.valinv.ValidasiInvestorUploadExcelManagedBean</managed-bean-class>
+      <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="uploadExcelForm">
+      <page>/pages/broker/ValidasiInvestor/uploadExcelForm.jsff</page>
+    </view>
+    <view id="uploadedDataConfirm">
+      <page>/pages/broker/ValidasiInvestor/uploadedDataConfirm.jsff</page>
+    </view>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">uploadExcelForm</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome id="__10">successupload</from-outcome>
+        <to-activity-id id="__9">uploadedDataConfirm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">uploadedDataConfirm</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">reupload</from-outcome>
+        <to-activity-id id="__14">uploadExcelForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

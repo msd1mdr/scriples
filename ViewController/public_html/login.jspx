@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Login">
+      <af:form id="f1" defaultCommand="pt1:cb1">
+        <af:pageTemplate viewId="/template/loginTemplate.jspx" id="pt1">
+          <f:facet name="login">
+            <af:panelStretchLayout id="psl1">
+              <f:facet name="center">
+                <af:panelFormLayout id="pfl1" styleClass="AFStretchWidth">
+                  <af:inputText id="it1" label=" "
+                                requiredMessageDetail="Username is required"
+                                binding="#{Login.inputLogin}" autoSubmit="true"
+                                contentStyle="height:25px; width:340px; font-size:small;"
+                                placeholder="Username"/>
+                  <af:inputText id="it2" secret="true" label=" "
+                                requiredMessageDetail="Password is required"
+                                binding="#{Login.inputPassword}" autoSubmit="true"
+                                contentStyle="height:25px; width:340px; font-size:small;"
+                                placeholder="Password"/>
+                  <af:spacer width="10" height="40" id="s2"/>
+                  <af:commandButton text="Sign in" id="cb1" partialSubmit="true"
+                                    inlineStyle="padding-bottom:5px; padding-top:5px; padding-left:20px; padding-right:20px; font-size:small;"
+                                    action="#{Login.loginAction}"/>
+                  <af:spacer width="10" height="30" id="s4"/>
+                  <af:messages id="m2" inline="true"/>
+                </af:panelFormLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     id="pgl1">
+                  <af:spacer width="13" height="10" id="s3"/>
+                  <af:outputText value="Sign in with your personal scripless account"
+                                 id="ot1" inlineStyle="font-size:small;"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="additional">
+            <af:spacer width="10" height="10" id="s1"/>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

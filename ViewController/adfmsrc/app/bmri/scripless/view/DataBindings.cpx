@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="app.bmri.scripless.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/scriplessDash.jspx"
+          usageId="app_bmri_scripless_view_scriplessDashPageDef"/>
+    <page path="/pages/admin/AdminMenu/adminMenu.jspx"
+          usageId="app_bmri_scripless_view_adminMenuPageDef"/>
+    <page path="/pages/admin/AdminUserRole/adminUserRole.jspx"
+          usageId="app_bmri_scripless_view_adminUserRolePageDef"/>
+    <page path="/pages/broker/MonitoringInvestorMessage/monitoringInvestorMessage.jspx"
+          usageId="app_bmri_scripless_view_monitoringInvestorMessagePageDef"/>
+    <page path="/pages/broker/ResendStatement/resendStatement.jspx"
+          usageId="app_bmri_scripless_view_resendStatementPageDef"/>
+    <page path="/pages/broker/UploadDataStatement/uploadDataStatement.jspx"
+          usageId="app_bmri_scripless_view_uploadDataStatementPageDef"/>
+    <page path="/pages/broker/UploadDataStatic/uploadDataStatic.jspx"
+          usageId="app_bmri_scripless_view_uploadDataStaticPageDef"/>
+    <page path="/pages/broker/ValidasiInvestor/validasiInvestor.jspx"
+          usageId="app_bmri_scripless_view_validasiinvestorPageDef"/>
+    <page path="/pages/investor/AnggotaBursa/anggotaBursa.jspx"
+          usageId="app_bmri_scripless_view_anggotaBursaPageDef"/>
+    <page path="/pages/investor/BrokerTerminalMonitoring/brokerTerminalMonitoring.jspx"
+          usageId="app_bmri_scripless_view_brokerTerminalMonitoringPageDef"/>
+    <page path="/pages/investor/Investor/investor.jspx"
+          usageId="app_bmri_scripless_view_investorPageDef"/>
+    <page path="/pages/investor/StatusPengiriman/statusPengiriman.jspx"
+          usageId="app_bmri_scripless_view_statusPengirimanPageDef"/>
+    <page path="/pages/broker/ValidasiInvestor/uploadExcelForm.jsff"
+          usageId="app_bmri_scripless_view_uploadExcelFormPageDef"/>
+    <page path="/pages/broker/ValidasiInvestor/uploadedDataConfirm.jsff"
+          usageId="app_bmri_scripless_view_uploadedDataConfirmPageDef"/>
+    <page path="/pages/broker/UploadDataStatement/uploadedStatementConfirm.jsff"
+          usageId="app_bmri_scripless_view_uploadedStatementConfirmPageDef"/>
+    <page path="/pages/broker/UploadDataStatic/uploadedStaticConfirm.jsff"
+          usageId="app_bmri_scripless_view_uploadedStaticConfirmPageDef"/>
+    <page path="/pages/investor/GenerateStatementEom/generateStatementEom.jspx"
+          usageId="app_bmri_scripless_view_generateStatementEomPageDef"/>
+    <page path="/login.jspx" usageId="app_bmri_scripless_view_loginPageDef"/>
+    <page path="/error.jspx" usageId="app_bmri_scripless_view_errorPageDef"/>
+    <page path="/pages/admin/AdminUserAccess/adminUserAccess.jspx"
+          usageId="app_bmri_scripless_view_adminUserAccessPageDef"/>
+    <page path="/pages/admin/AdminUserRole/assignMenuToRole.jspx"
+          usageId="app_bmri_scripless_view_assignMenuToRolePageDef"/>
+    <page path="/WEB-INF/assign-menu-to-role.xml#assign-menu-to-role@SetCurrentRowWithKeyValue"
+          usageId="app_bmri_scripless_view_assign_menu_to_role_assign_menu_to_role_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/WEB-INF/assign-role-to-user.xml#assign-role-to-user@SetCurrentRowWithKeyValue"
+          usageId="app_bmri_scripless_view_assign_role_to_user_assign_role_to_user_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/pages/admin/AdminUserAccess/assignRoleToUser.jspx"
+          usageId="app_bmri_scripless_view_assignRoleToUserPageDef"/>
+    <page path="/WEB-INF/change-password.xml#change-password@ExecuteWithParams"
+          usageId="app_bmri_scripless_view_change_password_change_password_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/new-user-access.xml#new-user-access@CreateInsert"
+          usageId="app_bmri_scripless_view_new_user_access_new_user_access_CreateInsertPageDef"/>
+    <page path="/pages/admin/AdminUserAccess/newUserAccess.jspx"
+          usageId="app_bmri_scripless_view_newUserAccessPageDef"/>
+    <page path="/pages/admin/AdminUserAccess/editUserAccess.jspx"
+          usageId="app_bmri_scripless_view_editUserAccessPageDef"/>
+    <page path="/WEB-INF/edit-user-access.xml#edit-user-access@SetCurrentRowWithKeyValue"
+          usageId="app_bmri_scripless_view_edit_user_access_edit_user_access_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/pages/admin/JsfConfigs/jsfConfigs.jspx"
+          usageId="app_bmri_scripless_view_jsfConfigsPageDef"/>
+    <page path="/pages/ksei/FTPFileList/ftpFileList.jspx"
+          usageId="app_bmri_scripless_view_ftpFileListPageDef"/>
+    <page path="/pages/ksei/ListDataStatement/listDataStatement.jspx"
+          usageId="app_bmri_scripless_view_listDataStatementPageDef"/>
+    <page path="/pages/ksei/PengirimanFileSFTP/pengirimanFileSftp.jspx"
+          usageId="app_bmri_scripless_view_pengirimanFileSftpPageDef"/>
+    <page path="/pages/ksei/ListDataBalance/listDataBalance.jspx"
+          usageId="app_bmri_scripless_view_listDataBalancePageDef"/>
+    <page path="/pages/ksei/ListDataStatic/listDataStatic.jspx"
+          usageId="app_bmri_scripless_view_listDataStaticPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="app_bmri_scripless_view_scriplessDashPageDef"
+          path="pages.scriplessDashPageDef"/>
+    <page id="app_bmri_scripless_view_adminMenuPageDef"
+          path="pages.admin.AdminMenu.adminMenuPageDef"/>
+    <page id="app_bmri_scripless_view_adminUserRolePageDef"
+          path="pages.admin.AdminUserRole.adminUserRolePageDef"/>
+    <page id="app_bmri_scripless_view_monitoringInvestorMessagePageDef"
+          path="pages.broker.MonitoringInvestorMessage.monitoringInvestorMessagePageDef"/>
+    <page id="app_bmri_scripless_view_resendStatementPageDef"
+          path="pages.broker.ResendStatement.resendStatementPageDef"/>
+    <page id="app_bmri_scripless_view_uploadDataStatementPageDef"
+          path="pages.broker.UploadDataStatement.uploadDataStatementPageDef"/>
+    <page id="app_bmri_scripless_view_uploadDataStaticPageDef"
+          path="pages.broker.UploadDataStatic.uploadDataStaticPageDef"/>
+    <page id="app_bmri_scripless_view_validasiinvestorPageDef"
+          path="pages.broker.ValidasiInvestor.validasiinvestorPageDef"/>
+    <page id="app_bmri_scripless_view_anggotaBursaPageDef"
+          path="pages.investor.AnggotaBursa.anggotaBursaPageDef"/>
+    <page id="app_bmri_scripless_view_brokerTerminalMonitoringPageDef"
+          path="pages.investor.BrokerTerminalMonitoring.brokerTerminalMonitoringPageDef"/>
+    <page id="app_bmri_scripless_view_investorPageDef"
+          path="pages.investor.Investor.investorPageDef"/>
+    <page id="app_bmri_scripless_view_statusPengirimanPageDef"
+          path="pages.investor.StatusPengiriman.statusPengirimanPageDef"/>
+    <page id="app_bmri_scripless_view_uploadExcelFormPageDef"
+          path="pages.broker.ValidasiInvestor.uploadExcelFormPageDef"/>
+    <page id="app_bmri_scripless_view_uploadedDataConfirmPageDef"
+          path="pages.broker.ValidasiInvestor.uploadedDataConfirmPageDef"/>
+    <page id="app_bmri_scripless_view_uploadedStatementConfirmPageDef"
+          path="pages.broker.UploadDataStatement.uploadedStatementConfirmPageDef"/>
+    <page id="app_bmri_scripless_view_uploadedStaticConfirmPageDef"
+          path="pages.broker.UploadDataStatic.uploadedStaticConfirmPageDef"/>
+    <page id="app_bmri_scripless_view_generateStatementEomPageDef"
+          path="pages.investor.GenerateStatementEom.generateStatementEomPageDef"/>
+    <page id="app_bmri_scripless_view_loginPageDef"
+          path="app.bmri.scripless.view.pageDefs.loginPageDef"/>
+    <page id="app_bmri_scripless_view_errorPageDef"
+          path="app.bmri.scripless.view.pageDefs.errorPageDef"/>
+    <page id="app_bmri_scripless_view_adminUserAccessPageDef"
+          path="pages.admin.AdminUserAccess.adminUserAccessPageDef"/>
+    <page id="app_bmri_scripless_view_assignMenuToRolePageDef"
+          path="pages.admin.AdminUserRole.assignMenuToRolePageDef"/>
+    <page id="app_bmri_scripless_view_assign_menu_to_role_assign_menu_to_role_SetCurrentRowWithKeyValuePageDef"
+          path="app.bmri.scripless.view.pageDefs.assign_menu_to_role_assign_menu_to_role_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="app_bmri_scripless_view_assign_role_to_user_assign_role_to_user_SetCurrentRowWithKeyValuePageDef"
+          path="app.bmri.scripless.view.pageDefs.assign_role_to_user_assign_role_to_user_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="app_bmri_scripless_view_assignRoleToUserPageDef"
+          path="pages.admin.AdminUserAccess.assignRoleToUserPageDef"/>
+    <page id="app_bmri_scripless_view_change_password_change_password_ExecuteWithParamsPageDef"
+          path="app.bmri.scripless.view.pageDefs.change_password_change_password_ExecuteWithParamsPageDef"/>
+    <page id="app_bmri_scripless_view_new_user_access_new_user_access_CreateInsertPageDef"
+          path="app.bmri.scripless.view.pageDefs.new_user_access_new_user_access_CreateInsertPageDef"/>
+    <page id="app_bmri_scripless_view_newUserAccessPageDef"
+          path="pages.admin.AdminUserAccess.newUserAccessPageDef"/>
+    <page id="app_bmri_scripless_view_editUserAccessPageDef"
+          path="pages.admin.AdminUserAccess.editUserAccessPageDef"/>
+    <page id="app_bmri_scripless_view_edit_user_access_edit_user_access_SetCurrentRowWithKeyValuePageDef"
+          path="app.bmri.scripless.view.pageDefs.edit_user_access_edit_user_access_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="app_bmri_scripless_view_jsfConfigsPageDef"
+          path="pages.admin.JsfConfigs.jsfConfigsPageDef"/>
+    <page id="app_bmri_scripless_view_ftpFileListPageDef"
+          path="pages.ksei.ftpFileListPageDef"/>
+    <page id="app_bmri_scripless_view_listDataStatementPageDef"
+          path="pages.ksei.listDataStatementPageDef"/>
+    <page id="app_bmri_scripless_view_pengirimanFileSftpPageDef"
+          path="pages.ksei.PengirimanFileSFTP.pengirimanFileSftpPageDef"/>
+    <page id="app_bmri_scripless_view_listDataBalancePageDef"
+          path="pages.ksei.ListDataBalance.listDataBalancePageDef"/>
+    <page id="app_bmri_scripless_view_listDataStaticPageDef"
+          path="pages.ksei.ListDataStatic.listDataStaticPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="InvestorModuleDataControl"
+                     Package="app.bmri.scripless.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="InvestorModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="BrokerModuleDataControl"
+                     Package="app.bmri.scripless.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="BrokerModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="SecurityModuleDataControl"
+                     Package="app.bmri.scripless.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="SecurityModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="AdminModuleDataControl"
+                     Package="app.bmri.scripless.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AdminModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="KSEIModuleDataControl"
+                     Package="app.bmri.scripless.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="KSEIModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

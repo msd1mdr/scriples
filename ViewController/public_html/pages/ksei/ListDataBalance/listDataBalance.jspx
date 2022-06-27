@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | List Data Balance">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="List Data Balance" id="pb1"
+                         showDisclosure="false"
+                         inlineStyle="margin:5px; background-color:White;">
+              <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                  <af:quickQuery label="Search" searchDesc="Search" id="qq1"
+                                 value="#{bindings.BalanceKseiViewCriteriaQuery.queryDescriptor}"
+                                 model="#{bindings.BalanceKseiViewCriteriaQuery.queryModel}"
+                                 queryListener="#{bindings.BalanceKseiViewCriteriaQuery.processQuery}"
+                                 queryOperationListener="#{bindings.BalanceKseiViewCriteriaQuery.processQueryOperation}">
+                    <f:facet name="end">
+                      <af:commandLink text="Advanced" rendered="false"
+                                      id="cl4"/>
+                    </f:facet>
+                  </af:quickQuery>
+                </af:toolbar>
+              </f:facet>
+              <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                  inlineStyle="margin:5px;">
+                <af:table value="#{bindings.BalanceKseiView1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.BalanceKseiView1.rangeSize}"
+                          emptyText="#{bindings.BalanceKseiView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.BalanceKseiView1.rangeSize}"
+                          rowBandingInterval="0" partialTriggers=":::qq1"
+                          filterVisible="true"
+                          filterModel="#{bindings.BalanceKseiViewCriteriaQuery.queryDescriptor}"
+                          queryListener="#{bindings.BalanceKseiViewCriteriaQuery.processQuery}"
+                          selectedRowKeys="#{bindings.BalanceKseiView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.BalanceKseiView1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          columnStretching="column:c5">
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Extref.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Extref.label}"
+                             id="c11" width="100" minimumWidth="100"
+                             filterable="true" align="center">
+                    <af:panelGroupLayout id="pgl1" layout="horizontal">
+                      <af:outputText value="#{row.Extref}" id="ot6"/>
+                      <af:spacer width="1" height="22" id="s2"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Bankcode.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Bankcode.label}"
+                             id="c10" width="80" minimumWidth="80"
+                             align="center" filterable="true">
+                    <af:outputText value="#{row.Bankcode}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Account.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Account.label}"
+                             id="c8" minimumWidth="100" filterable="true"
+                             align="center">
+                    <af:outputText value="#{row.Account}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Curcod.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Curcod.label}"
+                             id="c1" width="60" minimumWidth="60" align="center"
+                             filterable="true">
+                    <af:outputText value="#{row.Curcod}" id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Valdate.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Valdate.label}"
+                             id="c3" width="80" minimumWidth="80" align="center"
+                             filterable="true">
+                    <af:outputText value="#{row.Valdate}" id="ot2">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.BalanceKseiView1.hints.Valdate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Balance.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Balance.label}"
+                             id="c9" minimumWidth="100">
+                    <af:outputText value="#{row.Balance}" id="ot3">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.BalanceKseiView1.hints.Balance.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.FileName.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.FileName.label}"
+                             id="c7" width="200" minimumWidth="200"
+                             filterable="true">
+                    <af:outputText value="#{row.FileName}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.AckStatus.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.AckStatus.label}"
+                             id="c2" width="60" minimumWidth="60"
+                             align="center">
+                    <af:outputText value="#{row.AckStatus}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.AckTime.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.AckTime.label}"
+                             id="c4" width="80" minimumWidth="80"
+                             align="center">
+                    <af:outputText value="#{row.AckTime}" id="ot4">
+                      <af:convertDateTime pattern="#{bindings.BalanceKseiView1.hints.AckTime.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.AckNotes.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.AckNotes.label}"
+                             id="c6" width="60" minimumWidth="60"
+                             align="center">
+                    <af:outputText value="#{row.AckNotes}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BalanceKseiView1.hints.Notes.name}"
+                             sortable="false"
+                             headerText="#{bindings.BalanceKseiView1.hints.Notes.label}"
+                             id="c5" width="200" minimumWidth="200"
+                             filterable="true">
+                    <af:outputText value="#{row.Notes}" id="ot10"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">assignMenuToRole</property>
+      <property
+         name="page">/pages/admin/AdminUserRole/assignMenuToRole.jspx</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>assignMenuToRole&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">250.14355</property>
+      <property
+         name="x">360.0</property>
+   </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">SetCurrentRowWithKeyValue</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SetCurrentRowWithKeyValue&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">238.0459</property>
+      <property
+         name="x">148.7002</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View2">
+      <property
+         name="fromOutcome">setCurrentRowWithKeyValue</property>
+      <property
+         name="sdm:polyPoints">R50,189.7002,237.69531,319.0,249.79297,L50</property>
+   </ControlFlowCase>
+   <TaskFlowReturn
+      id="TaskFlowReturn5">
+      <property
+         name="activityId">return</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>return&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  return&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">255.94824</property>
+      <property
+         name="x">526.0</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View2"
+      to="TaskFlowReturn5">
+      <property
+         name="fromOutcome">close</property>
+      <property
+         name="sdm:polyPoints">R50,401.0,249.79297,485.0,255.59766,L50</property>
+   </ControlFlowCase>
+</SDM>

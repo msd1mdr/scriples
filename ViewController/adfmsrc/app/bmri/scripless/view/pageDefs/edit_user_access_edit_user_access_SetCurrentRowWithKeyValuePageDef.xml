@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="edit_user_access_edit_user_access_SetCurrentRowWithKeyValuePageDef"
+                Package="app.bmri.scripless.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="UserAccessAdminView1" RangeSize="25"
+              DataControl="AdminModuleDataControl"
+              id="UserAccessAdminView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="UserAccessAdminView1Iterator"
+            id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.editKey}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

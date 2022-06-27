@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Validasi Investor">
+      <af:messages id="m1"/>
+      <af:form id="f1" usesUpload="true">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Validasi Investor" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelSplitter id="ps1" styleClass="AFStretchWidth"
+                                dimensionsFrom="parent"
+                                inlineStyle="margin:5px;" splitterPosition="546"
+                                disabled="true">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="vertical"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl1" styleClass="AFStretchWidth">
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                      <af:table value="#{bindings.ValidationMsgView1.collectionModel}"
+                                var="row" scrollPolicy="page" autoHeightRows="0"
+                                styleClass="AFStretchWidth"
+                                rows="#{bindings.ValidationMsgView1.rangeSize}"
+                                emptyText="#{bindings.ValidationMsgView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ValidationMsgView1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ValidationMsgView1Query.queryDescriptor}"
+                                queryListener="#{bindings.ValidationMsgView1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.ValidationMsgView1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.ValidationMsgView1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                partialTriggers="::ctb6 :::ctbInsert :::d2"
+                                binding="#{ValidasiInvestorManagedBean.tblInvestor}"
+                                contentDelivery="immediate">
+                        <af:column sortProperty="#{bindings.ValidationMsgView1.hints.Participantid.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ValidationMsgView1.hints.Participantid.label}"
+                                   id="c5" minimumWidth="80" width="80"
+                                   align="center">
+                          <af:panelGroupLayout id="pgl4" layout="horizontal">
+                            <af:outputText value="#{row.Participantid}"
+                                           id="ot2"/>
+                            <af:spacer width="10" height="23" id="s4"/>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ValidationMsgView1.hints.Sidnumber.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ValidationMsgView1.hints.Sidnumber.label}"
+                                   id="c1" align="center">
+                          <af:outputText value="#{row.Sidnumber}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ValidationMsgView1.hints.Accountnumber.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ValidationMsgView1.hints.Accountnumber.label}"
+                                   id="c2" align="center">
+                          <af:outputText value="#{row.Accountnumber}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ValidationMsgView1.hints.CreateTime.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ValidationMsgView1.hints.CreateTime.label}"
+                                   id="c3" align="center" width="120">
+                          <f:facet name="filter">
+                            <af:inputDate value="#{vs.filterCriteria.CreateTime}"
+                                          id="id1"/>
+                          </f:facet>
+                          <af:outputText value="#{row.CreateTime}" id="ot4">
+                            <af:convertDateTime pattern="#{bindings.ValidationMsgView1.hints.CreateTime.format}"/>
+                          </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.ValidationMsgView1.hints.AckTime.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ValidationMsgView1.hints.AckTime.label}"
+                                   id="c4" align="center" width="120">
+                          <f:facet name="filter">
+                            <af:inputDate value="#{vs.filterCriteria.AckTime}"
+                                          id="id2"/>
+                          </f:facet>
+                          <af:outputText value="#{row.AckTime}" id="ot5">
+                            <af:convertDateTime pattern="#{bindings.ValidationMsgView1.hints.AckTime.format}"/>
+                          </af:outputText>
+                        </af:column>
+                      </af:table>
+                      <f:facet name="toolbar">
+                        <af:toolbar id="t3">
+                          <af:commandToolbarButton text="#{viewcontrollerBundle.REFRESH}"
+                                                   disabled="#{!bindings.Execute1.enabled}"
+                                                   id="ctb6"
+                                                   actionListener="#{bindings.Execute1.execute}"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <f:facet name="statusbar">
+                        <af:toolbar id="t4">
+                          <af:panelGroupLayout id="pgl2"
+                                           inlineStyle="width:200px;">
+                            <af:outputText value="#{bindings.ValidationMsgView1Iterator.estimatedRowCount} rows(s)"
+                                           id="ot6" partialTriggers="t2 ctb6"
+                                           binding="#{ValidasiInvestorManagedBean.estRowStatus}"/>
+                          </af:panelGroupLayout>
+                        </af:toolbar>
+                      </f:facet>
+                    </af:panelCollection>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelBox text="Status Ack Investor #{bindings.Participantid.inputValue}"
+                               id="pb2" showDisclosure="false"
+                               partialTriggers="pc1:t2">
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t1">
+                        <af:commandToolbarButton text="#{viewcontrollerBundle.CREATE_NEW}"
+                                                 id="ctbInsert">
+                          <af:showPopupBehavior popupId="p2"/>
+                        </af:commandToolbarButton>
+                        <af:popup id="p2" contentDelivery="lazyUncached"
+                                  popupCanceledListener="#{ValidasiInvestorManagedBean.editPopupCancelListener}"
+                                  popupFetchListener="#{ValidasiInvestorManagedBean.editPopupFetchListener}">
+                          <af:dialog id="d2" title="Investor Add"
+                                     affirmativeTextAndAccessKey="Save"
+                                     cancelTextAndAccessKey="Cancel"
+                                     dialogListener="#{ValidasiInvestorManagedBean.editDialogListener}">
+                            <af:panelFormLayout id="pfl2">
+                              <!-- ORIGINAL ADF (3 of 3) -->
+                              <!--af:inputText value="#{bindings.Participantid.inputValue}"
+                                            label="#{bindings.Participantid.hints.label}"
+                                            required="#{bindings.Participantid.hints.mandatory}"
+                                            columns="#{bindings.Participantid.hints.displayWidth}"
+                                            maximumLength="#{bindings.Participantid.hints.precision}"
+                                            shortDesc="#{bindings.Participantid.hints.tooltip}"
+                                            id="it9"
+                                            binding="#{ValidasiInvestorManagedBean.participantId}">
+                                <f:validator binding="#{bindings.Participantid.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.Sidnumber.inputValue}"
+                                            label="#{bindings.Sidnumber.hints.label}"
+                                            required="#{bindings.Sidnumber.hints.mandatory}"
+                                            columns="#{bindings.Sidnumber.hints.displayWidth}"
+                                            maximumLength="#{bindings.Sidnumber.hints.precision}"
+                                            shortDesc="#{bindings.Sidnumber.hints.tooltip}"
+                                            id="it8"
+                                            binding="#{ValidasiInvestorManagedBean.sidNumber}">
+                                <f:validator binding="#{bindings.Sidnumber.validator}"/>
+                              </af:inputText>
+                              <af:inputText value="#{bindings.Accountnumber.inputValue}"
+                                            label="#{bindings.Accountnumber.hints.label}"
+                                            required="#{bindings.Accountnumber.hints.mandatory}"
+                                            columns="#{bindings.Accountnumber.hints.displayWidth}"
+                                            maximumLength="#{bindings.Accountnumber.hints.precision}"
+                                            shortDesc="#{bindings.Accountnumber.hints.tooltip}"
+                                            id="it10"
+                                            binding="#{ValidasiInvestorManagedBean.accNumber}">
+                                <f:validator binding="#{bindings.Accountnumber.validator}"/>
+                              </af:inputText-->
+                              <af:inputText label="#{bindings.Participantid.hints.label}"
+                                            required="#{bindings.Participantid.hints.mandatory}"
+                                            columns="#{bindings.Participantid.hints.displayWidth}"
+                                            maximumLength="#{bindings.Participantid.hints.precision}"
+                                            shortDesc="#{bindings.Participantid.hints.tooltip}"
+                                            id="it9"
+                                            binding="#{ValidasiInvestorManagedBean.participantId}">
+                                <f:validator binding="#{bindings.Participantid.validator}"/>
+                              </af:inputText>
+                              <af:inputText label="#{bindings.Sidnumber.hints.label}"
+                                            required="#{bindings.Sidnumber.hints.mandatory}"
+                                            columns="#{bindings.Sidnumber.hints.displayWidth}"
+                                            maximumLength="#{bindings.Sidnumber.hints.precision}"
+                                            shortDesc="#{bindings.Sidnumber.hints.tooltip}"
+                                            id="it8"
+                                            binding="#{ValidasiInvestorManagedBean.sidNumber}">
+                                <f:validator binding="#{bindings.Sidnumber.validator}"/>
+                              </af:inputText>
+                              <af:inputText label="#{bindings.Accountnumber.hints.label}"
+                                            required="#{bindings.Accountnumber.hints.mandatory}"
+                                            columns="#{bindings.Accountnumber.hints.displayWidth}"
+                                            maximumLength="#{bindings.Accountnumber.hints.precision}"
+                                            shortDesc="#{bindings.Accountnumber.hints.tooltip}"
+                                            id="it10"
+                                            binding="#{ValidasiInvestorManagedBean.accNumber}">
+                                <f:validator binding="#{bindings.Accountnumber.validator}"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:dialog>
+                        </af:popup>
+                        <af:commandToolbarButton text="#{viewcontrollerBundle.UPLOAD_EXCEL}"
+                                                 id="ctb4">
+                          <af:showPopupBehavior popupId="p1"/>
+                        </af:commandToolbarButton>
+                        <af:popup id="p1">
+                          <af:dialog id="d3" contentHeight="280"
+                                     contentWidth="500" modal="true"
+                                     title="Upload Excel" type="ok"
+                                     affirmativeTextAndAccessKey="Close"
+                                     dialogListener="#{ValidasiInvestorManagedBean.uploadDialogListener}"
+                                     closeIconVisible="false">
+                            <af:region value="#{bindings.managedvalinvuploadexcel1.regionModel}"
+                                       id="r1"/>
+                          </af:dialog>
+                        </af:popup>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl1"
+                                        partialTriggers="pc1:t2 d2 d3 ctbInsert ctb4"
+                                        labelWidth="150" fieldWidth="200">
+                      <af:spacer width="10" height="10" id="s2"/>
+                      <af:inputText value="#{bindings.Ackparticipantid.inputValue == null ? '-' : bindings.Ackparticipantid.inputValue}"
+                                    label="#{bindings.Ackparticipantid.hints.label}"
+                                    required="#{bindings.Ackparticipantid.hints.mandatory}"
+                                    columns="#{bindings.Ackparticipantid.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackparticipantid.hints.precision}"
+                                    shortDesc="#{bindings.Ackparticipantid.hints.tooltip}"
+                                    id="it6" readOnly="true"
+                                    contentStyle="font-weight:bold;">
+                        <f:validator binding="#{bindings.Ackparticipantid.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="s1"/>
+                      <af:inputText value="#{bindings.Acksidnumber.inputValue == null ? '-' : bindings.Acksidnumber.inputValue}"
+                                    label="#{bindings.Acksidnumber.hints.label}"
+                                    required="#{bindings.Acksidnumber.hints.mandatory}"
+                                    columns="#{bindings.Acksidnumber.hints.displayWidth}"
+                                    maximumLength="#{bindings.Acksidnumber.hints.precision}"
+                                    shortDesc="#{bindings.Acksidnumber.hints.tooltip}"
+                                    id="it3" readOnly="true"
+                                    contentStyle="font-weight:bold;">
+                        <f:validator binding="#{bindings.Acksidnumber.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="spacer11"/>
+                      <af:inputText value="#{bindings.Ackaccountnumber.inputValue == null ? '-' : bindings.Ackaccountnumber.inputValue}"
+                                    label="#{bindings.Ackaccountnumber.hints.label}"
+                                    required="#{bindings.Ackaccountnumber.hints.mandatory}"
+                                    columns="#{bindings.Ackaccountnumber.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackaccountnumber.hints.precision}"
+                                    shortDesc="#{bindings.Ackaccountnumber.hints.tooltip}"
+                                    id="it5" readOnly="true"
+                                    contentStyle="font-weight:bold;">
+                        <f:validator binding="#{bindings.Ackaccountnumber.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="spacer2"/>
+                      <af:inputText value="#{bindings.Ackinvestorpassport.inputValue == null ? '-' : bindings.Ackinvestorpassport.inputValue}"
+                                    label="#{bindings.Ackinvestorpassport.hints.label}"
+                                    required="#{bindings.Ackinvestorpassport.hints.mandatory}"
+                                    columns="#{bindings.Ackinvestorpassport.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackinvestorpassport.hints.precision}"
+                                    shortDesc="#{bindings.Ackinvestorpassport.hints.tooltip}"
+                                    id="it7"
+                                    disabled="#{bindings.ValidationMsgView1.inputValue == null}"
+                                    readOnly="true">
+                        <f:validator binding="#{bindings.Ackinvestorpassport.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="spacer3"/>
+                      <af:inputText value="#{bindings.Ackinvestorid.inputValue == null ? '-' : bindings.Ackinvestorid.inputValue}"
+                                    label="#{bindings.Ackinvestorid.hints.label}"
+                                    required="#{bindings.Ackinvestorid.hints.mandatory}"
+                                    columns="#{bindings.Ackinvestorid.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackinvestorid.hints.precision}"
+                                    shortDesc="#{bindings.Ackinvestorid.hints.tooltip}"
+                                    id="it2"
+                                    disabled="#{bindings.ValidationMsgView1.inputValue == null}"
+                                    readOnly="true">
+                        <f:validator binding="#{bindings.Ackinvestorid.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="spacer4"/>
+                      <af:inputText value="#{bindings.Ackinvestornpwp.inputValue == null ? '-' : bindings.Ackinvestornpwp.inputValue}"
+                                    label="#{bindings.Ackinvestornpwp.hints.label}"
+                                    required="#{bindings.Ackinvestornpwp.hints.mandatory}"
+                                    columns="#{bindings.Ackinvestornpwp.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackinvestornpwp.hints.precision}"
+                                    shortDesc="#{bindings.Ackinvestornpwp.hints.tooltip}"
+                                    id="it4"
+                                    disabled="#{bindings.ValidationMsgView1.inputValue == null}"
+                                    readOnly="true">
+                        <f:validator binding="#{bindings.Ackinvestornpwp.validator}"/>
+                      </af:inputText>
+                      <af:spacer width="10" height="3" id="spacer5"/>
+                      <af:inputText value="#{bindings.Ackinvestorname.inputValue == null ? '-' : bindings.Ackinvestorname.inputValue}"
+                                    label="#{bindings.Ackinvestorname.hints.label}"
+                                    required="#{bindings.Ackinvestorname.hints.mandatory}"
+                                    columns="#{bindings.Ackinvestorname.hints.displayWidth}"
+                                    maximumLength="#{bindings.Ackinvestorname.hints.precision}"
+                                    shortDesc="#{bindings.Ackinvestorname.hints.tooltip}"
+                                    id="it1"
+                                    disabled="#{bindings.ValidationMsgView1.inputValue == null}"
+                                    readOnly="true">
+                        <f:validator binding="#{bindings.Ackinvestorname.validator}"/>
+                      </af:inputText>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+      <af:resource type="javascript">
+        function enforcePreventUserInput(evt) {
+            var popup = AdfPage.PAGE.findComponentByAbsoluteId('p1');
+            if (popup != null) {
+                AdfPage.PAGE.addBusyStateListener(popup, handleBusyState);
+                evt.preventUserInput();
+            }
+        }
+
+        function handleBusyState(evt) {
+            var popup = AdfPage.PAGE.findComponentByAbsoluteId('p1');
+            if (popup != null) {
+                if (evt.isBusy()) {
+                    popup.show();
+                }
+                else if (popup.isPopupVisible()) {
+                    popup.hide();
+                    AdfPage.PAGE.removeBusyStateListener(popup, handleBusyState);
+                }
+            }
+        }
+      </af:resource>
+    </af:document>
+  </f:view>
+</jsp:root>

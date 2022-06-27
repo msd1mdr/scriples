@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="listDataStatementPageDef"
+                Package="pages.ksei">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="StatementKseiView1" RangeSize="25"
+              DataControl="KSEIModuleDataControl"
+              id="StatementKseiView1Iterator"/>
+    <searchRegion id="StatementKseiViewCriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Criteria="StatementKseiViewCriteria"
+                  Binds="StatementKseiView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="StatementKseiView1Iterator" id="StatementKseiView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.liststmtksei.StatementKseiView"
+                      Name="StatementKseiView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Extref"/>
+          <Item Value="Seqnum"/>
+          <Item Value="Ac"/>
+          <Item Value="Curcod"/>
+          <Item Value="Valdate"/>
+          <Item Value="Openbal"/>
+          <Item Value="Accref"/>
+          <Item Value="Trxtype"/>
+          <Item Value="Dc"/>
+          <Item Value="Cashval"/>
+          <Item Value="Description"/>
+          <Item Value="Closebal"/>
+          <Item Value="Notes"/>
+          <Item Value="CreateTime"/>
+          <Item Value="FileName"/>
+          <Item Value="AckStatus"/>
+          <Item Value="AckNotes"/>
+          <Item Value="AckTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

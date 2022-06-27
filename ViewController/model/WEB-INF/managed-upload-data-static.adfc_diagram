@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">uploadCsvStaticForm</property>
+      <property
+         name="page">/pages/broker/UploadDataStatic/uploadCsvStaticForm.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>uploadCsvStaticForm&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">235.84473</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">312.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">uploadedStaticConfirm</property>
+      <property
+         name="page">/pages/broker/UploadDataStatic/uploadedStaticConfirm.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>uploadedStaticConfirm&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">231.14355</property>
+      <property
+         name="x">570.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">successupload</property>
+      <property
+         name="sdm:polyPoints">R46,353.0,231.99414,528.9065,227.29297,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">reupload</property>
+      <property
+         name="sdm:polyPoints">L54,529.0,234.29297,353.09348,238.99414,R54</property>
+   </ControlFlowCase>
+</SDM>

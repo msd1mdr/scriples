@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="investorPageDef"
+                Package="pages.investor.Investor">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InvestorView1" RangeSize="15"
+              DataControl="BrokerModuleDataControl" id="InvestorView1Iterator"/>
+    <searchRegion Criteria="InvestorViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="InvestorView1Iterator" id="InvestorViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InvestorView1Iterator" id="InvestorView1">
+      <nodeDefinition DefName="app.bmri.scripless.model.vo.investor.InvestorView"
+                      Name="InvestorView10">
+        <AttrNames>
+          <Item Value="NoRekening"/>
+          <Item Value="KodeInvestor"/>
+          <Item Value="Sid"/>
+          <Item Value="NamaInvestor"/>
+          <Item Value="KodeAb"/>
+          <Item Value="Subacn"/>
+          <Item Value="Bjvald"/>
+          <Item Value="Bjcbal"/>
+          <Item Value="Field1"/>
+          <Item Value="Excpt1"/>
+          <Item Value="Excpt2"/>
+          <Item Value="Acctno"/>
+          <Item Value="Actype"/>
+          <Item Value="Partid"/>
+          <Item Value="Partnm"/>
+          <Item Value="Ivstnm"/>
+          <Item Value="Ivstid"/>
+          <Item Value="Bjcrt8"/>
+          <Item Value="Bjstat"/>
+          <Item Value="Bjvusr"/>
+          <Item Value="Bjvdt8"/>
+          <Item Value="Bjvtme"/>
+          <Item Value="Bjseqn"/>
+          <Item Value="Bejsc1"/>
+          <Item Value="Bejsc2"/>
+          <Item Value="Bejsc3"/>
+          <Item Value="Bejsc4"/>
+          <Item Value="Bejfl1"/>
+          <Item Value="Bejfl2"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="InvestorView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

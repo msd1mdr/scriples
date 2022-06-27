@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="monitoringInvestorMessagePageDef"
+                Package="pages.broker.MonitoringInvestorMessage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InvestorMsgOutgoingView1" RangeSize="25"
+              DataControl="InvestorModuleDataControl"
+              id="InvestorMsgOutgoingView1Iterator"/>
+    <iterator Binds="InvestorMsgIncomingView1" RangeSize="25"
+              DataControl="InvestorModuleDataControl"
+              id="InvestorMsgIncomingView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="InvestorMsgOutgoingView1Iterator"
+                     id="StaticSubmit">
+      <AttrNames>
+        <Item Value="StaticSubmit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvestorMsgOutgoingView1Iterator"
+                     id="StatementSubmit">
+      <AttrNames>
+        <Item Value="StatementSubmit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvestorMsgOutgoingView1Iterator"
+                     id="ValidationSubmit">
+      <AttrNames>
+        <Item Value="ValidationSubmit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvestorMsgIncomingView1Iterator"
+                     id="StaticAck">
+      <AttrNames>
+        <Item Value="StaticAck"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvestorMsgIncomingView1Iterator"
+                     id="StatementAck">
+      <AttrNames>
+        <Item Value="StatementAck"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvestorMsgIncomingView1Iterator"
+                     id="ValidationAck">
+      <AttrNames>
+        <Item Value="ValidationAck"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

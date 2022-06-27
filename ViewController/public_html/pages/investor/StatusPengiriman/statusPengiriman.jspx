@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['app.bmri.scripless.view.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="Scripless | Status Pengiriman">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/dashTemplate.jspx" id="pt1">
+          <f:facet name="main">
+            <af:panelBox text="Status Pengiriman" id="pb1"
+                         inlineStyle="margin:5px; background-color:White;"
+                         showDisclosure="false">
+              <af:panelGroupLayout id="pgl1" layout="default"
+                                   styleClass="AFStretchWidth"
+                                   inlineStyle="margin:5px;">
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t1">
+                        <af:commandButton text="#{viewcontrollerBundle.RESEND}" id="cb3">
+                          <af:showPopupBehavior popupId="p1"/>
+                        </af:commandButton>
+                        <af:popup id="p1">
+                          <af:dialog id="d2" title="Resend Confirmation"
+                                     stretchChildren="none"
+                                     dialogListener="#{StatusPengirimanManagedBean.confirmResendStatusKirim}"
+                                     type="yesNo">
+                            <af:panelGroupLayout id="pgl3" layout="horizontal">
+                              <af:outputText id="ot12"
+                                             value="Are you sure you want to resend the selected data ?"/>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table value="#{bindings.Filestmt2sentView1.collectionModel}"
+                            var="row" scrollPolicy="page" autoHeightRows="0"
+                            styleClass="AFStretchWidth"
+                            rows="#{bindings.Filestmt2sentView1.rangeSize}"
+                            emptyText="#{bindings.Filestmt2sentView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Filestmt2sentView1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Filestmt2sentViewCriteriaQuery.queryDescriptor}"
+                            queryListener="#{bindings.Filestmt2sentViewCriteriaQuery.processQuery}"
+                            selectedRowKeys="#{bindings.Filestmt2sentView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Filestmt2sentView1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="resId1"
+                            partialTriggers=":::qq1"
+                            binding="#{StatusPengirimanManagedBean.tblStatusKirim}"
+                            columnStretching="column:resId1c5">
+                    <af:column id="c2" width="30" align="center">
+                      <f:facet name="header">
+                        <af:panelGroupLayout id="pgl2"
+                                             styleClass="AFStretchWidth"
+                                             layout="horizontal">
+                          <af:selectBooleanCheckbox id="cek1" label=" "
+                                                    valueChangeListener="#{StatusPengirimanManagedBean.checkAll}"
+                                                    binding="#{StatusPengirimanManagedBean.checkAllRows}"
+                                                    autoSubmit="true"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:selectBooleanCheckbox value="#{row.SelectStatus}"
+                                                label=" " autoSubmit="true"
+                                                id="sbc1"
+                                                binding="#{StatusPengirimanManagedBean.checkRow}"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Filestmt2sentView1.hints.KodeAb.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Filestmt2sentView1.hints.KodeAb.label}"
+                               id="resId1c1" align="center" width="60">
+                      <af:outputText value="#{row.KodeAb}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Filestmt2sentView1.hints.FileNumber.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Filestmt2sentView1.hints.FileNumber.label}"
+                               id="resId1c2" align="center" width="60">
+                      <af:outputText value="#{row.FileNumber}" id="ot3">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.Filestmt2sentView1.hints.FileNumber.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Filestmt2sentView1.hints.SendMethod.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Filestmt2sentView1.hints.SendMethod.label}"
+                               id="resId1c3" align="center" width="80">
+                      <af:outputText value="#{row.SendMethod}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Filestmt2sentView1.hints.SentTime.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Filestmt2sentView1.hints.SentTime.label}"
+                               id="resId1c4" align="center" width="150">
+                      <af:outputText value="#{row.SentTime}" id="ot2">
+                        <af:convertDateTime pattern="#{bindings.Filestmt2sentView1.hints.SentTime.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Filestmt2sentView1.hints.ErrorDesc.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.Filestmt2sentView1.hints.ErrorDesc.label}"
+                               id="resId1c5">
+                      <af:outputText value="#{row.ErrorDesc}" id="ot1"/>
+                    </af:column>
+                    <af:column id="c6" headerText="Actions" align="center"
+                               width="120">
+                      <af:panelGroupLayout id="pgl4" layout="horizontal">
+                        <af:commandButton text="Detail" id="cb1">
+                          <af:showPopupBehavior popupId="p2"/>
+                        </af:commandButton>
+                        <af:popup id="p2">
+                          <af:dialog id="d3"
+                                     title="Status Pengiriman Details (#{row.KodeAb})"
+                                     type="ok"
+                                     affirmativeTextAndAccessKey="Close"
+                                     contentWidth="800">
+                            <af:panelGroupLayout id="pgl5" layout="default">
+                              <af:panelCollection id="pc2"
+                                                  styleClass="AFStretchWidth">
+                                <af:table value="#{bindings.FileSendingQView1.collectionModel}"
+                                          var="row" autoHeightRows="0" scrollPolicy="page"
+                                          rows="#{bindings.FileSendingQView1.rangeSize}"
+                                          emptyText="#{bindings.FileSendingQView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.FileSendingQView1.rangeSize}"
+                                          rowBandingInterval="0"
+                                          filterModel="#{bindings.FileSendingQView1Query.queryDescriptor}"
+                                          queryListener="#{bindings.FileSendingQView1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.FileSendingQView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.FileSendingQView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t2"
+                                          styleClass="AFStretchWidth"
+                                          columnStretching="column:c7">
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.Recipient.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.Recipient.label}"
+                                             id="c8" width="60" align="center">
+                                    <af:panelGroupLayout id="pgl6"
+                                                         layout="horizontal">
+                                      <af:outputText value="#{row.Recipient}"
+                                                     id="ot6"/>
+                                      <af:spacer width="10" height="23"
+                                                 id="s2"/>
+                                    </af:panelGroupLayout>
+                                  </af:column>
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.Filename.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.Filename.label}"
+                                             id="c4" width="160">
+                                    <af:outputText value="#{row.Filename}"
+                                                   id="ot11"/>
+                                  </af:column>
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.SendMethod.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.SendMethod.label}"
+                                             id="c1" width="60" align="center">
+                                    <af:outputText value="#{row.SendMethod}"
+                                                   id="ot9"/>
+                                  </af:column>
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.ExecuteTime.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.ExecuteTime.label}"
+                                             id="c5" width="120" align="center">
+                                    <f:facet name="filter">
+                                      <af:inputDate value="#{vs.filterCriteria.ExecuteTime}"
+                                                    id="id1"/>
+                                    </f:facet>
+                                    <af:outputText value="#{row.ExecuteTime}"
+                                                   id="ot7">
+                                      <af:convertDateTime pattern="#{bindings.FileSendingQView1.hints.ExecuteTime.format}"/>
+                                    </af:outputText>
+                                  </af:column>
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.Status.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.Status.label}"
+                                             id="c3" align="center" width="80">
+                                    <af:outputText value="#{row.Status}"
+                                                   id="ot8"/>
+                                  </af:column>
+                                  <af:column sortProperty="#{bindings.FileSendingQView1.hints.Errormsg.name}"
+                                             filterable="true" sortable="true"
+                                             headerText="#{bindings.FileSendingQView1.hints.Errormsg.label}"
+                                             id="c7">
+                                    <af:outputText value="#{row.Errormsg}"
+                                                   id="ot10"/>
+                                  </af:column>
+                                  <af:column id="c9" headerText="Action"
+                                             align="center">
+                                    <af:goButton text="Download CSV" id="gb1"
+                                                 destination="/#{row.DownloadUrl}"
+                                                 targetFrame="_blank"/>
+                                  </af:column>
+                                </af:table>
+                              </af:panelCollection>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+                        <af:spacer width="5" height="10" id="s1"/>
+                        <af:commandButton text="Resend" id="cb2">
+                          <af:showPopupBehavior popupId="p3"/>
+                        </af:commandButton>                        
+                      <af:popup id="p3">
+                        <af:dialog id="d4" title="Resend Confirmation"
+                                   stretchChildren="none"
+                                   dialogListener="#{StatusPengirimanManagedBean.confirmResendStatusKirimSingle}"
+                                   type="yesNo">
+                          <af:panelGroupLayout id="pgl7" layout="horizontal">
+                            <af:outputText id="ot13"
+                                           value="Are you sure you want to resend #{row.KodeAb} ?"/>
+                          </af:panelGroupLayout>
+                        </af:dialog>
+                      </af:popup>
+                      </af:panelGroupLayout>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelGroupLayout>
+              <f:facet name="toolbar">
+                <af:toolbar id="t3">
+                  <af:quickQuery label="Search" searchDesc="Search" id="qq1"
+                                 value="#{bindings.Filestmt2sentViewCriteriaQuery.queryDescriptor}"
+                                 model="#{bindings.Filestmt2sentViewCriteriaQuery.queryModel}"
+                                 queryListener="#{bindings.Filestmt2sentViewCriteriaQuery.processQuery}"
+                                 queryOperationListener="#{bindings.Filestmt2sentViewCriteriaQuery.processQueryOperation}">
+                    <f:facet name="end">
+                      <af:commandLink text="Advanced" rendered="false"
+                                      id="cl4"/>
+                    </f:facet>
+                  </af:quickQuery>
+                </af:toolbar>
+              </f:facet>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

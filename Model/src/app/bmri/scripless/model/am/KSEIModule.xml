@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="KSEIModule"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ComponentClass="app.bmri.scripless.model.am.KSEIModuleImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="app.bmri.scripless.model.am.common.KSEIModule"
+  ClientProxyName="app.bmri.scripless.model.am.client.KSEIModuleClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="app.bmri.scripless.model.am.KSEIModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="FileTransmisionView1"
+    ViewObjectName="app.bmri.scripless.model.vo.ftpfilelist.FileTransmisionView"/>
+  <ViewUsage
+    Name="StatementKseiView1"
+    ViewObjectName="app.bmri.scripless.model.vo.liststmtksei.StatementKseiView"/>
+  <ViewUsage
+    Name="BalanceKseiView1"
+    ViewObjectName="app.bmri.scripless.model.vo.listbalanceksei.BalanceKseiView"/>
+  <ViewUsage
+    Name="StaticKseiView1"
+    ViewObjectName="app.bmri.scripless.model.vo.liststaticksei.StaticKseiView"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="app.bmri.scripless.model.ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="setLoginToSession_KSEIModule">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="key"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="val"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

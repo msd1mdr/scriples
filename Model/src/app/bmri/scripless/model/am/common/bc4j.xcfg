@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="app.bmri.scripless.model.am.InvestorModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="InvestorModuleLocal" ApplicationName="app.bmri.scripless.model.am.InvestorModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.InvestorModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="InvestorModuleShared" ApplicationName="app.bmri.scripless.model.am.InvestorModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.InvestorModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="app.bmri.scripless.model.am.BrokerModule">
+      <AppModuleConfig name="BrokerModuleLocal" ApplicationName="app.bmri.scripless.model.am.BrokerModule" DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model">
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.BrokerModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="BrokerModuleShared" ApplicationName="app.bmri.scripless.model.am.BrokerModule" DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.BrokerModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="app.bmri.scripless.model.am.SecurityModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="SecurityModuleLocal" ApplicationName="app.bmri.scripless.model.am.SecurityModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.SecurityModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="SecurityModuleShared" ApplicationName="app.bmri.scripless.model.am.SecurityModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.SecurityModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="app.bmri.scripless.model.am.AdminModule">
+      <AppModuleConfig name="AdminModuleLocal" ApplicationName="app.bmri.scripless.model.am.AdminModule" DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model">
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.AdminModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AdminModuleShared" ApplicationName="app.bmri.scripless.model.am.AdminModule" DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.AdminModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="app.bmri.scripless.model.am.KSEIModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="KSEIModuleLocal" ApplicationName="app.bmri.scripless.model.am.KSEIModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.KSEIModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="app.bmri.scripless.model.Model" name="KSEIModuleShared" ApplicationName="app.bmri.scripless.model.am.KSEIModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="app.bmri.scripless.model.am.KSEIModule"/>
+         <Custom JDBCDataSource="jdbc/ScriplessDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

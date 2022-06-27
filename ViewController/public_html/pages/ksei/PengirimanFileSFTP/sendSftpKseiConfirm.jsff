@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBorderLayout id="pbl1">
+    <f:facet name="top">
+      <af:spacer width="10" height="100" id="s6"/>
+    </f:facet>
+    <af:panelGroupLayout id="pgl2" layout="vertical"
+                         inlineStyle='background-image:url("../images/icons/sftp-send.png"); background-repeat:no-repeat; height:267px; background-position:50% 50%;'
+                         halign="center">
+      <af:messages id="m1" inline="true"/>
+      <af:spacer width="10" height="40" id="s4"/>
+      <af:switcher id="s3"
+                   facetName="#{pageFlowScope.sendStatus == 'ERROR' ? 'failed' : 'success'}"
+                   defaultFacet="success">
+        <f:facet name="success">
+          <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+            <af:image source="/images/icons/successfully.png" id="i1"/>
+            <af:outputText value="File has been sent successfully to KSEI."
+                           id="ot1"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:commandButton id="cb3" partialSubmit="true" action="sendother"
+                              text="Pengiriman Lain">
+              <af:clientListener method="enforcePreventUserInput"
+                                 type="action"/>
+            </af:commandButton>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="failed">
+          <af:panelGroupLayout id="panelGroupLayout1" layout="vertical"
+                               halign="center">
+            <af:image source="/images/icons/failed.png" id="image1"/>
+            <af:outputText value="Gagal kirim FTP"
+                           id="outputText1"/>
+            <af:spacer width="10" height="10" id="s5"
+                       visible="#{pageFlowScope.errMsg == ''}"/>
+            <af:outputText value="#{pageFlowScope.errMsg}" id="outputText2"/>
+            <af:spacer width="10" height="10" id="spacer1"/>
+            <af:commandButton id="commandButton1" partialSubmit="true"
+                              action="sendother" text="Ulangi Pengiriman">
+              <af:clientListener method="enforcePreventUserInput"
+                                 type="action"/>
+            </af:commandButton>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:switcher>
+      <af:spacer width="10" height="30" id="s2"/>
+    </af:panelGroupLayout>
+  </af:panelBorderLayout>
+</jsp:root>
